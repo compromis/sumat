@@ -31,9 +31,15 @@ $gray-800: mix($gray-darkest, $gray-lightest, 90%);
 $gray-900: $gray-darkest;
 
 // Body and text
-$body-bg: $gray-lightest;
 $body-color: $gray-darkest;
-$text-muted: $gray-600;
+$body-bg: var(--gray-lightest);
+$font-family-sans-serif: "Compromis", -apple-system, "Google Sans", "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+$text-muted: var(--text-muted);
+$text-default: var(--text-default);
+$text-supermuted: var(--text-supermuted);
+$input-color: $text-default;
+$input-bg: var(--white);
+$input-border-color: var(--gray-300);
 
 // Gradients
 $gradient-start: #d23517;
@@ -81,21 +87,6 @@ $raised-shadow: 0 1.25rem 2.1rem -.3rem rgba($gray-900, .15),
     0 -.4rem 1rem -.4rem rgba($color, .015),
     0 0 0 .25rem rgba($color, .5) !important;
 }
-
-$container-max-widths: (
-  sm: 540px,
-  md: 720px,
-  lg: 1400px,
-  xl: 2440px
-);
-
-$grid-breakpoints: (
-  xs: 0,
-  sm: 576px,
-  md: 768px,
-  lg: 900px,
-  xl: 1500px
-) !default;
 
 // Boostrap variables and functions
 @import 'bootstrap/scss/_functions';
