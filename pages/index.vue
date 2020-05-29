@@ -1,19 +1,28 @@
 <template>
   <div class="container">
-    <compromis-logo />
+    <form>
+      <div class="card">
+        <input-field />
+      </div>
+    </form>
   </div>
 </template>
 
 <script>
-import CompromisLogo from '~/components/CompromisLogo.vue'
+import InputField from '../components/InputField'
 
 export default {
   components: {
-    CompromisLogo
+    InputField
   }
 }
 </script>
 
 <style lang="scss">
+@import '../sass/variables';
+
+form {
+  color: $body-color;
+}
 
 </style>
