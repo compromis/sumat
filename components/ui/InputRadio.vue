@@ -33,7 +33,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../sass/variables';
+@import '../../sass/variables';
 
 .label {
   text-align: left;
@@ -45,6 +45,7 @@ export default {
   cursor: pointer;
   font-size: 22px;
   user-select: none;
+
   p {
     font-size: 1rem;
   }
@@ -58,8 +59,6 @@ export default {
 
 .checkmark {
   position: absolute;
-  top: 0;
-  left: 0;
   height: 20px;
   width: 20px;
   border: 1px solid $gray-700;
@@ -93,7 +92,10 @@ input:checked {
   background: blue;
   position: relative;
   border-radius: 50%;
-  top: 0;
+  top: 50%;
+  left: 50%;
+  border-color: blue;
+  transform: translate(-50%, -50%);
 }
 
 </style>

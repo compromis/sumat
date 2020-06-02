@@ -33,7 +33,6 @@ $gray-900: $gray-darkest;
 // Body and text
 $body-color: $gray-darkest;
 $body-bg: var(--gray-lightest);
-$font-family-sans-serif: "Compromis", -apple-system, "Google Sans", "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", sans-serif;
 $text-muted: var(--text-muted);
 $text-default: var(--text-default);
 $text-supermuted: var(--text-supermuted);
@@ -50,10 +49,9 @@ $gradient: linear-gradient(var(--gradient-orientation, 45deg), $gradient-start, 
 $rotation: -5deg;
 
 // Border radius
-$border-radius: .75rem;
-$card-radius: 1rem;
-$border-radius-lg: 1.5rem;
-$border-radius-xl: 5rem;
+$border-radius: .5rem;
+$card-radius: .75rem;
+$border-radius-lg: 1.25rem;
 
 // Shadows
 $default-shadow: 0 .8rem 1.7rem -.3rem rgba($gray-900, .15),

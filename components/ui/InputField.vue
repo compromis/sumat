@@ -1,6 +1,6 @@
 <template>
-  <div class="field">
-    <input :type="type" :name="name" class="input" placeholder=" ">
+  <div :class="{ 'field': true, 'field-error': invalid, 'has-value': value }">
+    <input :type="type" :name="name" class="input" @input="(e) => $emit('input', e.target.value)">
     <label :for="name" class="label">Email</label>
   </div>
 </template>
@@ -17,16 +17,20 @@ export default {
       type: String,
       default: 'name'
     },
-    placeholder: {
+    value: {
       type: String,
       default: ''
+    },
+    invalid: {
+      type: Boolean,
+      default: false
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-@import '../sass/variables';
+@import '../../sass/variables';
 
 .field {
     width: 100%;
@@ -35,16 +39,19 @@ export default {
     transition: 500ms;
     z-index: 10;
     padding: 0;
+    background: $white;
   }
 
   .label {
     position: absolute;
     left: 1rem;
-    top: 1.35rem;
+    top: 50%;
     color: $gray-700;
     font-size: 1.2rem;
+    transform: translateY(-50%);
     transform-origin: 0%;
     transition: transform 400ms;
+    pointer-events: none;
   }
 
   .input {
@@ -59,13 +66,19 @@ export default {
   }
 
   .field:focus-within .label,
-  .input:not(:placeholder-shown) + .label {
-    transform: scale(0.7) translateY(-1.1rem);
+  .has-value .label {
+    transform: scale(0.7) translateY(calc(-50% + -1.5rem));
     opacity: 1;
   }
 
   .field-error {
-    border: 1px solid $danger !important;
-    background: $danger;
+    label {
+      color: $danger;
+    }
+
+    input {
+      border: 1px solid $danger !important;
+      background: rgba($danger, 0.25);
+    }
   }
 </style>
