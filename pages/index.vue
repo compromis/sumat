@@ -2,14 +2,30 @@
   <div class="container">
     <form>
       <div class="row">
-        <div class="col-md-3">
-          <input-radio name="afiliat" value="afiliat" />
+        <div class="col-md-3 d-flex">
+          <input-radio
+            name="u_type"
+            value="1"
+            label="Adherit"
+            :checked="form.u_type === '1'"
+            @input="(value) => form.u_type = value"
+          >
+            Com a adherit/adherida tindràs tots els drets i deures recollits en les <a href="#">bases de la Coalició Compromís</a>.
+          </input-radio>
         </div>
-        <div class="col-md-3">
-          <input-radio name="afiliat" value="simpatitzant" />
+        <div class="col-md-3 d-flex">
+          <input-radio
+            name="u_type"
+            value="2"
+            label="Simpatitizant"
+            :checked="form.u_type === '2'"
+            @input="(value) => form.u_type = value"
+          >
+            Si encara no t'has decidit a adherir-te a Compromís, pots participar com a simpatitzant
+          </input-radio>
         </div>
       </div>
-      <div class="compromis-card">
+      <div class="c-card">
         <div class="fields">
           <input-field v-model="form.u_name" class="cspan-2 corner-top-left" />
           <input-field v-model="form.u_surname" class="cspan-2 corner-top-right" />
@@ -38,6 +54,7 @@ export default {
   data () {
     return {
       form: {
+        u_type: '1',
         u_name: '',
         u_surname: ''
       }
@@ -79,7 +96,7 @@ form {
   }
 }
 
-.compromis-card {
+.c-card {
   padding: 0;
   overflow: hidden;
 }
