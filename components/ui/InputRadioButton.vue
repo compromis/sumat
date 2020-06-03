@@ -15,7 +15,7 @@
 
 <script>
 export default {
-  name: 'InputRadio',
+  name: 'InputRadioButton',
   props: {
     label: {
       type: String,
