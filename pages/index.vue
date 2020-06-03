@@ -62,6 +62,10 @@ export default {
     InputSelect
   },
 
+  async fetch ({ store, params }) {
+    await store.dispatch('getInfo')
+  },
+
   data () {
     return {
       form: {
