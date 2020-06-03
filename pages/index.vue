@@ -51,6 +51,10 @@ export default {
     InputRadio
   },
 
+  async fetch ({ store, params }) {
+    await store.dispatch('getInfo')
+  },
+
   data () {
     return {
       form: {

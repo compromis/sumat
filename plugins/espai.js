@@ -14,6 +14,10 @@ class API {
     return this._call('post', 'additional_info', params)
   }
 
+  getInfo () {
+    return this._call('get', 'info')
+  }
+
   _call (method, url, params) {
     const data = method === 'post' ? qs.stringify(params) : false
     const headers = method === 'post' ? { 'content-type': 'application/x-www-form-urlencoded;charset=utf-8' } : false
@@ -38,13 +42,9 @@ class API {
 }
 
 export default ({ app }, inject) => {
-  inject('newMember', (params) => {
-    const api = new API()
-    return api.newMember(params)
-  })
+  const api = new API()
 
-  inject('attachAdditionalInfo', (params) => {
-    const api = new API()
-    return api.attachAdditionalInfo(params)
-  })
+  inject('newMember', params => api.newMember(params))
+  inject('attachAdditionalInfo', params => api.attachAdditionalInfo(params))
+  inject('getInfo', params => api.getInfo(params))
 }
