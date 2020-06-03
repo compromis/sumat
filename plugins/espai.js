@@ -3,7 +3,8 @@ import axios from 'axios'
 
 class API {
   constructor () {
-    this.apiURL = 'https://compromis.net/espai/members/'
+    this.apiUrl = 'https://compromis.net/espai/members/'
+    this.servicesUrl = 'https://services.compromis.net/api/'
   }
 
   newMember (params) {
@@ -18,14 +19,19 @@ class API {
     return this._call('get', 'info')
   }
 
-  _call (method, url, params) {
-    const data = method === 'post' ? qs.stringify(params) : false
-    const headers = method === 'post' ? { 'content-type': 'application/x-www-form-urlencoded;charset=utf-8' } : false
+  uploadFile (destination, data) {
+    return this._call('post', 'fileupload/' + destination, data, true)
+  }
+
+  _call (method, path, params, services) {
+    const data = method === 'post' && !services ? qs.stringify(params) : params
+    const headers = method === 'post' && !services ? { 'content-type': 'application/x-www-form-urlencoded;charset=utf-8' } : false
+    const baseUrl = services ? this.servicesUrl : this.apiUrl
 
     return new Promise((resolve, reject) => {
       axios({
         method,
-        url: this.apiURL + url,
+        url: baseUrl + path,
         data,
         headers
       }).then((response) => {
@@ -47,4 +53,5 @@ export default ({ app }, inject) => {
   inject('newMember', params => api.newMember(params))
   inject('attachAdditionalInfo', params => api.attachAdditionalInfo(params))
   inject('getInfo', params => api.getInfo(params))
+  inject('uploadFile', (destination, data) => api.uploadFile(destination, data))
 }
