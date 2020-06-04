@@ -30,7 +30,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" >
 @import '../../sass/variables';
 
 .select-wrapper {
@@ -38,6 +38,10 @@ export default {
   position: relative;
   flex-direction: column;
   font-weight: bold;
+
+  select .empty {
+    color: gray;
+  }
 
   select,
   input {

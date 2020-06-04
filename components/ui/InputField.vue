@@ -1,7 +1,7 @@
 <template>
   <div :class="{ 'field': true, 'field-error': invalid, 'has-value': value }">
     <input :type="type" :name="name" class="input" @input="(e) => $emit('input', e.target.value)">
-    <label :for="name" class="label">Email</label>
+    <label :for="name" class="label">{{ label }}</label>
   </div>
 </template>
 
@@ -10,6 +10,10 @@ export default {
   name: 'InputField',
   props: {
     type: {
+      type: String,
+      default: 'text'
+    },
+    label: {
       type: String,
       default: 'text'
     },
