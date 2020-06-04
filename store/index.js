@@ -1,7 +1,9 @@
 export const state = () => ({
   form: {
     u_name: '',
-    u_surname: ''
+    u_surname: '',
+    verify_id_front: '',
+    verify_id_back: ''
   },
   info: {
     collectius: [],
@@ -13,6 +15,11 @@ export const state = () => ({
 export const mutations = {
   updateForm (state, payload) {
     state.form = { ...payload }
+  },
+
+  updateId (state, payload) {
+    state.form.verify_id_front = payload.front
+    state.form.verify_id_back = payload.back
   },
 
   setInfo (state, payload) {
