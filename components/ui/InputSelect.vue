@@ -1,10 +1,11 @@
 <template>
-  <div class="select-wrapper">
-    <select id="for" name="for">
+  <div :class="{ 'select-wrapper': true, 'empty': !value }">
+    <label :for="name" class="sr-only">{{ label }}</label>
+    <select :id="name" :name="name" @change="(e) => $emit('input', e.target.value)">
       <option value="" hidden selected disabled>
         {{ label }}
       </option>
-      <option v-for="option in options" :key="option" :value="option">
+      <option v-for="(option, id) in options" :key="id" :value="id" :selected="value === option">
         {{ option }}
       </option>
     </select>
@@ -14,7 +15,7 @@
 <script>
 export default {
   props: {
-    for: {
+    name: {
       type: String,
       default: ''
     },
@@ -23,6 +24,10 @@ export default {
       default: null
     },
     label: {
+      type: String,
+      default: ''
+    },
+    value: {
       type: String,
       default: ''
     }
@@ -37,20 +42,18 @@ export default {
   display: flex;
   position: relative;
   flex-direction: column;
-  font-weight: bold;
 
-  select .empty {
-    color: gray;
+  &.empty select {
+    color: $text-muted;
   }
 
-  select,
-  input {
+  select {
     appearance: none;
     border: none;
     border-radius: 0;
     background-color: var(--white);
-    font-size: 1.5rem;
-    padding: 1rem;
+    font-size: $label-size;
+    padding: var(--card-padding);
     width: 100%;
     color: $text-default;
 
@@ -64,7 +67,7 @@ export default {
     position: absolute;
     font-size: 2.25rem;
     right: 1rem;
-    top: .5rem;
+    top: .3rem;
     font-weight: 300;
     transform: rotate(90deg);
     pointer-events: none;

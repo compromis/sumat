@@ -1,7 +1,7 @@
 <template>
   <div :class="{ 'field': true, 'field-error': invalid, 'has-value': value }">
-    <input :type="type" :name="name" class="input" @input="(e) => $emit('input', e.target.value)">
     <label :for="name" class="label">{{ label }}</label>
+    <input :type="type" :name="name" class="input" @input="(e) => $emit('input', e.target.value)">
   </div>
 </template>
 
@@ -43,18 +43,18 @@ export default {
     transition: 500ms;
     z-index: 10;
     padding: 0;
-    background: $white;
+    background: var(--white);
   }
 
   .label {
     position: absolute;
-    left: 1rem;
+    left: var(--card-padding);
     top: 50%;
-    color: $gray-700;
-    font-size: 1.2rem;
+    color: $text-muted;
+    font-size: $label-size;
     transform: translateY(-50%);
     transform-origin: 0%;
-    transition: transform 400ms;
+    transition: transform 200ms;
     pointer-events: none;
   }
 
@@ -64,8 +64,8 @@ export default {
     overflow: hidden;
     margin: 0;
     width: 100%;
-    padding: 2rem 1rem 0.75rem 1rem;
-    font-size: 1.2rem;
+    padding: 1.75rem var(--card-padding) .75rem var(--card-padding);
+    font-size: $label-size;
     background: none;
   }
 

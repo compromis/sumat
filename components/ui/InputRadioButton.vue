@@ -1,12 +1,15 @@
 <template>
-  <label :class="{'label c-card c-card-rises' : true, 'checked' : checked}" :for="name+value"> <span>{{ label }}</span>
-    <div class="description"><slot /></div>
+  <label :class="{'label c-card c-card-rises' : true, 'checked' : checked}" :for="name+value">
+    <span>{{ label }}</span>
+    <div class="description">
+      <slot />
+    </div>
     <input
       :id="name+value"
       type="radio"
       :name="name"
       :value="value"
-      class="input"
+      class="sr-only"
       :checked="checked"
       @input="$emit('input', value)"
     >
@@ -46,10 +49,11 @@ export default {
   display: block;
   position: relative;
   padding: .75rem 1.5rem;
-  margin-bottom: 1rem;
+  margin: 0;
   cursor: pointer;
-  font-size: 22px;
+  font-size: 1.3rem;
   user-select: none;
+  width: 100%;
 
   .description {
     font-size: .8rem;
@@ -65,15 +69,9 @@ export default {
 .checked {
   color: $white;
   background: $gradient;
+
   a {
-    color: white;
+    color: $white;
   }
 }
-
-.label input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-}
-
 </style>

@@ -98,7 +98,7 @@ export default {
   width: 16px;
   transform: translateY(-50%);
   border-radius: 100%;
-  border: 1px solid gray;
+  border: 1px solid var(--gray-500);
 }
 
 </style>
