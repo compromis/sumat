@@ -77,14 +77,14 @@
       </section>
 
       <field-group id="dades-personals" title="Dades personals">
-        <input-field v-model="form.u_name" label="Nom" class="c-span-2 corner-top-left" />
-        <input-field v-model="form.u_surname" label="Cognoms" class="c-span-2 corner-top-right" />
-        <input-field v-model="form.U_DNI" label="DNI" />
+        <input-field v-model="form.u_name" label="Nom" name="u_name" class="c-span-2 corner-top-left" autocomplete="given-name" />
+        <input-field v-model="form.u_surname" label="Cognoms" name="u_surname" class="c-span-2 corner-top-right" autocomplete="family-name" />
+        <input-field v-model="form.U_DNI" label="DNI" name="u_DNI" />
         <input-field v-model="form.u_birthday" label="Data de naixement" />
-        <input-radio-group v-model="form.u_gender" label="Gènere" :options="[{value: 'M', text: 'Home'}, {value:'F', text: 'Dona'}, {value:'A', text: 'Altre'}]" class="c-span-2" />
-        <input-field v-model="form.u_address" label="Adreça" class="c-span-2 corner-bottom-left" />
-        <input-field v-model="form.u_city" label="Població" />
-        <input-field v-model="form.u_postal" label="Codi postal" class="corner-bottom-right" />
+        <input-radio-group v-model="form.u_gender" label="Gènere" name="u_gender" :options="[{value: 'M', text: 'Home'}, {value:'F', text: 'Dona'}, {value:'A', text: 'Altre'}]" class="c-span-2" />
+        <input-field v-model="form.u_address" label="Adreça" name="u_address" class="c-span-2 corner-bottom-left" autocomplete="street-address" />
+        <input-field v-model="form.u_city" label="Població" name="u_city" />
+        <input-field v-model="form.u_postal" label="Codi postal" name="u_postal" class="corner-bottom-right" autocomplete="postal-code" />
       </field-group>
 
       <field-group id="contacte" title="Informació de contacte" />

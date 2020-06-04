@@ -1,7 +1,7 @@
 <template>
   <div :class="{ 'field': true, 'field-error': invalid, 'has-value': value }">
     <label :for="name" class="label">{{ label }}</label>
-    <input :type="type" :name="name" class="input" @input="(e) => $emit('input', e.target.value)">
+    <input :type="type" :name="name" class="input" :autocomplete="autocomplete" @input="(e) => $emit('input', e.target.value)">
   </div>
 </template>
 
@@ -28,6 +28,10 @@ export default {
     invalid: {
       type: Boolean,
       default: false
+    },
+    autocomplete: {
+      type: String,
+      default: ''
     }
   }
 }

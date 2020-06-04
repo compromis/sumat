@@ -1,8 +1,6 @@
-@import "variables";
-
 .c-card {
   background: var(--white);
-  padding: 1rem;
+  padding: var(--card-padding);
   border-radius: $card-radius;
   box-shadow: $default-shadow;
   border: 0;
@@ -11,6 +9,7 @@
 
 .c-card-rises {
   transition: transform .15s ease-in-out, box-shadow .1s ease-in-out;
+
   &:hover {
     box-shadow: $raised-shadow;
     transform: translateY(-.5rem);

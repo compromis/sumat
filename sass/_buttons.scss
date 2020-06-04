@@ -1,5 +1,3 @@
-@import "variables";
-
 .btn {
   border: 0;
   font-weight: bold;
@@ -53,20 +51,6 @@
   &-primary {
     background: $gradient;
   }
-
-  /* 
-  
-  Safe option
-  &-outline-primary {
-    box-shadow: none;
-    color: $primary;
-    border: 2px $primary solid;
-
-    &:hover {
-      color: $white;
-    }
-  }
-  */
 
   &-outline-primary {
     display: inline-block;
