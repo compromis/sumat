@@ -6,7 +6,7 @@
       Per això pensem que la millor manera de donar a conèixer el nostre projecte és confiar en la teua implicació,
       il·lusió i desig de canvi. Ens ajudes?
     </p>
-    <form>
+    <form @submit.prevent="submit">
       <div class="row">
         <div class="col-md-3 d-flex">
           <input-radio-button
@@ -43,10 +43,10 @@
       <div class="c-card">
         <input-select label="Selecciona un col·lectiu" :options="colectius" />
       </div>
+      <button type="submit">
+        Submit
+      </button>
     </form>
-    <nuxt-link to="step2">
-      Next
-    </nuxt-link>
   </div>
 </template>
 
@@ -78,7 +78,9 @@ export default {
         'vilamrxant',
         'benaguasil',
         'benissanó'
-      ]
+      ],
+      submitting: false,
+      errors: {}
     }
   },
 
@@ -94,6 +96,26 @@ export default {
   methods: {
     updateForm (form) {
       this.$store.commit('updateForm', form)
+    },
+
+    submit () {
+      this.submitting = true
+      this.$preflight(this.form)
+        .then(() => {
+          // Redirect adherits to ID verification, otherwise Additional Info
+          const name = (this.form.u_type === '1') ? 'verify_id' : 'additional_info'
+          this.$router.push({ name })
+        }).catch((resp) => {
+          // Set errors
+          this.errors = resp.errors
+        }).then(() => {
+          // Scroll to top
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          })
+          this.submitting = false
+        })
     }
   }
 }

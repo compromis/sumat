@@ -7,8 +7,8 @@ class API {
     this.servicesUrl = 'https://services.compromis.net/api/'
   }
 
-  newMember (params) {
-    return this._call('post', 'new_member', params)
+  preflight (params) {
+    return this._call('post', 'preflight', params)
   }
 
   attachAdditionalInfo (params) {
@@ -37,10 +37,10 @@ class API {
       }).then((response) => {
         resolve(response.data)
       }).catch((error) => {
-        if (error.response.status === 500) {
-          reject(new Error('Error del servidor'))
+        if ('errors' in error.response.data) {
+          reject(error.response.data)
         } else {
-          reject(new Error(error.response.data))
+          alert('Error del servidor. Intenta-ho més tard o contacta amb web@compromis.net')
         }
       })
     })
@@ -50,7 +50,7 @@ class API {
 export default ({ app }, inject) => {
   const api = new API()
 
-  inject('newMember', params => api.newMember(params))
+  inject('preflight', params => api.preflight(params))
   inject('attachAdditionalInfo', params => api.attachAdditionalInfo(params))
   inject('getInfo', params => api.getInfo(params))
   inject('uploadFile', (destination, data) => api.uploadFile(destination, data))
