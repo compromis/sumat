@@ -13,6 +13,12 @@ export default {
     FileUpload
   },
 
+  middleware ({ store, redirect }) {
+    if (!store.state.step !== 2) {
+      return redirect('/')
+    }
+  },
+
   data () {
     return {
       verify_id: {

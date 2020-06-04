@@ -8,90 +8,39 @@
     </p>
 
     <form @submit.prevent="submit">
-      <section id="party" aria-label="Partit">
-        <div class="row party">
-          <div class="col-md-3 d-flex">
-            <input-radio-button
-              name="u_party"
-              value="14"
-              label="Compromís"
-              :checked="form.u_party === '14'"
-              @input="(value) => form.u_party = value"
-            />
-          </div>
-          <div class="col-md-3 d-flex">
-            <input-radio-button
-              name="u_party"
-              value="2"
-              label="Bloc"
-              :checked="form.u_party === '2'"
-              @input="(value) => form.u_party = value"
-            />
-          </div>
-          <div class="col-md-3 d-flex">
-            <input-radio-button
-              name="u_party"
-              value="3"
-              label="Iniciativa"
-              :checked="form.u_party === '3'"
-              @input="(value) => form.u_party = value"
-            />
-          </div>
-          <div class="col-md-3 d-flex">
-            <input-radio-button
-              name="u_party"
-              value="4"
-              label="Verds"
-              :checked="form.u_party === '4'"
-              @input="(value) => form.u_party = value"
-            />
-          </div>
-        </div>
-      </section>
+      <form-section id="party" title="Partit" title-hidden>
+        <party-selection v-model="form.u_party" />
+      </form-section>
 
-      <section id="type" aria-label="Tipus d'afiliació">
-        <div class="row">
-          <div class="col-md-3 d-flex">
-            <input-radio-button
-              name="u_type"
-              value="1"
-              label="Adherit"
-              :checked="form.u_type === '1'"
-              @input="(value) => form.u_type = value"
-            >
-              Com a adherit/da tindràs tots els drets i deures recollits en les <a href="#">bases de la Coalició Compromís</a>.
-            </input-radio-button>
-          </div>
-          <div class="col-md-3 d-flex">
-            <input-radio-button
-              name="u_type"
-              value="2"
-              label="Simpatitizant"
-              :checked="form.u_type === '2'"
-              @input="(value) => form.u_type = value"
-            >
-              Si encara no t'has decidit a adherir-te a Compromís, pots participar com a simpatitzant
-            </input-radio-button>
-          </div>
-        </div>
-      </section>
+      <form-section id="type" title="Tipus d'afiliació" title-hidden>
+        <type-selection v-model="form.u_type" />
+      </form-section>
 
-      <field-group id="dades-personals" title="Dades personals">
-        <input-field v-model="form.u_name" label="Nom" name="u_name" class="c-span-2 corner-top-left" autocomplete="given-name" />
-        <input-field v-model="form.u_surname" label="Cognoms" name="u_surname" class="c-span-2 corner-top-right" autocomplete="family-name" />
-        <input-field v-model="form.U_DNI" label="DNI" name="u_DNI" />
-        <input-field v-model="form.u_birthday" label="Data de naixement" />
-        <input-radio-group v-model="form.u_gender" label="Gènere" name="u_gender" :options="[{value: 'M', text: 'Home'}, {value:'F', text: 'Dona'}, {value:'A', text: 'Altre'}]" class="c-span-2" />
-        <input-field v-model="form.u_address" label="Adreça" name="u_address" class="c-span-2 corner-bottom-left" autocomplete="street-address" />
-        <input-field v-model="form.u_city" label="Població" name="u_city" />
-        <input-field v-model="form.u_postal" label="Codi postal" name="u_postal" class="corner-bottom-right" autocomplete="postal-code" />
-      </field-group>
+      <form-section id="dades-personals" title="Dades personals">
+        <field-group>
+          <input-field v-model="form.u_name" label="Nom" name="u_name" class="c-span-2 corner-top-left" autocomplete="given-name" />
+          <input-field v-model="form.u_surname" label="Cognoms" name="u_surname" class="c-span-2 corner-top-right" autocomplete="family-name" />
+          <input-field v-model="form.U_DNI" label="DNI" name="u_DNI" />
+          <input-field v-model="form.u_birthday" label="Data de naixement" />
+          <input-radio-group v-model="form.u_gender" label="Gènere" name="u_gender" :options="[{value: 'M', text: 'Home'}, {value:'F', text: 'Dona'}, {value:'A', text: 'Altre'}]" class="c-span-2" />
+          <input-field v-model="form.u_address" label="Adreça" name="u_address" class="c-span-2 corner-bottom-left" autocomplete="street-address" />
+          <input-field v-model="form.u_city" label="Població" name="u_city" />
+          <input-field v-model="form.u_postal" label="Codi postal" name="u_postal" class="corner-bottom-right" autocomplete="postal-code" />
+        </field-group>
+      </form-section>
 
-      <field-group id="contacte" title="Informació de contacte" />
+      <form-section id="contacte" title="Informació de contacte">
+        <field-group>
+          <input-field v-model="form.uacc_email" type="email" name="u_email" label="E-mail" class="c-span-2 corner-top-left" />
+          <input-field v-model="form.uacc_email_twice" type="email" name="u_email_twice" label="Repeteix l'e-mail" class="c-span-2 corner-top-left" />
+        </field-group>
+      </form-section>
 
-      <field-group id="collectiu" title="Col·lectiu">
-        <input-select v-model="form.collectiu" name="collectiu" label="Selecciona un col·lectiu" :options="collectius" class="c-span-4" />
-      </field-group>
+      <form-section id="collectiu" title="Col·lectiu">
+        <field-group>
+          <input-select v-model="form.collectiu" name="collectiu" label="Selecciona un col·lectiu" :options="collectius" class="c-span-4" />
+        </field-group>
+      </form-section>
 
       <button type="submit">
         Submit
@@ -101,19 +50,23 @@
 </template>
 
 <script>
+import FormSection from '~/components/ui/FormSection'
 import FieldGroup from '~/components/ui/FieldGroup'
 import InputField from '~/components/ui/InputField'
-import InputRadioButton from '~/components/ui/InputRadioButton'
 import InputRadioGroup from '~/components/ui/InputRadioGroup'
 import InputSelect from '~/components/ui/InputSelect'
+import TypeSelection from '~/components/blocks/TypeSelection'
+import PartySelection from '~/components/blocks/PartySelection'
 
 export default {
   components: {
+    FormSection,
     FieldGroup,
     InputField,
-    InputRadioButton,
     InputRadioGroup,
-    InputSelect
+    InputSelect,
+    PartySelection,
+    TypeSelection
   },
 
   async fetch ({ store, params }) {
@@ -128,12 +81,14 @@ export default {
         u_name: '',
         u_surname: '',
         collectiu: '',
-        U_DNI: '',
+        u_DNI: '',
         u_birthday: '',
         u_gender: '',
         u_address: '',
         u_city: '',
-        u_postal: ''
+        u_postal: '',
+        uacc_email: '',
+        uacc_email_twice: ''
       },
       submitting: false,
       errors: {}
@@ -166,6 +121,7 @@ export default {
         .then(() => {
           // Redirect adherits to ID verification, otherwise Additional Info
           const name = (this.form.u_type === '1') ? 'verify_id' : 'additional_info'
+          this.$store.commit('incrementStep')
           this.$router.push({ name })
         }).catch((resp) => {
           // Set errors
@@ -186,7 +142,4 @@ export default {
 <style lang="scss">
 @import '../sass/variables';
 
-section {
-  margin: 2.25rem 0;
-}
 </style>

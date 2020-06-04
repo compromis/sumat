@@ -1,40 +1,19 @@
 <template>
-  <section :id="id" :aria-labelledby="`${id}Label`">
-    <h4 v-if="title" :id="`${id}Label`">
-      {{ title }}
-    </h4>
-    <div class="c-card">
-      <div class="fields">
-        <slot />
-      </div>
+  <div class="c-card">
+    <div class="fields">
+      <slot />
     </div>
-  </section>
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'FieldGroup',
-
-  props: {
-    id: {
-      type: String,
-      default: ''
-    },
-    title: {
-      type: String,
-      default: ''
-    }
-  }
+  name: 'FieldGroup'
 }
 </script>
 
 <style lang="scss" scoped>
 @import '../../sass/variables';
-
-h4 {
-  font-weight: 700;
-  margin-bottom: 1rem;
-}
 
 .c-card {
   padding: 0;

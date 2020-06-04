@@ -3,6 +3,8 @@ $font-family-sans-serif: 'Manrope', Helvetica, arial, sans-serif;
 
 // Primary Colors
 $primary: #FF6720;
+$primary-iniciativa: #ad283f;
+$primary-verds: #5ab552;
 $gray-darkest: #353949;
 $gray-lightest: #f8faff;
 
@@ -44,7 +46,7 @@ $label-size: 1.2rem;
 // Gradients
 $gradient-start: #d23517;
 $gradient-end: #f39128;
-$gradient: linear-gradient(var(--gradient-orientation, 45deg), $gradient-start, $gradient-end);
+$gradient: linear-gradient(var(--gradient-orientation, 45deg), var(--gradient-start), var(--gradient-end));
 
 // Blobs
 $rotation: -5deg;

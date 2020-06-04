@@ -15,11 +15,11 @@ export default {
     },
     label: {
       type: String,
-      default: 'text'
+      required: true
     },
     name: {
       type: String,
-      default: 'name'
+      required: true
     },
     value: {
       type: String,

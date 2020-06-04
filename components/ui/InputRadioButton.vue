@@ -68,6 +68,7 @@ export default {
 
 .checked {
   color: $white;
+  background: var(--primary);
   background: $gradient;
 
   a {

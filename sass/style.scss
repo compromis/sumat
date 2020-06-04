@@ -21,4 +21,23 @@
   --gray-900: #{$gray-900};
   --white: #{$white};
   --black: #{$gray-900};
+  --primary: #{$primary};
+  --gradient-start: #{$gradient-start};
+  --gradient-end: #{$gradient-end};
+}
+
+.partit-3 {
+  --primary: #{$primary-iniciativa};
+  --gradient-start: #{$primary-iniciativa};
+  --gradient-end: #{$primary-iniciativa};
+}
+
+.partit-4 {
+  --primary: #{$primary-verds};
+  --gradient-start: #{$primary-verds};
+  --gradient-end: #{$primary-verds};
+}
+
+a {
+  color: var(--primary);
 }

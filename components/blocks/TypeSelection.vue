@@ -1,0 +1,75 @@
+<template>
+  <div class="row">
+    <div class="col-md-3 d-flex">
+      <input-radio-button
+        name="u_type"
+        value="1"
+        :label="party === '14' ? 'Adherit/da' : 'Afiliat/da'"
+        :checked="value === '1'"
+        @input="(value) => $emit('input', value)"
+      >
+        <div v-if="party === '2'">
+          Com a adherit/da tindràs tots els drets i deures recollits en les <a href="#">bases del BLOC</a>.
+        </div>
+        <div v-else-if="party === '3'">
+          Com a adherit/da tindràs tots els drets i deures recollits en les <a href="#">bases d'Iniciativa</a>.
+        </div>
+        <div v-else-if="party === '4'">
+          Com a adherit/da tindràs tots els drets i deures recollits en les <a href="#">bases dels Verds</a>.
+        </div>
+        <div v-else>
+          Com a adherit/da tindràs tots els drets i deures recollits en les <a href="#">bases de Compromís</a>.
+        </div>
+      </input-radio-button>
+    </div>
+    <div class="col-md-3 d-flex">
+      <input-radio-button
+        name="u_type"
+        value="2"
+        label="Simpatitizant"
+        :checked="value === '2'"
+        @input="(value) => $emit('input', value)"
+      >
+        <div v-if="party === '2'">
+          Si encara no t'has decidit afiliar-te al BLOC, pots participar com a simpatitzant.
+        </div>
+        <div v-else-if="party === '3'">
+          Si encara no t'has decidit afiliar-te a Iniciativa, pots participar com a simpatitzant.
+        </div>
+        <div v-else-if="party === '4'">
+          Si encara no t'has decidit afiliar-te als Verds, pots participar com a simpatitzant.
+        </div>
+        <div v-else>
+          Si encara no t'has decidit adherir-te a Compromís, pots participar com a simpatitzant.
+        </div>
+      </input-radio-button>
+    </div>
+  </div>
+</template>
+
+<script>
+import InputRadioButton from '~/components/ui/InputRadioButton'
+
+export default {
+  components: {
+    InputRadioButton
+  },
+
+  props: {
+    value: {
+      type: String,
+      default: '1'
+    }
+  },
+
+  computed: {
+    party () {
+      return this.$store.state.form.u_party
+    }
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+
+</style>

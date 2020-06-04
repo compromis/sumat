@@ -66,10 +66,10 @@ export default {
 
 .checked {
   span {
-    color: $primary;
+    color: var(--primary);
   }
   .checkbox {
-    border-color: $primary;
+    border-color: var(--primary);
     &::after {
       content: '';
       height: 8px;
@@ -79,7 +79,7 @@ export default {
       left: 50%;
       transform: translate(-50%, -50%);
       border-radius: 100%;
-      background: $primary;
+      background: var(--primary);
     }
   }
 }
