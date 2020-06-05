@@ -22,7 +22,7 @@
           <input-field v-model="form.u_surname" label="Cognoms" name="u_surname" class="c-span-2 corner-top-right" autocomplete="family-name" />
           <input-field v-model="form.u_DNI" label="DNI" name="u_DNI" />
           <input-birthday
-            name="birthday"
+            name="u_birthday"
             label="Data de naixement"
             :day="form.u_birthday_day"
             :month="form.u_birthday_month"

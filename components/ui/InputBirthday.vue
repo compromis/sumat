@@ -1,39 +1,45 @@
 <template>
   <div class="input-inline-group">
-    <label class="input-inline-group-label" :for="name">
+    <label class="input-inline-group-label">
       {{ label }}
     </label>
     <div class="input-birthday-group">
+      <label class="sr-only" :for="`${name}_day`">Dia</label>
       <input
         ref="day"
         type="text"
-        :name="name"
+        :name="`${name}_day`"
+        :value="day"
         class="input"
         placeholder="DD"
         maxlength="2"
         size="2"
-        pattern="(0[1-9]|1[0-9]|2[0-9]|3[01])"
+        pattern="(0?[1-9]|1[0-9]|2[0-9]|3[01])"
         @input="(e) => $emit('day-updated', e.target.value)"
         @keyup="handleKeyUp(1, $refs.day, $refs.month)"
       >
       <span>/</span>
+      <label class="sr-only" :for="`${name}_month`">Mes</label>
       <input
         ref="month"
         type="text"
-        :name="name"
-        class="input"
+        :name="`${name}_month`"
+        :value="month"
+        class="input text-center"
         placeholder="MM"
         size="2"
         maxlength="2"
-        pattern="(0[1-9]|1[012])"
+        pattern="(0?[1-9]|1[012])"
         @input="(e) => $emit('month-updated', e.target.value)"
         @keyup="handleKeyUp(1, $refs.month, $refs.year)"
       >
       <span>/</span>
+      <label class="sr-only" :for="`${name}_year`">Any</label>
       <input
         ref="year"
         type="text"
-        :name="name"
+        :name="`${name}_year`"
+        :value="year"
         class="input"
         placeholder="AAAA"
         maxlength="4"
@@ -53,6 +59,18 @@ export default {
     name: {
       type: String,
       required: true
+    },
+    day: {
+      type: String,
+      default: ''
+    },
+    month: {
+      type: String,
+      default: ''
+    },
+    year: {
+      type: String,
+      default: ''
     },
     label: {
       type: String,
