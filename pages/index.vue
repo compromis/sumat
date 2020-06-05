@@ -20,8 +20,17 @@
         <field-group>
           <input-field v-model="form.u_name" label="Nom" name="u_name" class="c-span-2 corner-top-left" autocomplete="given-name" />
           <input-field v-model="form.u_surname" label="Cognoms" name="u_surname" class="c-span-2 corner-top-right" autocomplete="family-name" />
-          <input-field v-model="form.U_DNI" label="DNI" name="u_DNI" />
-          <input-field v-model="form.u_birthday" label="Data de naixement" />
+          <input-field v-model="form.u_DNI" label="DNI" name="u_DNI" />
+          <input-birthday
+            name="birthday"
+            label="Data de naixement"
+            :day="form.u_birthday_day"
+            :month="form.u_birthday_month"
+            :year="form.u_birthday_year"
+            @day-updated="(day) => form.u_birthday_day = day"
+            @month-updated="(month) => form.u_birthday_month = month"
+            @year-updated="(year) => form.u_birthday_year = year"
+          />
           <input-radio-group v-model="form.u_gender" label="Gènere" name="u_gender" :options="[{value: 'M', text: 'Home'}, {value:'F', text: 'Dona'}, {value:'A', text: 'Altre'}]" class="c-span-2" />
           <input-field v-model="form.u_address" label="Adreça" name="u_address" class="c-span-2 corner-bottom-left" autocomplete="street-address" />
           <input-field v-model="form.u_city" label="Població" name="u_city" />
@@ -41,7 +50,6 @@
           <input-select v-model="form.collectiu" name="collectiu" label="Selecciona un col·lectiu" :options="collectius" class="c-span-4" />
         </field-group>
       </form-section>
-
       <button type="submit">
         Submit
       </button>
@@ -53,6 +61,7 @@
 import FormSection from '~/components/ui/FormSection'
 import FieldGroup from '~/components/ui/FieldGroup'
 import InputField from '~/components/ui/InputField'
+import InputBirthday from '~/components/ui/InputBirthday'
 import InputRadioGroup from '~/components/ui/InputRadioGroup'
 import InputSelect from '~/components/ui/InputSelect'
 import TypeSelection from '~/components/blocks/TypeSelection'
@@ -66,7 +75,8 @@ export default {
     InputRadioGroup,
     InputSelect,
     PartySelection,
-    TypeSelection
+    TypeSelection,
+    InputBirthday
   },
 
   async fetch ({ store, params }) {
@@ -88,7 +98,10 @@ export default {
         u_city: '',
         u_postal: '',
         uacc_email: '',
-        uacc_email_twice: ''
+        uacc_email_twice: '',
+        u_birthday_day: '',
+        u_birthday_month: '',
+        u_birthday_year: ''
       },
       submitting: false,
       errors: {}
