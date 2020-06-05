@@ -5,8 +5,8 @@
       <option value="" hidden selected disabled>
         {{ label }}
       </option>
-      <option v-for="(option, id) in options" :key="id" :value="id" :selected="value === option">
-        {{ option }}
+      <option v-for="option in options" :key="option.value" :value="option.value" :selected="value === option.value">
+        {{ option.text }}
       </option>
     </select>
   </div>

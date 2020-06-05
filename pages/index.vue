@@ -97,7 +97,7 @@ export default {
 
   computed: {
     collectius () {
-      return this.$store.state.info.collectius.map(collectiu => collectiu.name)
+      return this.$store.state.info.collectius.map(collectiu => ({ value: collectiu.id, text: collectiu.name }))
     }
   },
 
