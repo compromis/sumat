@@ -40,7 +40,7 @@
           />
           <input-field
             v-model="form.u_DNI"
-            label="DNI"
+            label="DNI / NIE"
             name="u_DNI"
             :invalid="'u_DNI' in errors"
             :invalid-message="errors['u_DNI']"
@@ -63,7 +63,11 @@
             v-model="form.u_gender"
             label="Gènere"
             name="u_gender"
-            :options="[{value: 'M', text: 'Home'}, {value:'F', text: 'Dona'}, {value:'A', text: 'Altre'}]"
+            :options="[
+              { value: 'M', text: 'Home' },
+              { value: 'F', text: 'Dona' },
+              { value: 'A', text: 'Altre' }
+            ]"
             class="c-span-2"
             required
             :invalid="'u_gender' in errors"
@@ -110,18 +114,18 @@
             label="E-mail"
             class="c-span-2 corner-top-left"
             required
-            :invalid="'u_DNI' in errors"
-            :invalid-message="errors['u_DNI']"
+            :invalid="'u_email' in errors"
+            :invalid-message="errors['u_email']"
           />
           <input-field
             v-model="form.uacc_email_twice"
             type="email"
             name="u_email_twice"
             label="Repeteix l'e-mail"
-            class="c-span-2 corner-top-left"
+            class="c-span-2 corner-top-right"
             required
-            :invalid="'u_DNI' in errors"
-            :invalid-message="errors['u_DNI']"
+            :invalid="'u_email_twice' in errors"
+            :invalid-message="errors['u_email_twice']"
           />
         </field-group>
       </form-section>
@@ -179,7 +183,7 @@ export default {
         u_name: '',
         u_surname: '',
         collectiu: '',
-        u_DNI: '5345',
+        u_DNI: '',
         u_birthday: '',
         u_gender: '',
         u_address: '',
@@ -191,14 +195,17 @@ export default {
         u_birthday_month: '',
         u_birthday_year: ''
       },
-      submitting: false,
-      errors: {}
+      submitting: false
     }
   },
 
   computed: {
     collectius () {
       return this.$store.state.info.collectius.map(collectiu => ({ value: collectiu.id, text: collectiu.name }))
+    },
+
+    errors () {
+      return this.$store.state.errors
     }
   },
 
@@ -226,13 +233,13 @@ export default {
           this.$router.push({ name })
         }).catch((resp) => {
           // Set errors
-          this.errors = resp.errors
-        }).then(() => {
+          this.$store.commit('setErrors', resp.errors)
           // Scroll to top
           window.scrollTo({
             top: 0,
             behavior: 'smooth'
           })
+        }).then(() => {
           this.submitting = false
         })
     }

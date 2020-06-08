@@ -21,7 +21,8 @@ export const state = () => ({
     sectorials: [],
     labor_codes: []
   },
-  step: 1
+  step: 1,
+  errors: {}
 })
 
 export const mutations = {
@@ -38,8 +39,16 @@ export const mutations = {
     state.info = payload
   },
 
+  setErrors (state, payload) {
+    state.errors = payload
+  },
+
   incrementStep (state) {
     state.step++
+  },
+
+  clearError (state, payload) {
+    delete state.errors[payload]
   }
 }
 
