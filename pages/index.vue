@@ -116,8 +116,8 @@
             label="E-mail"
             class="c-span-2 corner-top-left"
             required
-            :invalid="'u_email' in errors"
-            :invalid-message="errors['u_email']"
+            :invalid="'uacc_email' in errors"
+            :invalid-message="errors['uacc_email']"
           />
           <input-field
             v-model="form.uacc_email_twice"
@@ -126,8 +126,8 @@
             label="Repeteix l'e-mail"
             class="c-span-2 corner-top-right"
             required
-            :invalid="'u_email_twice' in errors"
-            :invalid-message="errors['u_email_twice']"
+            :invalid="'uacc_email_twice' in errors"
+            :invalid-message="errors['uacc_email_twice']"
           />
         </field-group>
       </form-section>
@@ -218,6 +218,10 @@ export default {
       },
       deep: true
     }
+  },
+
+  mounted () {
+    this.form = this.$store.state.form
   },
 
   methods: {
