@@ -14,7 +14,12 @@ export const state = () => ({
     uacc_email: '',
     uacc_email_twice: '',
     verify_id_front: '',
-    verify_id_back: ''
+    verify_id_back: '',
+    sms_ref: '',
+    sms_code: ''
+  },
+  additional_form: {
+    u_studies: ''
   },
   info: {
     collectius: [],
@@ -30,9 +35,17 @@ export const mutations = {
     state.form = { ...payload }
   },
 
+  updateAdditionalForm (state, payload) {
+    state.additional_form = { ...payload }
+  },
+
   updateId (state, payload) {
     state.form.verify_id_front = payload.front
     state.form.verify_id_back = payload.back
+  },
+
+  updateFormField (state, payload) {
+    state.form[payload.name] = payload.value
   },
 
   setInfo (state, payload) {

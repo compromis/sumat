@@ -31,7 +31,7 @@ export default {
     },
     required: {
       type: Boolean,
-      default: true
+      default: false
     }
   },
 

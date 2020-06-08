@@ -1,0 +1,75 @@
+<template>
+  <div>
+    <form @submit.prevent="submit">
+      <input-field
+        v-model="sms_code"
+        name="sms_code"
+        label="Codi SMS"
+        :invalid="'sms_code' in errors"
+        :invalid-message="errors['sms_code']"
+        required
+      />
+      <button type="submit">
+        Submit
+      </button>
+    </form>
+  </div>
+</template>
+
+<script>
+import InputField from '~/components/ui/InputField'
+
+export default {
+  components: {
+    InputField
+  },
+
+  middleware ({ store, redirect }) {
+    if (!store.state.step !== 3) {
+      // return redirect('/')
+    }
+  },
+
+  data () {
+    return {
+      sms_code: ''
+    }
+  },
+
+  computed: {
+    errors () {
+      return this.$store.state.errors
+    }
+  },
+
+  watch: {
+    sms_code (value) {
+      this.$store.commit('updateFormField', { name: 'sms_code', value })
+    }
+  },
+
+  methods: {
+    submit () {
+      this.submitting = true
+      this.$verifySms(this.$store.state.form)
+        .then((resp) => {
+          this.$store.commit('incrementStep')
+          this.$router.push({ name: 'additional_info' })
+        }).catch((resp) => {
+          this.$store.commit('setErrors', resp.errors)
+          // Scroll to top
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          })
+        }).then(() => {
+          this.submitting = false
+        })
+    }
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+
+</style>
