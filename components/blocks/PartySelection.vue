@@ -1,5 +1,5 @@
 <template>
-  <div class="row party">
+  <div class="row party" @input.capture="(e) => handlePartyChange(e)">
     <div class="col-md-3 d-flex">
       <input-radio-button
         name="u_party"
@@ -51,6 +51,18 @@ export default {
     value: {
       type: String,
       default: '14'
+    }
+  },
+
+  methods: {
+    handlePartyChange (e) {
+      const names = {
+        2: 'bloc',
+        3: 'iniciativa',
+        4: 'verds',
+        14: 'index'
+      }
+      this.$router.push({ name: names[e.target.value] })
     }
   }
 }

@@ -9,6 +9,10 @@ export default {
     Index
   },
 
+  async fetch ({ store, params }) {
+    await store.dispatch('getInfo')
+  },
+
   asyncData ({ store }) {
     store.commit('setParty', '4')
   }
