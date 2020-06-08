@@ -1,10 +1,10 @@
 <template>
-  <section :id="id" :aria-labelledby="`${id}Label`">
-    <h4 v-if="title" :id="`${id}Label`" :class="{'sr-only': titleHidden}">
+  <fieldset :id="id">
+    <legend :class="{'sr-only': titleHidden}">
       {{ title }}
-    </h4>
+    </legend>
     <slot />
-  </section>
+  </fieldset>
 </template>
 
 <script>
@@ -16,9 +16,10 @@ export default {
       type: String,
       default: ''
     },
+
     title: {
       type: String,
-      default: ''
+      required: true
     },
 
     titleHidden: {
@@ -30,12 +31,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-section {
+fieldset {
   margin: 2.5rem 0;
 }
 
-h4 {
-  font-weight: 700;
+legend {
+  font-weight: 900;
   margin-bottom: 1rem;
+  letter-spacing: -.02em;
 }
 </style>

@@ -1,8 +1,8 @@
 <template>
-  <div :class="{ 'input-inline-group field': true, 'field-error': invalid }">
-    <label class="input-inline-group-label">
+  <fieldset :class="{ 'input-inline-group field': true, 'field-error': invalid }">
+    <legend class="input-inline-group-label">
       {{ label }}
-    </label>
+    </legend>
     <div class="input-birthday-group">
       <label class="sr-only" :for="`${name}_day`">Dia</label>
       <input
@@ -60,7 +60,7 @@
         {{ invalidMessage }}
       </div>
     </div>
-  </div>
+  </fieldset>
 </template>
 
 <script>

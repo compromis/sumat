@@ -1,8 +1,8 @@
 <template>
-  <div :class="{ 'input-inline-group field': true, 'field-error': invalid }">
-    <label class="input-inline-group-label" :for="name">
+  <fieldset :class="{ 'input-inline-group field': true, 'field-error': invalid }">
+    <legend class="input-inline-group-label">
       {{ label }}
-    </label>
+    </legend>
     <input-radio
       v-for="option in options"
       :key="option.value"
@@ -16,7 +16,7 @@
     <div v-if="invalid && invalidMessage" class="invalid-message">
       {{ invalidMessage }}
     </div>
-  </div>
+  </fieldset>
 </template>
 
 <script>
