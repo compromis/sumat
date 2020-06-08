@@ -60,9 +60,10 @@ export default {
         2: 'bloc',
         3: 'iniciativa',
         4: 'verds',
-        14: 'index'
+        14: '/'
       }
-      this.$router.push({ name: names[e.target.value] })
+      const simpatitzant = window.location.hash === '#simpatitzant' ? '#simpatitzant' : ''
+      history.replaceState({}, null, names[e.target.value] + simpatitzant)
     }
   }
 }

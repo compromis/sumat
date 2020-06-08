@@ -60,9 +60,11 @@ export default {
     padding: var(--card-padding);
     width: 100%;
     color: $text-default;
+    border-radius: $card-radius;
 
     &:focus {
       outline: 0;
+      box-shadow: inset 0 0 0 4px var(--primary-semitransparent);
     }
   }
 

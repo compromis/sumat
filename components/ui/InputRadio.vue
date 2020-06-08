@@ -1,5 +1,5 @@
 <template>
-  <label :class="{'label' : true, 'checked' : checked}" :for="name+value"> <span>{{ label }}</span>
+  <label :class="{'checked' : checked}" :for="name+value"> <span>{{ label }}</span>
     <input
       :id="name+value"
       type="radio"
@@ -45,27 +45,32 @@ export default {
 <style lang="scss" scoped>
 @import '../../sass/variables';
 
-.label {
+label {
   text-align: left;
   position: relative;
   cursor: pointer;
   user-select: none;
   margin-bottom: 0;
+  margin-right: 1rem;
 
   span {
     font-size: 1.2rem;
     margin-left: 1.5rem;
-    margin-right: 1rem;
   }
 
-  .description {
-    font-size: .8rem;
-    opacity: .75;
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
   }
 
-  a {
-    color: inherit;
-    text-decoration: underline;
+  &:focus-within {
+    color: var(--primary);
+
+    .checkbox {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px var(--primary-semitransparent);
+    }
   }
 }
 
@@ -73,6 +78,7 @@ export default {
   span {
     color: var(--primary);
   }
+
   .checkbox {
     border-color: var(--primary);
     &::after {
@@ -87,12 +93,6 @@ export default {
       background: var(--primary);
     }
   }
-}
-
-.label input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
 }
 
 .checkbox {

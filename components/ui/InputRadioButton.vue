@@ -1,5 +1,5 @@
 <template>
-  <label :class="{'label c-card c-card-rises' : true, 'checked' : checked}" :for="name+value">
+  <label :class="{'c-card c-card-rises' : true, 'checked' : checked}" :for="name+value">
     <span>{{ label }}</span>
     <div class="description">
       <slot />
@@ -43,7 +43,7 @@ export default {
 <style lang="scss" scoped>
 @import '../../sass/variables';
 
-.label {
+label {
   text-align: left;
   font-size: 1.25rem;
   display: block;
@@ -63,6 +63,10 @@ export default {
   a {
     color: inherit;
     text-decoration: underline;
+  }
+
+  &:focus-within {
+    box-shadow: 0 0 0 4px var(--primary-semitransparent), $raised-shadow;
   }
 }
 
