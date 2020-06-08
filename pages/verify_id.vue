@@ -69,7 +69,7 @@ export default {
 
     submit () {
       this.submitting = true
-      this.$requestSms(this.$store.state.form)
+      this.$api.requestSms(this.$store.state.form)
         .then((resp) => {
           this.$store.commit('incrementStep')
           this.$store.commit('updateFormField', { name: 'sms_ref', value: resp.sms_ref })

@@ -27,7 +27,19 @@ export const state = () => ({
     labor_codes: []
   },
   step: 1,
-  errors: {}
+  errors: {},
+  partySlugs: {
+    2: '/bloc/',
+    3: '/iniciativa/',
+    4: '/verds/',
+    14: '/'
+  },
+  partiesFromSlug: {
+    bloc: '2',
+    iniciativa: '3',
+    verds: '4',
+    compromis: '14'
+  }
 })
 
 export const mutations = {
@@ -60,6 +72,18 @@ export const mutations = {
     state.form.u_party = payload
   },
 
+  setType (state, payload) {
+    state.form.u_type = payload
+  },
+
+  setPartyFromSlug (state, payload) {
+    state.form.u_party = (payload) ? state.partiesFromSlug[payload] : '14'
+  },
+
+  setTypeFromSlug (state, payload) {
+    state.form.u_type = (payload === 'simpatitzant') ? '2' : '1'
+  },
+
   incrementStep (state) {
     state.step++
   },
@@ -71,7 +95,7 @@ export const mutations = {
 
 export const actions = {
   async getInfo ({ commit }) {
-    const info = await this.$getInfo()
+    const info = await this.$api.getInfo()
     commit('setInfo', info)
   }
 }

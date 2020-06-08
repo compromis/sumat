@@ -74,6 +74,32 @@ export default {
   */
   axios: {
   },
+
+  /*
+  ** Router
+  */
+  router: {
+    extendRoutes (routes, resolve) {
+      routes.push({
+        name: 'simpatitzant',
+        path: '/simpatitzant',
+        component: resolve(__dirname, 'pages/index.vue')
+      })
+
+      routes.push({
+        name: 'party',
+        path: '/:party',
+        component: resolve(__dirname, 'pages/index.vue')
+      })
+
+      routes.push({
+        name: 'party-type',
+        path: '/:party/:type',
+        component: resolve(__dirname, 'pages/index.vue')
+      })
+    }
+  },
+
   /*
   ** Build configuration
   */

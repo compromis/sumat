@@ -177,11 +177,20 @@ export default {
     await store.dispatch('getInfo')
   },
 
+  asyncData ({ store, route, params }) {
+    if (route.name === 'simpatitzant') {
+      store.commit('setType', '2')
+    } else if ('party' in params) {
+      store.commit('setPartyFromSlug', params.party)
+      store.commit('setTypeFromSlug', params.type)
+    }
+  },
+
   data () {
     return {
       form: {
         u_party: this.$store.state.form.u_party,
-        u_type: '1',
+        u_type: this.$store.state.form.u_type,
         u_name: '',
         u_surname: '',
         collectiu: '',
@@ -217,22 +226,6 @@ export default {
         this.updateForm(form)
       },
       deep: true
-    },
-
-    'form.u_type' (type) {
-      if (type === '2') {
-        window.location.hash = '#simpatitzant'
-      } else {
-        window.location.hash = ''
-      }
-    }
-  },
-
-  mounted () {
-    this.form = this.$store.state.form
-
-    if (window.location.hash === '#simpatitzant') {
-      this.$nextTick(() => { this.form.u_type = '2' })
     }
   },
 
@@ -243,7 +236,7 @@ export default {
 
     submit () {
       this.submitting = true
-      this.$preflight(this.form)
+      this.$api.preflight(this.form)
         .then(() => {
           // Redirect adherits to ID verification, otherwise Additional Info
           const name = (this.form.u_type === '1') ? 'verify_id' : 'additional_info'

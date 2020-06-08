@@ -57,11 +57,5 @@ class API {
 
 export default ({ app }, inject) => {
   const api = new API()
-
-  inject('preflight', params => api.preflight(params))
-  inject('requestSms', params => api.requestSms(params))
-  inject('verifySms', params => api.verifySms(params))
-  inject('attachAdditionalInfo', params => api.attachAdditionalInfo(params))
-  inject('getInfo', params => api.getInfo(params))
-  inject('uploadFile', (destination, data) => api.uploadFile(destination, data))
+  inject('api', api)
 }

@@ -14,4 +14,8 @@
     box-shadow: $raised-shadow;
     transform: translateY(-.5rem);
   }
+
+  &:active {
+    transform: translateY(0);
+  }
 }

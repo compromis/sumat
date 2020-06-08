@@ -1,6 +1,6 @@
 <template>
-  <div class="row">
-    <div class="col-md-3 d-flex">
+  <div class="row types" @input.capture="(e) => handleTypeChange(e)">
+    <div class="col-md-6 col-lg-3 d-flex mb-3 mb-md-0">
       <input-radio-button
         name="u_type"
         value="1"
@@ -22,7 +22,7 @@
         </div>
       </input-radio-button>
     </div>
-    <div class="col-md-3 d-flex">
+    <div class="col-md-6 col-lg-3 d-flex">
       <input-radio-button
         name="u_type"
         value="2"
@@ -65,6 +65,15 @@ export default {
   computed: {
     party () {
       return this.$store.state.form.u_party
+    }
+  },
+
+  methods: {
+    handleTypeChange (e) {
+      const parties = this.$store.state.partySlugs
+      const party = this.$store.state.form.u_party
+      const simpatitzant = e.target.value === '2' ? 'simpatitzant' : ''
+      history.replaceState({}, null, parties[party] + simpatitzant)
     }
   }
 }

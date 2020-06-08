@@ -53,7 +53,7 @@ export default {
       const formData = new FormData()
       formData.append('file', this.selectedFile)
 
-      this.$uploadFile('id_validation', formData)
+      this.$api.uploadFile('id_validation', formData)
         .then((response) => {
           this.uploadedFile = response.file
           this.$emit('change', response.file)

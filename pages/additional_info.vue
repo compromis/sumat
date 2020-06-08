@@ -56,7 +56,7 @@ export default {
   methods: {
     submit () {
       this.submitting = true
-      this.$attatchAdditionalInfo(this.$store.state.additional_form)
+      this.$api.attachAdditionalInfo(this.$store.state.additional_form)
         .then((resp) => {
           this.$store.commit('incrementStep')
           this.$router.push({ name: 'success' })

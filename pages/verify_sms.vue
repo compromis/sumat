@@ -51,7 +51,7 @@ export default {
   methods: {
     submit () {
       this.submitting = true
-      this.$verifySms(this.$store.state.form)
+      this.$api.verifySms(this.$store.state.form)
         .then((resp) => {
           this.$store.commit('incrementStep')
           this.$router.push({ name: 'additional_info' })

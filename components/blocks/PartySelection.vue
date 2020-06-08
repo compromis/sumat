@@ -56,14 +56,9 @@ export default {
 
   methods: {
     handlePartyChange (e) {
-      const names = {
-        2: 'bloc',
-        3: 'iniciativa',
-        4: 'verds',
-        14: '/'
-      }
-      const simpatitzant = window.location.hash === '#simpatitzant' ? '#simpatitzant' : ''
-      history.replaceState({}, null, names[e.target.value] + simpatitzant)
+      const parties = this.$store.state.partySlugs
+      const simpatitzant = this.$store.state.form.u_type === '2' ? 'simpatitzant' : ''
+      history.replaceState({}, null, parties[e.target.value] + simpatitzant)
     }
   }
 }
