@@ -217,11 +217,23 @@ export default {
         this.updateForm(form)
       },
       deep: true
+    },
+
+    'form.u_type' (type) {
+      if (type === '2') {
+        window.location.hash = '#simpatitzant'
+      } else {
+        window.location.hash = ''
+      }
     }
   },
 
   mounted () {
     this.form = this.$store.state.form
+
+    if (window.location.hash === '#simpatitzant') {
+      this.$nextTick(() => { this.form.u_type = '2' })
+    }
   },
 
   methods: {
