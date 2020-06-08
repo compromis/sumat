@@ -56,6 +56,10 @@ export const mutations = {
     state.errors = payload
   },
 
+  setParty (state, payload) {
+    state.form.u_party = payload
+  },
+
   incrementStep (state) {
     state.step++
   },

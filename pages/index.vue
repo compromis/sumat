@@ -180,7 +180,7 @@ export default {
   data () {
     return {
       form: {
-        u_party: '14',
+        u_party: this.$store.state.form.u_party,
         u_type: '1',
         u_name: '',
         u_surname: '',
