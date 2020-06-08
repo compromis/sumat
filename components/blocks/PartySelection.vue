@@ -1,46 +1,27 @@
 <template>
   <div class="row party" @input.capture="(e) => handlePartyChange(e)">
-    <div class="col-md-3 d-flex">
+    <div v-for="party in parties" :key="party.id" class="col-md-3 d-flex">
       <input-radio-button
         name="u_party"
-        value="14"
-        label="Compromís"
-        :checked="value === '14'"
+        :value="party.id"
+        :label="party.name"
+        :logo="party.logo"
+        :checked="value === party.id"
+        :hidden-if-unchecked="hideIfUnchecked"
         @input="(value) => $emit('input', value)"
       />
     </div>
-    <div class="col-md-3 d-flex">
-      <input-radio-button
-        name="u_party"
-        value="2"
-        label="Bloc"
-        :checked="value === '2'"
-        @input="(value) => $emit('input', value)"
-      />
-    </div>
-    <div class="col-md-3 d-flex">
-      <input-radio-button
-        name="u_party"
-        value="3"
-        label="Iniciativa"
-        :checked="value === '3'"
-        @input="(value) => $emit('input', value)"
-      />
-    </div>
-    <div class="col-md-3 d-flex">
-      <input-radio-button
-        name="u_party"
-        value="4"
-        label="Verds"
-        :checked="value === '4'"
-        @input="(value) => $emit('input', value)"
-      />
+    <div class="d-md-none col">
+      <button type="button" class="btn-link-muted btn-sm" @click="hideIfUnchecked = !hideIfUnchecked">
+        {{ hideIfUnchecked ? 'Mostra més partits' : 'Amaga els partits' }}
+      </button>
     </div>
   </div>
 </template>
 
 <script>
 import InputRadioButton from '~/components/ui/InputRadioButton'
+import CompromisLogo from '~/components/logos/CompromisLogo'
 
 export default {
   components: {
@@ -54,16 +35,51 @@ export default {
     }
   },
 
+  data () {
+    return {
+      parties: [
+        {
+          id: '14',
+          name: 'Compromís',
+          logo: CompromisLogo
+        },
+        {
+          id: '2',
+          name: 'BLOC',
+          logo: null
+        },
+        {
+          id: '3',
+          name: 'Iniciativa',
+          logo: null
+        },
+        {
+          id: '4',
+          name: 'Verds',
+          logo: null
+        }
+      ],
+      hideIfUnchecked: true
+    }
+  },
+
   methods: {
     handlePartyChange (e) {
       const parties = this.$store.state.partySlugs
       const simpatitzant = this.$store.state.form.u_type === '2' ? 'simpatitzant' : ''
       history.replaceState({}, null, parties[e.target.value] + simpatitzant)
+      this.hideIfUnchecked = true
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+@import '../../sass/variables';
 
+@include media-breakpoint-down(sm) {
+  .field {
+    color: red;
+  }
+}
 </style>

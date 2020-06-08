@@ -1,6 +1,6 @@
 <template>
   <fieldset :id="id">
-    <legend :class="{'sr-only': titleHidden}">
+    <legend :class="{'sr-md-only': titleHidden}">
       {{ title }}
     </legend>
     <slot />

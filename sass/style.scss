@@ -44,3 +44,9 @@
 a {
   color: var(--primary);
 }
+
+@include media-breakpoint-up(md) {
+  .sr-md-only {
+    @include sr-only;
+  }
+}

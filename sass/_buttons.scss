@@ -244,6 +244,15 @@
       }
     }
   }
+
+  &-link-muted {
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    background: transparent;
+    border: 0;
+    color: $text-muted;
+    text-decoration: underline;
+  }
 }
 
 .btn-group {

@@ -184,7 +184,7 @@ export default {
   background: mix($danger, $white, 15%);
   padding: 1.25rem var(--card-padding) 1.25rem var(--card-padding);
 
-  label {
+  legend {
     color: $danger;
     transform: scale(0.7) translateY(calc(-50% + -2rem)) !important;
   }
