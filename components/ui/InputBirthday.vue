@@ -16,6 +16,7 @@
         maxlength="2"
         size="2"
         pattern="(0?[1-9]|1[0-9]|2[0-9]|3[01])"
+        :required="required"
         @input="(e) => $emit('day-updated', e.target.value)"
         @keyup="(e) => handleKeyUp(e, 2, $refs.day, $refs.month)"
       >
@@ -32,6 +33,7 @@
         size="2"
         maxlength="2"
         pattern="(0?[1-9]|1[012])"
+        :required="required"
         @input="(e) => $emit('month-updated', e.target.value)"
         @keyup="(e) => handleKeyUp(e, 2, $refs.month, $refs.year)"
         @keydown="(e) => handleKeyDown(e, $refs.month, $refs.day)"
@@ -49,6 +51,7 @@
         maxlength="4"
         size="4"
         pattern="[0-9]{4}"
+        :required="required"
         @input="(e) => $emit('year-updated', e.target.value)"
         @keyup="(e) => handleKeyUp(e, 2, $refs.year)"
         @keydown="(e) => handleKeyDown(e, $refs.year, $refs.month)"
@@ -81,6 +84,10 @@ export default {
     label: {
       type: String,
       required: true
+    },
+    required: {
+      type: Boolean,
+      default: false
     }
   },
   methods: {

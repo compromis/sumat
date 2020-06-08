@@ -10,6 +10,7 @@
       :value="option.value"
       :label="option.text"
       :checked="value === option.value"
+      :required="required"
       @input="(value) => $emit('input', value)"
     />
   </div>
@@ -41,6 +42,10 @@ export default {
     options: {
       type: Array,
       required: true
+    },
+    required: {
+      type: Boolean,
+      default: false
     }
   }
 }

@@ -7,6 +7,7 @@
       :value="value"
       class="input"
       :checked="checked"
+      :required="required"
       @input="$emit('input', value)"
     >
     <span class="checkbox" />
@@ -30,6 +31,10 @@ export default {
       default: ''
     },
     checked: {
+      type: Boolean,
+      default: false
+    },
+    required: {
       type: Boolean,
       default: false
     }

@@ -1,7 +1,19 @@
 <template>
-  <div :class="{ 'field': true, 'field-error': invalid, 'has-value': value }">
+  <div :class="{ 'field': true, 'field-error': invalid && !hideError, 'has-value': value }">
     <label :for="name" class="label">{{ label }}</label>
-    <input :type="type" :name="name" class="input" :autocomplete="autocomplete" @input="(e) => $emit('input', e.target.value)">
+    <input
+      :type="type"
+      :name="name"
+      :value="value"
+      class="input"
+      :autocomplete="autocomplete"
+      :required="required"
+      :pattern="pattern"
+      @input="(e) => $emit('input', e.target.value)"
+    >
+    <div v-if="invalid && invalidMessage && !hideError" class="invalid-message">
+      {{ invalidMessage }}
+    </div>
   </div>
 </template>
 
@@ -29,9 +41,35 @@ export default {
       type: Boolean,
       default: false
     },
+    invalidMessage: {
+      type: String,
+      default: ''
+    },
     autocomplete: {
       type: String,
       default: ''
+    },
+    required: {
+      type: Boolean,
+      default: false
+    },
+    pattern: {
+      type: String,
+      default: null
+    }
+  },
+
+  data () {
+    return {
+      hideError: false
+    }
+  },
+
+  watch: {
+    value () {
+      if (this.invalid) {
+        this.hideError = true
+      }
     }
   }
 }
@@ -40,7 +78,7 @@ export default {
 <style lang="scss" scoped>
 @import '../../sass/variables';
 
-.field {
+  .field {
     width: 100%;
     margin: 0 auto;
     position: relative;
@@ -71,6 +109,7 @@ export default {
     padding: 1.75rem var(--card-padding) .75rem var(--card-padding);
     font-size: $label-size;
     background: none;
+    transition: 200ms ease-in-out;
   }
 
   .field:focus-within .label,
@@ -82,11 +121,24 @@ export default {
   .field-error {
     label {
       color: $danger;
+      transform: scale(0.7) translateY(calc(-50% + -2rem)) !important;
     }
 
     input {
       border: 1px solid $danger !important;
-      background: rgba($danger, 0.25);
+      background: rgba($danger, 0.15);
+      padding: 1.25rem var(--card-padding) 1.25rem var(--card-padding);
     }
+  }
+
+  .invalid-message {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    font-size: .75rem;
+    padding: 0 var(--card-padding);
+    background: $danger;
+    color: $white;
   }
 </style>

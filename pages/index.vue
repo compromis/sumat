@@ -18,36 +18,124 @@
 
       <form-section id="dades-personals" title="Dades personals">
         <field-group>
-          <input-field v-model="form.u_name" label="Nom" name="u_name" class="c-span-2 corner-top-left" autocomplete="given-name" />
-          <input-field v-model="form.u_surname" label="Cognoms" name="u_surname" class="c-span-2 corner-top-right" autocomplete="family-name" />
-          <input-field v-model="form.u_DNI" label="DNI" name="u_DNI" />
+          <input-field
+            v-model="form.u_name"
+            label="Nom"
+            name="u_name"
+            class="c-span-2 corner-top-left"
+            autocomplete="given-name"
+            required
+            :invalid="'u_name' in errors"
+            :invalid-message="errors['u_name']"
+          />
+          <input-field
+            v-model="form.u_surname"
+            label="Cognoms"
+            name="u_surname"
+            class="c-span-2 corner-top-right"
+            autocomplete="family-name"
+            required
+            :invalid="'u_surname' in errors"
+            :invalid-message="errors['u_surname']"
+          />
+          <input-field
+            v-model="form.u_DNI"
+            label="DNI"
+            name="u_DNI"
+            :invalid="'u_DNI' in errors"
+            :invalid-message="errors['u_DNI']"
+            required
+          />
           <input-birthday
             name="u_birthday"
             label="Data de naixement"
             :day="form.u_birthday_day"
             :month="form.u_birthday_month"
             :year="form.u_birthday_year"
+            required
+            :invalid="'u_birthday_day' in errors"
+            :invalid-message="errors['u_birthday_day']"
             @day-updated="(day) => form.u_birthday_day = day"
             @month-updated="(month) => form.u_birthday_month = month"
             @year-updated="(year) => form.u_birthday_year = year"
           />
-          <input-radio-group v-model="form.u_gender" label="Gènere" name="u_gender" :options="[{value: 'M', text: 'Home'}, {value:'F', text: 'Dona'}, {value:'A', text: 'Altre'}]" class="c-span-2" />
-          <input-field v-model="form.u_address" label="Adreça" name="u_address" class="c-span-2 corner-bottom-left" autocomplete="street-address" />
-          <input-field v-model="form.u_city" label="Població" name="u_city" />
-          <input-field v-model="form.u_postal" label="Codi postal" name="u_postal" class="corner-bottom-right" autocomplete="postal-code" />
+          <input-radio-group
+            v-model="form.u_gender"
+            label="Gènere"
+            name="u_gender"
+            :options="[{value: 'M', text: 'Home'}, {value:'F', text: 'Dona'}, {value:'A', text: 'Altre'}]"
+            class="c-span-2"
+            required
+            :invalid="'u_gender' in errors"
+            :invalid-message="errors['u_gender']"
+          />
+          <input-field
+            v-model="form.u_address"
+            label="Adreça"
+            name="u_address"
+            class="c-span-2 corner-bottom-left"
+            autocomplete="street-address"
+            required
+            :invalid="'u_address' in errors"
+            :invalid-message="errors['u_address']"
+          />
+          <input-field
+            v-model="form.u_city"
+            label="Població"
+            name="u_city"
+            required
+            :invalid="'u_city' in errors"
+            :invalid-message="errors['u_city']"
+          />
+          <input-field
+            v-model="form.u_postal"
+            label="Codi postal"
+            name="u_postal"
+            class="corner-bottom-right"
+            autocomplete="postal-code"
+            pattern="\d*"
+            required
+            :invalid="'u_postal' in errors"
+            :invalid-message="errors['u_postal']"
+          />
         </field-group>
       </form-section>
 
       <form-section id="contacte" title="Informació de contacte">
         <field-group>
-          <input-field v-model="form.uacc_email" type="email" name="u_email" label="E-mail" class="c-span-2 corner-top-left" />
-          <input-field v-model="form.uacc_email_twice" type="email" name="u_email_twice" label="Repeteix l'e-mail" class="c-span-2 corner-top-left" />
+          <input-field
+            v-model="form.uacc_email"
+            type="email"
+            name="u_email"
+            label="E-mail"
+            class="c-span-2 corner-top-left"
+            required
+            :invalid="'u_DNI' in errors"
+            :invalid-message="errors['u_DNI']"
+          />
+          <input-field
+            v-model="form.uacc_email_twice"
+            type="email"
+            name="u_email_twice"
+            label="Repeteix l'e-mail"
+            class="c-span-2 corner-top-left"
+            required
+            :invalid="'u_DNI' in errors"
+            :invalid-message="errors['u_DNI']"
+          />
         </field-group>
       </form-section>
 
       <form-section id="collectiu" title="Col·lectiu">
         <field-group>
-          <input-select v-model="form.collectiu" name="collectiu" label="Selecciona un col·lectiu" :options="collectius" class="c-span-4" />
+          <input-select
+            v-model="form.collectiu"
+            name="collectiu"
+            label="Selecciona un col·lectiu"
+            :options="collectius"
+            class="c-span-4"
+            required
+          />
         </field-group>
       </form-section>
       <button type="submit">
@@ -91,7 +179,7 @@ export default {
         u_name: '',
         u_surname: '',
         collectiu: '',
-        u_DNI: '',
+        u_DNI: '5345',
         u_birthday: '',
         u_gender: '',
         u_address: '',

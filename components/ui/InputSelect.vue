@@ -1,7 +1,7 @@
 <template>
   <div :class="{ 'select-wrapper': true, 'empty': !value }">
     <label :for="name" class="sr-only">{{ label }}</label>
-    <select :id="name" :name="name" @change="(e) => $emit('input', e.target.value)">
+    <select :id="name" :name="name" :required="required" @change="(e) => $emit('input', e.target.value)">
       <option value="" hidden selected disabled>
         {{ label }}
       </option>
@@ -30,6 +30,10 @@ export default {
     value: {
       type: String,
       default: ''
+    },
+    required: {
+      type: Boolean,
+      default: false
     }
   }
 }
