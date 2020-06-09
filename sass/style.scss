@@ -1,9 +1,9 @@
 @import "variables";
+@import 'bootstrap/scss/bootstrap';
 @import "buttons";
 @import "pills";
 @import "cards";
 @import "tooltips";
-@import 'bootstrap/scss/bootstrap';
 
 :root {
   --card-padding: 1rem;

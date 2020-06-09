@@ -3,6 +3,7 @@
   font-weight: bold;
   padding: .6rem .8rem;
   color: $gray-700;
+  transition: 150ms ease-in-out;
 
   svg {
     margin-right: 1rem;
@@ -12,7 +13,8 @@
     color: $gray-900;
   }
 
-  &-lg {
+  &-lg,
+  &-xl {
     border-radius: $border-radius;
     box-shadow: $default-shadow;
     border: 0;
@@ -34,6 +36,11 @@
     }
   }
 
+  &-xl {
+    padding: 1.25rem 2.5rem;
+    font-size: 1.25rem;
+  }
+
   &-sm {
     padding: .3rem .6rem;
 
@@ -50,6 +57,11 @@
 
   &-primary {
     background: $gradient;
+    color: $white;
+
+    &:hover {
+      color: $white;
+    }
   }
 
   &-outline-primary {

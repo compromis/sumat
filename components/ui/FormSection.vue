@@ -1,7 +1,9 @@
 <template>
   <fieldset :id="id">
     <legend :class="{'sr-md-only': titleHidden}">
-      {{ title }}
+      <span>
+        {{ title }}
+      </span>
       <span v-if="help" v-tooltip.right="help">
         <b-icon-question-circle font-scale="0.5" class="ml-2" />
       </span>

@@ -157,7 +157,7 @@
             v-model="form.u_bank_name"
             type="text"
             name="u_bank_name"
-            label="Nom i Cognoms"
+            label="Titular del compte"
             class="c-span-3 corner-top-left"
             required
             :invalid="'bank_name' in errors"
@@ -167,7 +167,7 @@
             v-model="form.u_bank_DNI"
             type="text"
             name="u_bank_DNI"
-            label="DNI"
+            label="DNI / NIE"
             class="corner-top-right"
             required
             maxlength="9"
@@ -185,10 +185,13 @@
             :invalid-message="errors['u_bank_IBAN']"
           />
         </field-group>
-        <button type="submit">
-          Submit
-        </button>
       </form-section>
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary btn-xl font-weight-bold">
+          Envia formulari
+        </button>
+      </div>
+      <legal-notice />
     </form>
     <b-modal id="no-email" title="No tinc e-mail ni/o mòbil" ok-only ok-title="Entès">
       <offline-instructions />
@@ -207,6 +210,7 @@ import TypeSelection from '~/components/blocks/TypeSelection'
 import PartySelection from '~/components/blocks/PartySelection'
 import FeeSelection from '~/components/blocks/FeeSelection'
 import OfflineInstructions from '~/components/blocks/OfflineInstructions'
+import LegalNotice from '~/components/blocks/LegalNotice'
 
 export default {
   components: {
@@ -219,7 +223,8 @@ export default {
     FeeSelection,
     TypeSelection,
     InputBirthday,
-    OfflineInstructions
+    OfflineInstructions,
+    LegalNotice
   },
 
   async fetch ({ store, params }) {
@@ -256,7 +261,7 @@ export default {
         u_birthday_year: '',
         u_bank_name: '',
         u_bank_DNI: '',
-        u_fee: ''
+        u_fee: '37,5'
       },
       submitting: false,
       fees: {
