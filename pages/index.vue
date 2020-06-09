@@ -219,7 +219,14 @@
           <button class="btn btn-link-muted" type="button" @click="showAvals = !showAvals">
             {{ showAvals ? 'No vull adjuntar avals' : 'Vols adjuntar avals?' }}
           </button>
-          <b-icon-question-circle v-tooltip.right="'Si ja coneixes a dos adherits a Compromís, pots introduir el seus DNIs perquè confirmen la teua alta. Si no, serà el portaveu del teu col·lectiu local l\'encarregat de confirmar l\'alta.'" />
+          <b-icon-question-circle
+            v-tooltip="{
+              content: 'Si ja coneixes a dos adherits a Compromís, pots introduir el seus DNIs perquè confirmen la teua alta. Si no, serà el portaveu del teu col·lectiu local l\'encarregat de confirmar l\'alta.',
+              trigger: 'hover click focus'
+            }"
+            role="button"
+            tabindex="0"
+          />
         </div>
       </div>
 

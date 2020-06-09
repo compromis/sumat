@@ -80,7 +80,7 @@ label {
 
 .fee-list {
   display: flex;
-  margin: 1.5rem 0 .5rem 0;
+  margin: 1rem 0 .5rem 0;
 
   &-label {
     font-size: 1.15rem;
@@ -113,6 +113,8 @@ label {
 
 @include media-breakpoint-down(md) {
   .fees {
+    margin-bottom: 0;
+
     &-wrapper {
       padding: 0;
       border-right: 0;

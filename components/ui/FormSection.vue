@@ -4,7 +4,7 @@
       <span>
         {{ title }}
       </span>
-      <span v-if="help" v-tooltip.right="help">
+      <span v-if="help" v-tooltip="{ content: help, trigger: 'hover click focus' }" tabindex="0" role="button">
         <b-icon-question-circle font-scale="0.75" class="ml-2" />
       </span>
       <div class="additional-info">
@@ -50,6 +50,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../../sass/variables';
+
 fieldset {
   margin: 2.5rem 0;
 }
@@ -60,11 +62,18 @@ legend {
   letter-spacing: -.02em;
   display: flex;
   align-items: center;
+  line-height: 1;
 }
 
 .additional-info {
   margin-left: auto;
   font-size: .85rem;
   font-weight: normal;
+}
+
+@include media-breakpoint-down(sm) {
+  .additional-info button {
+    text-align: right;
+  }
 }
 </style>
