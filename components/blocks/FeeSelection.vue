@@ -61,10 +61,12 @@ export default {
 <style lang="scss" scoped>
 @import '../../sass/variables';
 
-.label {
+label {
   margin-right: 1rem;
   font-size: 2.25rem;
   text-align: center;
+  width: 140px;
+  justify-content: center;
 }
 
 .fee-list {
