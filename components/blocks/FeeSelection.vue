@@ -5,7 +5,7 @@
     </legend>
     <div class="row fees">
       <div class="fees-wrapper">
-        <span class="fee-list-label">Quota Normal</span>
+        <span class="fee-list-label">Quota normal</span>
         <div class="fee-list fee-list-normal">
           <input-radio-button
             v-for="fee in fees.normal"
@@ -20,8 +20,8 @@
         </div>
         <span class="fee-list-subtitle">Cada 6 mesos</span>
       </div>
-      <div>
-        <span class="fee-list-label">Quota Reduïda <span class="fee-list-label-info">(estudiants, parats, jubilats)</span></span>
+      <div class="fees-wrapper">
+        <span class="fee-list-label">Quota reduïda <span class="fee-list-label-info">(estudiants, parats, jubilats)</span></span>
         <div class="fee-list fee-list-reduced">
           <input-radio-button
             v-for="fee in fees.reduced"
@@ -72,7 +72,7 @@ fieldset {
 
 label {
   margin-right: 1rem;
-  font-size: 2.25rem;
+  font-size: 2rem;
   text-align: center;
   width: 140px;
   justify-content: center;
@@ -104,6 +104,42 @@ label {
     border-right: 1px $input-border-color solid;
     margin-right: 2rem;
     padding: 0 1rem 0 0;
+
+    &:last-child {
+      border-right: 0;
+    }
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .fees {
+    &-wrapper {
+      padding: 0;
+      border-right: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .fee-list {
+    flex-wrap: wrap;
+    order: 3;
+    margin: .75rem 0 1rem;
+
+    label {
+      font-size: 1.75rem;
+      padding: .75rem;
+    }
+
+    &-label {
+      order: 1;
+      margin-bottom: 0;
+    }
+
+    &-subtitle {
+      order: 2;
+    }
   }
 }
 

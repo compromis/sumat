@@ -346,6 +346,11 @@ export default {
         this.updateForm(form)
       },
       deep: true
+    },
+
+    // Set party's base fee when changing parties
+    'form.u_party' (party) {
+      this.form.u_fee = this.fees[party].normal[0]
     }
   },
 
