@@ -5,6 +5,7 @@
       :type="type"
       :name="name"
       :value="value"
+      :maxlength="maxlength"
       class="input"
       :autocomplete="autocomplete"
       :required="required"
@@ -54,6 +55,10 @@ export default {
       default: false
     },
     pattern: {
+      type: String,
+      default: null
+    },
+    maxlength: {
       type: String,
       default: null
     }

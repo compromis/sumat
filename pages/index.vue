@@ -44,6 +44,7 @@
             name="u_DNI"
             :invalid="'u_DNI' in errors"
             :invalid-message="errors['u_DNI']"
+            maxlength="9"
             required
           />
           <input-birthday
@@ -110,8 +111,8 @@
             label="E-mail"
             class="c-span-2 corner-top-left"
             required
-            :invalid="'u_DNI' in errors"
-            :invalid-message="errors['u_DNI']"
+            :invalid="'u_email' in errors"
+            :invalid-message="errors['u_email']"
           />
           <input-field
             v-model="form.uacc_email_twice"
@@ -120,8 +121,8 @@
             label="Repeteix l'e-mail"
             class="c-span-2 corner-top-left"
             required
-            :invalid="'u_DNI' in errors"
-            :invalid-message="errors['u_DNI']"
+            :invalid="'u_email' in errors"
+            :invalid-message="errors['u_email']"
           />
         </field-group>
       </form-section>
@@ -138,9 +139,45 @@
           />
         </field-group>
       </form-section>
-      <button type="submit">
-        Submit
-      </button>
+      <form-section id="quota" title="Domiciliació bancària">
+        <fee-selection v-model="form.u_fee" :fees="fees" />
+        <field-group>
+          <input-field
+            v-model="form.u_bank_name"
+            type="text"
+            name="u_bank_name"
+            label="Nom i Cognoms"
+            class="c-span-3 corner-top-left"
+            required
+            :invalid="'bank_name' in errors"
+            :invalid-message="errors['bank_name']"
+          />
+          <input-field
+            v-model="form.u_bank_DNI"
+            type="text"
+            name="u_bank_DNI"
+            label="DNI"
+            class="corner-top-right"
+            required
+            maxlength="9"
+            :invalid="'u_bank_DNI' in errors"
+            :invalid-message="errors['u_bank_DNI']"
+          />
+          <input-field
+            v-model="form.u_bank_IBAN"
+            type="text"
+            name="u_bank_IBAN"
+            label="IBAN"
+            class="c-span-4 corner-top-left corner-top-right"
+            required
+            :invalid="'u_bank_IBAN' in errors"
+            :invalid-message="errors['u_bank_IBAN']"
+          />
+        </field-group>
+        <button type="submit">
+          Submit
+        </button>
+      </form-section>
     </form>
   </div>
 </template>
@@ -154,6 +191,7 @@ import InputRadioGroup from '~/components/ui/InputRadioGroup'
 import InputSelect from '~/components/ui/InputSelect'
 import TypeSelection from '~/components/blocks/TypeSelection'
 import PartySelection from '~/components/blocks/PartySelection'
+import FeeSelection from '~/components/blocks/FeeSelection'
 
 export default {
   components: {
@@ -163,6 +201,7 @@ export default {
     InputRadioGroup,
     InputSelect,
     PartySelection,
+    FeeSelection,
     TypeSelection,
     InputBirthday
   },
@@ -189,10 +228,17 @@ export default {
         uacc_email_twice: '',
         u_birthday_day: '',
         u_birthday_month: '',
-        u_birthday_year: ''
+        u_birthday_year: '',
+        u_bank_name: '',
+        u_bank_DNI: '',
+        u_fee: ''
       },
       submitting: false,
-      errors: {}
+      errors: {},
+      fees: {
+        normal: ['37,5', '50', '75', '100'],
+        reduced: ['12,5']
+      }
     }
   },
 
