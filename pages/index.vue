@@ -190,9 +190,14 @@
         </form-section>
       </transition>
 
-      <div v-if="form.u_type === '1' && form.u_party !== '2'">
+      <div v-if="form.u_type === '1' && form.u_party !== '2'" ref="avals" role="region" tabindex="-1">
         <transition name="slide">
-          <form-section v-if="showAvals" id="avals" title="Avals" class="mb-2">
+          <form-section
+            v-if="showAvals"
+            id="avals"
+            title="Avals"
+            class="mb-2"
+          >
             <field-group>
               <input-field
                 v-model="form.u_aval_1"
@@ -216,7 +221,7 @@
           </form-section>
         </transition>
         <div>
-          <button class="btn btn-link-muted" type="button" @click="showAvals = !showAvals">
+          <button class="btn btn-link-muted" type="button" aria-controls="avals" :aria-expanded="showAvals" @click="toggleAvals">
             {{ showAvals ? 'No vull adjuntar avals' : 'Vols adjuntar avals?' }}
           </button>
           <b-icon-question-circle
@@ -385,6 +390,13 @@ export default {
         }).then(() => {
           this.submitting = false
         })
+    },
+
+    toggleAvals () {
+      this.showAvals = !this.showAvals
+      if (this.showAvals) {
+        this.$refs.avals.focus()
+      }
     }
   }
 }

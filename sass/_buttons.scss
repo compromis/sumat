@@ -264,6 +264,10 @@
     border: 0;
     color: $text-muted;
     text-decoration: underline;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 
