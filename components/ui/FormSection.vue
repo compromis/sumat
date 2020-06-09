@@ -2,14 +2,26 @@
   <fieldset :id="id">
     <legend :class="{'sr-md-only': titleHidden}">
       {{ title }}
+      <span v-if="help" v-tooltip.right="help">
+        <b-icon-question-circle font-scale="0.5" class="ml-2" />
+      </span>
+      <div class="additional-info">
+        <slot name="additional-info" />
+      </div>
     </legend>
     <slot />
   </fieldset>
 </template>
 
 <script>
+import { BIconQuestionCircle } from 'bootstrap-vue'
+
 export default {
   name: 'FormSection',
+
+  components: {
+    BIconQuestionCircle
+  },
 
   props: {
     id: {
@@ -25,6 +37,11 @@ export default {
     titleHidden: {
       type: Boolean,
       default: false
+    },
+
+    help: {
+      type: String,
+      default: ''
     }
   }
 }
@@ -39,5 +56,13 @@ legend {
   font-weight: 900;
   margin-bottom: 1rem;
   letter-spacing: -.02em;
+  display: flex;
+  align-items: center;
+}
+
+.additional-info {
+  margin-left: auto;
+  font-size: .85rem;
+  font-weight: normal;
 }
 </style>

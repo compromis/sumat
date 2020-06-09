@@ -2,6 +2,7 @@
 @import "buttons";
 @import "pills";
 @import "cards";
+@import "tooltips";
 @import 'bootstrap/scss/bootstrap';
 
 :root {
@@ -41,8 +42,27 @@
   --gradient-end: #{$primary-verds};
 }
 
-a {
+a,
+a:hover,
+a:focus,
+a:active {
   color: var(--primary);
+}
+
+a.link-muted {
+  color: $text-muted;
+  text-decoration: underline;
+
+  &:hover,
+  a:focus,
+  a:active {
+    color: $text-default;
+  }
+}
+
+/* Bootstrap vue fix */
+.modal-backdrop {
+  background-color: rgba($dark, .5);
 }
 
 @include media-breakpoint-up(md) {

@@ -130,9 +130,14 @@
             :invalid-message="errors['uacc_email_twice']"
           />
         </field-group>
+        <template v-slot:additional-info>
+          <button v-b-modal.no-email class="btn-link-muted" type="button">
+            No tinc e-mail ni/o mòbil
+          </button>
+        </template>
       </form-section>
 
-      <form-section id="collectiu" title="Col·lectiu">
+      <form-section id="collectiu" title="Col·lectiu" help="Si no trobes el teu municipi, sel·lecciona el col·lectiu més proper a tu.">
         <field-group>
           <input-select
             v-model="form.collectiu"
@@ -148,6 +153,9 @@
         Submit
       </button>
     </form>
+    <b-modal id="no-email" title="No tinc e-mail ni/o mòbil" ok-only ok-title="Entès">
+      <offline-instructions />
+    </b-modal>
   </div>
 </template>
 
@@ -160,6 +168,7 @@ import InputRadioGroup from '~/components/ui/InputRadioGroup'
 import InputSelect from '~/components/ui/InputSelect'
 import TypeSelection from '~/components/blocks/TypeSelection'
 import PartySelection from '~/components/blocks/PartySelection'
+import OfflineInstructions from '~/components/blocks/OfflineInstructions'
 
 export default {
   components: {
@@ -170,7 +179,8 @@ export default {
     InputSelect,
     PartySelection,
     TypeSelection,
-    InputBirthday
+    InputBirthday,
+    OfflineInstructions
   },
 
   async fetch ({ store, params }) {

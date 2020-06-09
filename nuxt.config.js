@@ -50,7 +50,8 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    './plugins/espai.js'
+    './plugins/espai.js',
+    './plugins/tooltip.js'
   ],
   /*
   ** Nuxt.js dev-modules
@@ -87,17 +88,20 @@ export default {
       })
 
       routes.push({
-        name: 'party',
-        path: '/:party',
-        component: resolve(__dirname, 'pages/index.vue')
-      })
-
-      routes.push({
         name: 'party-type',
-        path: '/:party/:type',
+        path: '/:party/:type?',
         component: resolve(__dirname, 'pages/index.vue')
       })
     }
+  },
+
+  bootstrapVue: {
+    componentPlugins: [
+      'ModalPlugin'
+    ],
+    directivePlugins: [],
+    bootstrapCSS: false,
+    bootstrapVueCSS: false
   },
 
   /*

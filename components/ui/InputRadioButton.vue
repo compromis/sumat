@@ -38,7 +38,7 @@ export default {
       default: 'name'
     },
     logo: {
-      type: [Function, Boolean],
+      type: [Object, Boolean],
       default: false
     },
     value: {
