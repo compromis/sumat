@@ -1,5 +1,8 @@
 <template>
-  <div class="row fees">
+  <fieldset class="row fees">
+    <legend class="sr-only">
+      Quota
+    </legend>
     <div class="fees-wrapper">
       <span class="fee-list-label">Quota Normal</span>
       <div class="fee-list fee-list-normal">
@@ -32,7 +35,7 @@
       </div>
       <span class="fee-list-subtitle">Cada 6 mesos</span>
     </div>
-  </div>
+  </fieldset>
 </template>
 
 <script>

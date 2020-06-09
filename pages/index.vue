@@ -151,7 +151,7 @@
         </field-group>
       </form-section>
       <form-section id="quota" title="Domiciliació bancària">
-        <fee-selection v-model="form.u_fee" :fees="fees" />
+        <fee-selection v-model="form.u_fee" :fees="fees[form.u_party]" />
         <field-group>
           <input-field
             v-model="form.u_bank_name"
@@ -265,8 +265,26 @@ export default {
       },
       submitting: false,
       fees: {
-        normal: ['37,5', '50', '75', '100'],
-        reduced: ['12,5']
+        // Compromís
+        14: {
+          normal: ['37,5', '50', '75', '100'],
+          reduced: ['12,5']
+        },
+        // BLOC
+        2: {
+          normal: ['36', '50', '75', '100'],
+          reduced: ['18']
+        },
+        // Iniciativa
+        3: {
+          normal: ['40', '60', '80', '100'],
+          reduced: ['10']
+        },
+        // Verds
+        4: {
+          normal: ['40', '60', '80', '100'],
+          reduced: ['10']
+        }
       }
     }
   },
