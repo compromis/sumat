@@ -1,7 +1,26 @@
 <template>
   <div>
-    <file-upload name="verify_id_front" label="DNI Front" @change="(file) => verify_id.front = file" />
-    <file-upload name="verify_id_back" label="DNI Back" @change="(file) => verify_id.back = file" />
+    <form @submit.prevent="submit">
+      <file-upload
+        name="verify_id_front"
+        label="DNI Front"
+        :invalid="'verify_id_front' in errors"
+        :invalid-message="errors['verify_id_front']"
+        required
+        @change="(file) => verify_id.front = file"
+      />
+      <file-upload
+        name="verify_id_back"
+        label="DNI Back"
+        :invalid="'verify_id_front' in errors"
+        :invalid-message="errors['verify_id_front']"
+        required
+        @change="(file) => verify_id.back = file"
+      />
+      <button type="submit">
+        Submit
+      </button>
+    </form>
   </div>
 </template>
 
@@ -15,7 +34,7 @@ export default {
 
   middleware ({ store, redirect }) {
     if (!store.state.step !== 2) {
-      return redirect('/')
+      // return redirect('/')
     }
   },
 
@@ -25,6 +44,12 @@ export default {
         front: '',
         back: ''
       }
+    }
+  },
+
+  computed: {
+    errors () {
+      return this.$store.state.errors
     }
   },
 
@@ -40,6 +65,25 @@ export default {
   methods: {
     updateId (pics) {
       this.$store.commit('updateId', pics)
+    },
+
+    submit () {
+      this.submitting = true
+      this.$api.requestSms(this.$store.state.form)
+        .then((resp) => {
+          this.$store.commit('incrementStep')
+          this.$store.commit('updateFormField', { name: 'sms_ref', value: resp.sms_ref })
+          this.$router.push({ name: 'verify_sms' })
+        }).catch((resp) => {
+          this.$store.commit('setErrors', resp.errors)
+          // Scroll to top
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          })
+        }).then(() => {
+          this.submitting = false
+        })
     }
   }
 }

@@ -59,4 +59,32 @@ export default {
     }
   }
 }
+
+@include media-breakpoint-down(md) {
+  .field-group {
+    .fields {
+      grid-template-columns: 1fr 1fr;
+
+      .c-span-2,
+      .c-span-3,
+      .c-span-4 {
+        grid-column: span 2;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .field-group {
+    .fields {
+      grid-template-columns: 1fr;
+
+      .c-span-2,
+      .c-span-3,
+      .c-span-4 {
+        grid-column: span 1;
+      }
+    }
+  }
+}
 </style>

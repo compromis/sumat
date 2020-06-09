@@ -11,6 +11,14 @@ class API {
     return this._call('post', 'preflight', params)
   }
 
+  requestSms (params) {
+    return this._call('post', 'request_sms', params)
+  }
+
+  verifySms (params) {
+    return this._call('post', 'verify_sms', params)
+  }
+
   attachAdditionalInfo (params) {
     return this._call('post', 'additional_info', params)
   }
@@ -49,9 +57,5 @@ class API {
 
 export default ({ app }, inject) => {
   const api = new API()
-
-  inject('preflight', params => api.preflight(params))
-  inject('attachAdditionalInfo', params => api.attachAdditionalInfo(params))
-  inject('getInfo', params => api.getInfo(params))
-  inject('uploadFile', (destination, data) => api.uploadFile(destination, data))
+  inject('api', api)
 }

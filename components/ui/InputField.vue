@@ -1,5 +1,5 @@
 <template>
-  <div :class="{ 'field': true, 'field-error': invalid && !hideError, 'has-value': value }">
+  <div :class="{ 'field': true, 'field-error': invalid, 'has-value': value }">
     <label :for="name" class="label">{{ label }}</label>
     <input
       :type="type"
@@ -12,7 +12,7 @@
       :pattern="pattern"
       @input="(e) => $emit('input', e.target.value)"
     >
-    <div v-if="invalid && invalidMessage && !hideError" class="invalid-message">
+    <div v-if="invalid && invalidMessage" class="invalid-message">
       {{ invalidMessage }}
     </div>
   </div>
@@ -64,16 +64,10 @@ export default {
     }
   },
 
-  data () {
-    return {
-      hideError: false
-    }
-  },
-
   watch: {
     value () {
       if (this.invalid) {
-        this.hideError = true
+        this.$store.commit('clearError', this.name)
       }
     }
   }

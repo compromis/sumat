@@ -1,8 +1,8 @@
 <template>
-  <div class="input-inline-group">
-    <label class="input-inline-group-label" :for="name">
+  <fieldset :class="{ 'input-inline-group field': true, 'field-error': invalid }">
+    <legend class="input-inline-group-label">
       {{ label }}
-    </label>
+    </legend>
     <input-radio
       v-for="option in options"
       :key="option.value"
@@ -11,9 +11,12 @@
       :label="option.text"
       :checked="value === option.value"
       :required="required"
-      @input="(value) => $emit('input', value)"
+      @input="(value) => { $emit('input', value); $store.commit('clearError', name) }"
     />
-  </div>
+    <div v-if="invalid && invalidMessage" class="invalid-message">
+      {{ invalidMessage }}
+    </div>
+  </fieldset>
 </template>
 
 <script>
@@ -46,6 +49,14 @@ export default {
     required: {
       type: Boolean,
       default: false
+    },
+    invalid: {
+      type: Boolean,
+      default: false
+    },
+    invalidMessage: {
+      type: String,
+      default: ''
     }
   }
 }
@@ -69,5 +80,27 @@ export default {
     transform: scale(0.7) translateY(calc(-50% + -1.5rem));
     opacity: 1;
   }
+}
+
+.field-error {
+  border: 1px solid $danger !important;
+  background: mix($danger, $white, 15%);
+  padding: 1.25rem var(--card-padding) 1.25rem var(--card-padding);
+
+  .input-inline-group-label {
+    color: $danger;
+    transform: scale(0.7) translateY(calc(-50% + -2rem)) !important;
+  }
+}
+
+.invalid-message {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-size: .75rem;
+  padding: 0 var(--card-padding);
+  background: $danger;
+  color: $white;
 }
 </style>

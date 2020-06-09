@@ -7,11 +7,17 @@
   margin-bottom: 1rem;
 }
 
-.c-card-rises {
-  transition: transform .15s ease-in-out, box-shadow .1s ease-in-out;
+@include media-breakpoint-up(md) {
+  .c-card-rises {
+    transition: transform .15s ease-in-out, box-shadow .1s ease-in-out;
 
-  &:hover {
-    box-shadow: $raised-shadow;
-    transform: translateY(-.5rem);
+    &:hover {
+      box-shadow: $raised-shadow;
+      transform: translateY(-.5rem);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
   }
 }

@@ -1,8 +1,8 @@
 <template>
-  <div class="input-inline-group">
-    <label class="input-inline-group-label">
+  <fieldset :class="{ 'input-inline-group field': true, 'field-error': invalid }">
+    <legend class="input-inline-group-label">
       {{ label }}
-    </label>
+    </legend>
     <div class="input-birthday-group">
       <label class="sr-only" :for="`${name}_day`">Dia</label>
       <input
@@ -56,8 +56,11 @@
         @keyup="(e) => handleKeyUp(e, 2, $refs.year)"
         @keydown="(e) => handleKeyDown(e, $refs.year, $refs.month)"
       >
+      <div v-if="invalid && invalidMessage" class="invalid-message">
+        {{ invalidMessage }}
+      </div>
     </div>
-  </div>
+  </fieldset>
 </template>
 
 <script>
@@ -88,8 +91,17 @@ export default {
     required: {
       type: Boolean,
       default: false
+    },
+    invalid: {
+      type: Boolean,
+      default: false
+    },
+    invalidMessage: {
+      type: String,
+      default: ''
     }
   },
+
   methods: {
     handleKeyUp (e, maxlength, origin, next) {
       if (origin.value.length >= maxlength && next) {
@@ -100,6 +112,9 @@ export default {
       ) {
         next.focus()
       }
+
+      // Clear the error when user changes value
+      this.$store.commit('clearError', 'u_birthday_day')
     },
 
     handleKeyDown (e, origin, previous) {
@@ -113,6 +128,10 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../sass/variables';
+
+.field {
+  transition: 200ms ease-in-out;
+}
 
 .input-inline-group {
   position: relative;
@@ -158,5 +177,27 @@ export default {
       width: 3.5rem;
     }
   }
+}
+
+.field-error {
+  border: 1px solid $danger !important;
+  background: mix($danger, $white, 15%);
+  padding: 1.25rem var(--card-padding) 1.25rem var(--card-padding);
+
+  legend {
+    color: $danger;
+    transform: scale(0.7) translateY(calc(-50% + -2rem)) !important;
+  }
+}
+
+.invalid-message {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-size: .75rem;
+  padding: 0 var(--card-padding);
+  background: $danger;
+  color: $white;
 }
 </style>
