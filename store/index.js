@@ -18,6 +18,8 @@ export const state = () => ({
     u_bank_name: '',
     u_bank_DNI: '',
     u_fee: '37,5',
+    u_aval_1: '',
+    u_aval_2: '',
     verify_id_front: '',
     verify_id_back: '',
     sms_ref: '',

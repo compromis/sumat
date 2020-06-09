@@ -5,7 +5,7 @@
         {{ title }}
       </span>
       <span v-if="help" v-tooltip.right="help">
-        <b-icon-question-circle font-scale="0.5" class="ml-2" />
+        <b-icon-question-circle font-scale="0.75" class="ml-2" />
       </span>
       <div class="additional-info">
         <slot name="additional-info" />

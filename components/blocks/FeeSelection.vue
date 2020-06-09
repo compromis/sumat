@@ -1,39 +1,41 @@
 <template>
-  <fieldset class="row fees">
+  <fieldset>
     <legend class="sr-only">
       Quota
     </legend>
-    <div class="fees-wrapper">
-      <span class="fee-list-label">Quota Normal</span>
-      <div class="fee-list fee-list-normal">
-        <input-radio-button
-          v-for="fee in fees.normal"
-          :key="fee"
-          class="d-flex"
-          name="u_fee"
-          :value="fee"
-          :label="fee+'€'"
-          :checked="value === fee"
-          @input="(value) => $emit('input', value)"
-        />
+    <div class="row fees">
+      <div class="fees-wrapper">
+        <span class="fee-list-label">Quota Normal</span>
+        <div class="fee-list fee-list-normal">
+          <input-radio-button
+            v-for="fee in fees.normal"
+            :key="fee"
+            class="d-flex"
+            name="u_fee"
+            :value="fee"
+            :label="fee+'€'"
+            :checked="value === fee"
+            @input="(value) => $emit('input', value)"
+          />
+        </div>
+        <span class="fee-list-subtitle">Cada 6 mesos</span>
       </div>
-      <span class="fee-list-subtitle">Cada 6 mesos</span>
-    </div>
-    <div>
-      <span class="fee-list-label">Quota Reduïda <span class="fee-list-label-info">(estudiants, parats, jubilats)</span></span>
-      <div class="fee-list fee-list-reduced">
-        <input-radio-button
-          v-for="fee in fees.reduced"
-          :key="fee"
-          class="d-flex"
-          name="u_fee"
-          :value="fee"
-          :label="fee+'€'"
-          :checked="value === fee"
-          @input="(value) => $emit('input', value)"
-        />
+      <div>
+        <span class="fee-list-label">Quota Reduïda <span class="fee-list-label-info">(estudiants, parats, jubilats)</span></span>
+        <div class="fee-list fee-list-reduced">
+          <input-radio-button
+            v-for="fee in fees.reduced"
+            :key="fee"
+            class="d-flex"
+            name="u_fee"
+            :value="fee"
+            :label="fee+'€'"
+            :checked="value === fee"
+            @input="(value) => $emit('input', value)"
+          />
+        </div>
+        <span class="fee-list-subtitle">Cada 6 mesos</span>
       </div>
-      <span class="fee-list-subtitle">Cada 6 mesos</span>
     </div>
   </fieldset>
 </template>
@@ -63,6 +65,10 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../sass/variables';
+
+fieldset {
+  margin: 0;
+}
 
 label {
   margin-right: 1rem;

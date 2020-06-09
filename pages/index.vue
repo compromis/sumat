@@ -150,42 +150,79 @@
           />
         </field-group>
       </form-section>
-      <form-section id="quota" title="Domiciliació bancària">
-        <fee-selection v-model="form.u_fee" :fees="fees[form.u_party]" />
-        <field-group>
-          <input-field
-            v-model="form.u_bank_name"
-            type="text"
-            name="u_bank_name"
-            label="Titular del compte"
-            class="c-span-3 corner-top-left"
-            required
-            :invalid="'bank_name' in errors"
-            :invalid-message="errors['bank_name']"
-          />
-          <input-field
-            v-model="form.u_bank_DNI"
-            type="text"
-            name="u_bank_DNI"
-            label="DNI / NIE"
-            class="corner-top-right"
-            required
-            maxlength="9"
-            :invalid="'u_bank_DNI' in errors"
-            :invalid-message="errors['u_bank_DNI']"
-          />
-          <input-field
-            v-model="form.u_bank_IBAN"
-            type="text"
-            name="u_bank_IBAN"
-            label="IBAN"
-            class="c-span-4 corner-top-left corner-top-right"
-            required
-            :invalid="'u_bank_IBAN' in errors"
-            :invalid-message="errors['u_bank_IBAN']"
-          />
-        </field-group>
-      </form-section>
+
+      <transition name="slide">
+        <form-section v-if="form.u_type === '1'" id="quota" title="Domiciliació bancària">
+          <fee-selection v-model="form.u_fee" :fees="fees[form.u_party]" />
+          <field-group>
+            <input-field
+              v-model="form.u_bank_name"
+              type="text"
+              name="u_bank_name"
+              label="Titular del compte"
+              class="c-span-3 corner-top-left"
+              required
+              :invalid="'u_bank_name' in errors"
+              :invalid-message="errors['u_bank_name']"
+            />
+            <input-field
+              v-model="form.u_bank_DNI"
+              type="text"
+              name="u_bank_DNI"
+              label="DNI / NIE"
+              class="corner-top-right"
+              required
+              maxlength="9"
+              :invalid="'u_bank_DNI' in errors"
+              :invalid-message="errors['u_bank_DNI']"
+            />
+            <input-field
+              v-model="form.u_bank_IBAN"
+              type="text"
+              name="u_bank_IBAN"
+              label="IBAN"
+              class="c-span-4 corner-top-left corner-top-right"
+              required
+              :invalid="'u_bank_IBAN' in errors"
+              :invalid-message="errors['u_bank_IBAN']"
+            />
+          </field-group>
+        </form-section>
+      </transition>
+
+      <div v-if="form.u_type === '1' && form.u_party !== '2'">
+        <transition name="slide">
+          <form-section v-if="showAvals" id="avals" title="Avals" class="mb-2">
+            <field-group>
+              <input-field
+                v-model="form.u_aval_1"
+                type="text"
+                name="u_aval_1"
+                label="DNI / NIE Aval 1"
+                class="c-span-2 corner-top-left corner-bottom-left"
+                :invalid="'u_aval_1' in errors"
+                :invalid-message="errors['bank_name']"
+              />
+              <input-field
+                v-model="form.u_aval_2"
+                type="text"
+                name="u_aval_2"
+                label="DNI / NIE Aval 2"
+                class="c-span-2 corner-top-right cornder-bottom-right"
+                :invalid="'u_aval_2' in errors"
+                :invalid-message="errors['bank_name']"
+              />
+            </field-group>
+          </form-section>
+        </transition>
+        <div>
+          <button class="btn btn-link-muted" type="button" @click="showAvals = !showAvals">
+            {{ showAvals ? 'No vull adjuntar avals' : 'Vols adjuntar avals?' }}
+          </button>
+          <b-icon-question-circle v-tooltip.right="'Si ja coneixes a dos adherits a Compromís, pots introduir el seus DNIs perquè confirmen la teua alta. Si no, serà el portaveu del teu col·lectiu local l\'encarregat de confirmar l\'alta.'" />
+        </div>
+      </div>
+
       <div class="text-center">
         <button type="submit" class="btn btn-primary btn-xl font-weight-bold">
           Envia formulari
@@ -193,6 +230,7 @@
       </div>
       <legal-notice />
     </form>
+
     <b-modal id="no-email" title="No tinc e-mail ni/o mòbil" ok-only ok-title="Entès">
       <offline-instructions />
     </b-modal>
@@ -200,6 +238,7 @@
 </template>
 
 <script>
+import { BIconQuestionCircle } from 'bootstrap-vue'
 import FormSection from '~/components/ui/FormSection'
 import FieldGroup from '~/components/ui/FieldGroup'
 import InputField from '~/components/ui/InputField'
@@ -224,7 +263,8 @@ export default {
     TypeSelection,
     InputBirthday,
     OfflineInstructions,
-    LegalNotice
+    LegalNotice,
+    BIconQuestionCircle
   },
 
   async fetch ({ store, params }) {
@@ -285,7 +325,8 @@ export default {
           normal: ['40', '60', '80', '100'],
           reduced: ['10']
         }
-      }
+      },
+      showAvals: false
     }
   },
 
