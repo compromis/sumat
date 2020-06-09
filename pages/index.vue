@@ -190,7 +190,7 @@
         </form-section>
       </transition>
 
-      <div v-if="form.u_type === '1' && form.u_party !== '2'" ref="avals" role="region" tabindex="-1">
+      <div v-if="form.u_type === '1' && form.u_party !== '2'" ref="avals" role="region" tabindex="-1" aria-label="Avals">
         <transition name="slide">
           <form-section
             v-if="showAvals"
