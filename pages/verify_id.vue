@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form @submit.prevent="submit">
+    <form :class="{ 'dimmed': submitting }" @submit.prevent="submit">
       <file-upload
         name="verify_id_front"
         label="DNI Front"
@@ -17,19 +17,21 @@
         required
         @change="(file) => verify_id.back = file"
       />
-      <button type="submit">
-        Submit
-      </button>
+      <submit-button :submitting="submitting">
+        Adjunta DNI/NIE
+      </submit-button>
     </form>
   </div>
 </template>
 
 <script>
 import FileUpload from '~/components/ui/FileUpload'
+import SubmitButton from '~/components/ui/SubmitButton'
 
 export default {
   components: {
-    FileUpload
+    FileUpload,
+    SubmitButton
   },
 
   middleware ({ store, redirect }) {
@@ -43,7 +45,8 @@ export default {
       verify_id: {
         front: '',
         back: ''
-      }
+      },
+      submitting: false
     }
   },
 

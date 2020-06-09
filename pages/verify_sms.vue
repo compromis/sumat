@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form @submit.prevent="submit">
+    <form :class="{ 'dimmed': submitting }" @submit.prevent="submit">
       <input-field
         v-model="sms_code"
         name="sms_code"
@@ -9,19 +9,21 @@
         :invalid-message="errors['sms_code']"
         required
       />
-      <button type="submit">
-        Submit
-      </button>
+      <submit-button :submitting="submitting">
+        Signa el formulari
+      </submit-button>
     </form>
   </div>
 </template>
 
 <script>
 import InputField from '~/components/ui/InputField'
+import SubmitButton from '~/components/ui/SubmitButton'
 
 export default {
   components: {
-    InputField
+    InputField,
+    SubmitButton
   },
 
   middleware ({ store, redirect }) {
@@ -32,7 +34,8 @@ export default {
 
   data () {
     return {
-      sms_code: ''
+      sms_code: '',
+      submitting: false
     }
   },
 

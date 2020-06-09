@@ -9,7 +9,7 @@
       il·lusió i desig de canvi. Ens ajudes?
     </p>
 
-    <form @submit.prevent="submit">
+    <form :class="{ 'dimmed': submitting }" @submit.prevent="submit">
       <form-section id="party" title="Partit" title-hidden>
         <party-selection v-model="form.u_party" />
       </form-section>
@@ -230,11 +230,9 @@
         </div>
       </div>
 
-      <div class="text-center">
-        <button type="submit" class="btn btn-primary btn-xl font-weight-bold">
-          Envia formulari
-        </button>
-      </div>
+      <submit-button :submitting="submitting">
+        Envia formulari
+      </submit-button>
       <legal-notice />
     </form>
 
@@ -257,6 +255,7 @@ import PartySelection from '~/components/blocks/PartySelection'
 import FeeSelection from '~/components/blocks/FeeSelection'
 import OfflineInstructions from '~/components/blocks/OfflineInstructions'
 import LegalNotice from '~/components/blocks/LegalNotice'
+import SubmitButton from '~/components/ui/SubmitButton'
 
 export default {
   components: {
@@ -271,7 +270,8 @@ export default {
     InputBirthday,
     OfflineInstructions,
     LegalNotice,
-    BIconQuestionCircle
+    BIconQuestionCircle,
+    SubmitButton
   },
 
   async fetch ({ store, params }) {
@@ -310,7 +310,6 @@ export default {
         u_bank_DNI: '',
         u_fee: '37,5'
       },
-      submitting: false,
       fees: {
         // Compromís
         14: {
@@ -333,6 +332,7 @@ export default {
           reduced: ['10']
         }
       },
+      submitting: false,
       showAvals: false
     }
   },
@@ -389,8 +389,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-@import '../sass/variables';
-
-</style>

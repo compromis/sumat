@@ -1,14 +1,14 @@
 <template>
   <div>
-    <form @submit.prevent="submit">
+    <form :class="{ 'dimmed': submitting }" @submit.prevent="submit">
       <input-field
         v-model="form.u_studies"
         name="u_studies"
         label="Estudis"
       />
-      <button type="submit">
-        Submit
-      </button>
+      <submit-button :submitting="submitting">
+        Adjunta informació
+      </submit-button>
       <button @click="skip">
         Skip
       </button>
@@ -18,10 +18,12 @@
 
 <script>
 import InputField from '~/components/ui/InputField'
+import SubmitButton from '~/components/ui/SubmitButton'
 
 export default {
   components: {
-    InputField
+    InputField,
+    SubmitButton
   },
 
   middleware ({ store, redirect }) {
@@ -34,7 +36,8 @@ export default {
     return {
       form: {
         u_studies: ''
-      }
+      },
+      submitting: false
     }
   },
 
