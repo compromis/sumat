@@ -135,6 +135,7 @@
             name="u_mobile"
             select-name="u_mobile_prefix"
             label="Mòbil"
+            required
             :invalid="'u_mobile' in errors"
             :invalid-message="errors['u_mobile']"
             @prefix-updated="(prefix) => form.u_mobile_prefix = prefix"
