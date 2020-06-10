@@ -36,6 +36,7 @@
           maxlength="10"
           placeholder="600 000 000"
           :required="required"
+          pattern="[0-9]*"
           @input="(e) => $emit('number-updated', e.target.value)"
         >
         <div v-if="invalid && invalidMessage" class="invalid-message">
