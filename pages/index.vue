@@ -130,6 +130,26 @@
             :invalid="'uacc_email_twice' in errors"
             :invalid-message="errors['uacc_email_twice']"
           />
+          <input-tel
+            class="c-span-2 corner-bottom-left"
+            name="u_mobile"
+            select-name="u_mobile_prefix"
+            label="Mòbil"
+            :invalid="'u_mobile' in errors"
+            :invalid-message="errors['u_mobile']"
+            @prefix-updated="(prefix) => form.u_mobile_prefix = prefix"
+            @number-updated="(number) => form.u_mobile = number"
+          />
+          <input-tel
+            class="c-span-2 corner-bottom-right"
+            name="u_phone"
+            select-name="u_phone_prefix"
+            label="Fixe (opcional)"
+            :invalid="'u_phone' in errors"
+            :invalid-message="errors['u_phone']"
+            @prefix-updated="(prefix) => form.u_phone_prefix = prefix"
+            @number-updated="(number) => form.u_phone = number"
+          />
         </field-group>
         <template v-slot:additional-info>
           <button v-b-modal.no-email class="btn-link-muted" type="button">
@@ -203,6 +223,7 @@ import InputField from '~/components/ui/InputField'
 import InputBirthday from '~/components/ui/InputBirthday'
 import InputRadioGroup from '~/components/ui/InputRadioGroup'
 import InputSelect from '~/components/ui/InputSelect'
+import InputTel from '~/components/ui/InputTel'
 import TypeSelection from '~/components/blocks/TypeSelection'
 import PartySelection from '~/components/blocks/PartySelection'
 import FeeSelection from '~/components/blocks/FeeSelection'
@@ -215,6 +236,7 @@ export default {
     InputField,
     InputRadioGroup,
     InputSelect,
+    InputTel,
     PartySelection,
     FeeSelection,
     TypeSelection,
@@ -256,7 +278,11 @@ export default {
         u_birthday_year: '',
         u_bank_name: '',
         u_bank_DNI: '',
-        u_fee: ''
+        u_fee: '',
+        u_mobile: '',
+        u_mobile_prefix: '',
+        u_phone: '',
+        u_phone_prefix: ''
       },
       submitting: false,
       fees: {
