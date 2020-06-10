@@ -5,13 +5,12 @@
     </legend>
     <div class="phone-input-wrapper">
       <div>
-        <label class="sr-only" :for="name-select">Prefixe telefònic</label>
+        <label class="sr-only" :for="`${name}_prefix`">Prefixe internacional</label>
         <div class="phone-select-wrapper">
           <select
-            :id="name-select"
+            :id="`${name}_prefix`"
             v-model="countryCode"
-            :options="countryCodes"
-            :name="name-select"
+            :name="`${name}_prefix`"
             :required="required"
             @change="handleChange($event)"
           >
@@ -27,17 +26,17 @@
       <div class="phone-text-wrapper">
         <label class="sr-only" :for="name">Telèfon</label>
         <input
-          :id="id"
+          :id="name"
           ref="number"
           type="text"
           :name="name"
-          :value="value"
+          :value="number"
           class="input"
           maxlength="10"
-          placeholder="600 000 000"
-          :required="required"
           pattern="[0-9]*"
-          @input="(e) => $emit('number-updated', e.target.value)"
+          :placeholder="placeholder"
+          :required="required"
+          @input="$emit('number-updated', $event.target.value)"
         >
         <div v-if="invalid && invalidMessage" class="invalid-message">
           {{ invalidMessage }}
@@ -53,19 +52,7 @@ import countryCodes from '../data/countryCodes'
 export default {
   name: 'InputTel',
   props: {
-    id: {
-      type: String,
-      default: ''
-    },
     name: {
-      type: String,
-      default: ''
-    },
-    nameSelect: {
-      type: String,
-      default: ''
-    },
-    value: {
       type: String,
       default: ''
     },
@@ -73,9 +60,17 @@ export default {
       type: String,
       default: 'Telèfon'
     },
-    defaultCountryCode: {
+    number: {
+      type: String,
+      default: ''
+    },
+    prefix: {
       type: String,
       default: '34'
+    },
+    placeholder: {
+      type: String,
+      default: '600 000 000'
     },
     invalid: {
       type: Boolean,
@@ -88,8 +83,13 @@ export default {
   },
   data () {
     return {
-      countryCode: '34',
-      countryCodes
+      countryCodes,
+      countryCode: '34'
+    }
+  },
+  watch: {
+    prefix (prefix) {
+      this.countryCode = prefix
     }
   },
   methods: {
@@ -127,8 +127,11 @@ export default {
 }
 
 .phone-text-wrapper {
+  width: 100%;
+
   input {
     border-radius: 0;
+    width: 100%;
   }
 }
 
@@ -171,7 +174,7 @@ export default {
   display: flex;
   position: relative;
   flex-direction: column;
-  width: 90px;
+  width: 70px;
   margin-right: .5rem;
 
   select {
@@ -191,9 +194,9 @@ export default {
   &::after {
     content: ">";
     position: absolute;
-    font-size: 2.25rem;
+    font-size: 1.5rem;
     right: .25rem;
-    top: -.85rem;
+    top: -.25rem;
     font-weight: 300;
     transform: rotate(90deg);
     pointer-events: none;

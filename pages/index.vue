@@ -133,21 +133,24 @@
           <input-tel
             class="c-span-2 corner-bottom-left"
             name="u_mobile"
-            select-name="u_mobile_prefix"
             label="Mòbil"
             required
             :invalid="'u_mobile' in errors"
             :invalid-message="errors['u_mobile']"
+            :number="form.u_mobile"
+            :prefix="form.u_mobile_prefix"
             @prefix-updated="(prefix) => form.u_mobile_prefix = prefix"
             @number-updated="(number) => form.u_mobile = number"
           />
           <input-tel
             class="c-span-2 corner-bottom-right"
             name="u_phone"
-            select-name="u_phone_prefix"
             label="Fixe (opcional)"
+            placeholder="960 000 000"
             :invalid="'u_phone' in errors"
             :invalid-message="errors['u_phone']"
+            :number="form.u_phone"
+            :prefix="form.u_phone_prefix"
             @prefix-updated="(prefix) => form.u_phone_prefix = prefix"
             @number-updated="(number) => form.u_phone = number"
           />
@@ -202,7 +205,7 @@
               type="text"
               name="u_bank_IBAN"
               label="IBAN"
-              class="c-span-4 corner-top-left corner-top-right"
+              class="c-span-4 corner-bottom-left corner-bottom-right"
               required
               :invalid="'u_bank_IBAN' in errors"
               :invalid-message="errors['u_bank_IBAN']"
@@ -324,23 +327,24 @@ export default {
         u_surname: '',
         collectiu: '',
         u_DNI: '',
-        u_birthday: '',
+        u_birthday_day: '',
+        u_birthday_month: '',
+        u_birthday_year: '',
         u_gender: '',
         u_address: '',
         u_city: '',
         u_postal: '',
         uacc_email: '',
         uacc_email_twice: '',
-        u_birthday_day: '',
-        u_birthday_month: '',
-        u_birthday_year: '',
+        u_mobile: '',
+        u_mobile_prefix: '34',
+        u_phone: '',
+        u_phone_prefix: '34',
         u_bank_name: '',
         u_bank_DNI: '',
-        u_mobile: '',
-        u_mobile_prefix: '',
-        u_phone: '',
-        u_phone_prefix: '',
-        u_fee: '37,5'
+        u_fee: '37,5',
+        u_aval_1: '',
+        u_aval_2: ''
       },
       fees: {
         // Compromís
