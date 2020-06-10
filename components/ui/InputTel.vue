@@ -7,9 +7,19 @@
       <div>
         <label class="sr-only" :for="name-select">Prefixe telefònic</label>
         <div class="phone-select-wrapper">
-          <select :id="name-select" :name="name-select" :required="required" @change="(e) => $emit('prefix-updated', e.target.value)">
-            <option v-for="code in countryCodes" :key="code" :value="code" :selected="value === code">
-              {{ code }}
+          <select
+            :id="name-select"
+            v-model="countryCode"
+            :options="countryCodes"
+            :name="name-select"
+            :required="required"
+            @change="handleChange($event)"
+          >
+            <option :value="countryCode">
+              +{{ countryCode }}
+            </option>
+            <option v-for="(code, key) in countryCodes" :key="key" :value="code.value">
+              {{ code.text }}
             </option>
           </select>
         </div>
@@ -18,6 +28,7 @@
         <label class="sr-only" :for="name">Telèfon</label>
         <input
           :id="id"
+          ref="number"
           type="text"
           :name="name"
           :value="value"
@@ -36,6 +47,8 @@
 </template>
 
 <script>
+import countryCodes from '../data/countryCodes'
+
 export default {
   name: 'InputTel',
   props: {
@@ -74,7 +87,14 @@ export default {
   },
   data () {
     return {
-      countryCodes: ['+34', '+33']
+      countryCode: '34',
+      countryCodes
+    }
+  },
+  methods: {
+    handleChange (e) {
+      this.$emit('prefix-updated', e.target.value)
+      this.$refs.number.focus()
     }
   }
 }
@@ -150,7 +170,7 @@ export default {
   display: flex;
   position: relative;
   flex-direction: column;
-  width: 70px;
+  width: 90px;
   margin-right: .5rem;
 
   select {
