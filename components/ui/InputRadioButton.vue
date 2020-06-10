@@ -65,7 +65,7 @@ label {
   font-size: 1.25rem;
   display: block;
   position: relative;
-  padding: .75rem 1.5rem;
+  padding: 1rem 1.5rem;
   margin: 0;
   cursor: pointer;
   font-size: 1.3rem;

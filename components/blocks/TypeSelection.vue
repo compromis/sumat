@@ -1,6 +1,6 @@
 <template>
   <div class="row types" @input.capture="(e) => handleTypeChange(e)">
-    <div class="col-md-6 col-lg-3 d-flex">
+    <div class="col-md-6 col-lg-4 d-flex">
       <input-radio-button
         name="u_type"
         value="1"
@@ -22,7 +22,7 @@
         </div>
       </input-radio-button>
     </div>
-    <div class="col-md-6 col-lg-3 d-flex">
+    <div class="col-md-6 col-lg-4 d-flex">
       <input-radio-button
         name="u_type"
         value="2"

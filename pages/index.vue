@@ -9,7 +9,7 @@
       il·lusió i desig de canvi. Ens ajudes?
     </p>
 
-    <form @submit.prevent="submit">
+    <form :class="{ 'dimmed': submitting }" @submit.prevent="submit">
       <form-section id="party" title="Partit" title-hidden>
         <party-selection v-model="form.u_party" />
       </form-section>
@@ -170,46 +170,97 @@
           />
         </field-group>
       </form-section>
-      <form-section id="quota" title="Domiciliació bancària">
-        <fee-selection v-model="form.u_fee" :fees="fees" />
-        <field-group>
-          <input-field
-            v-model="form.u_bank_name"
-            type="text"
-            name="u_bank_name"
-            label="Nom i Cognoms"
-            class="c-span-3 corner-top-left"
-            required
-            :invalid="'bank_name' in errors"
-            :invalid-message="errors['bank_name']"
+
+      <transition name="slide">
+        <form-section v-if="form.u_type === '1'" id="quota" title="Domiciliació bancària">
+          <fee-selection v-model="form.u_fee" :fees="fees[form.u_party]" />
+          <field-group>
+            <input-field
+              v-model="form.u_bank_name"
+              type="text"
+              name="u_bank_name"
+              label="Titular del compte"
+              class="c-span-3 corner-top-left"
+              required
+              :invalid="'u_bank_name' in errors"
+              :invalid-message="errors['u_bank_name']"
+            />
+            <input-field
+              v-model="form.u_bank_DNI"
+              type="text"
+              name="u_bank_DNI"
+              label="DNI / NIE"
+              class="corner-top-right"
+              required
+              maxlength="9"
+              :invalid="'u_bank_DNI' in errors"
+              :invalid-message="errors['u_bank_DNI']"
+            />
+            <input-field
+              v-model="form.u_bank_IBAN"
+              type="text"
+              name="u_bank_IBAN"
+              label="IBAN"
+              class="c-span-4 corner-top-left corner-top-right"
+              required
+              :invalid="'u_bank_IBAN' in errors"
+              :invalid-message="errors['u_bank_IBAN']"
+            />
+          </field-group>
+        </form-section>
+      </transition>
+
+      <div v-if="form.u_type === '1' && form.u_party !== '2'" ref="avals" role="region" tabindex="-1" aria-label="Avals">
+        <transition name="slide">
+          <form-section
+            v-if="showAvals"
+            id="avals"
+            title="Avals"
+            class="mb-2"
+          >
+            <field-group>
+              <input-field
+                v-model="form.u_aval_1"
+                type="text"
+                name="u_aval_1"
+                label="DNI / NIE Aval 1"
+                class="c-span-2 corner-top-left corner-bottom-left"
+                :invalid="'u_aval_1' in errors"
+                :invalid-message="errors['bank_name']"
+              />
+              <input-field
+                v-model="form.u_aval_2"
+                type="text"
+                name="u_aval_2"
+                label="DNI / NIE Aval 2"
+                class="c-span-2 corner-top-right cornder-bottom-right"
+                :invalid="'u_aval_2' in errors"
+                :invalid-message="errors['bank_name']"
+              />
+            </field-group>
+          </form-section>
+        </transition>
+        <div>
+          <button class="btn btn-link-muted" type="button" aria-controls="avals" :aria-expanded="showAvals" @click="toggleAvals">
+            {{ showAvals ? 'No vull adjuntar avals' : 'Vols adjuntar avals?' }}
+          </button>
+          <b-icon-question-circle
+            v-tooltip="{
+              content: 'Si ja coneixes a dos adherits a Compromís, pots introduir el seus DNIs perquè confirmen la teua alta. Si no, serà el portaveu del teu col·lectiu local l\'encarregat de confirmar l\'alta.',
+              trigger: 'hover click focus'
+            }"
+            role="button"
+            tabindex="0"
           />
-          <input-field
-            v-model="form.u_bank_DNI"
-            type="text"
-            name="u_bank_DNI"
-            label="DNI"
-            class="corner-top-right"
-            required
-            maxlength="9"
-            :invalid="'u_bank_DNI' in errors"
-            :invalid-message="errors['u_bank_DNI']"
-          />
-          <input-field
-            v-model="form.u_bank_IBAN"
-            type="text"
-            name="u_bank_IBAN"
-            label="IBAN"
-            class="c-span-4 corner-top-left corner-top-right"
-            required
-            :invalid="'u_bank_IBAN' in errors"
-            :invalid-message="errors['u_bank_IBAN']"
-          />
-        </field-group>
-        <button type="submit">
-          Submit
-        </button>
-      </form-section>
+        </div>
+      </div>
+
+      <submit-button :submitting="submitting">
+        Envia formulari
+      </submit-button>
+      <legal-notice />
     </form>
+
     <b-modal id="no-email" title="No tinc e-mail ni/o mòbil" ok-only ok-title="Entès">
       <offline-instructions />
     </b-modal>
@@ -217,6 +268,7 @@
 </template>
 
 <script>
+import { BIconQuestionCircle } from 'bootstrap-vue'
 import FormSection from '~/components/ui/FormSection'
 import FieldGroup from '~/components/ui/FieldGroup'
 import InputField from '~/components/ui/InputField'
@@ -228,6 +280,8 @@ import TypeSelection from '~/components/blocks/TypeSelection'
 import PartySelection from '~/components/blocks/PartySelection'
 import FeeSelection from '~/components/blocks/FeeSelection'
 import OfflineInstructions from '~/components/blocks/OfflineInstructions'
+import LegalNotice from '~/components/blocks/LegalNotice'
+import SubmitButton from '~/components/ui/SubmitButton'
 
 export default {
   components: {
@@ -241,7 +295,10 @@ export default {
     FeeSelection,
     TypeSelection,
     InputBirthday,
-    OfflineInstructions
+    OfflineInstructions,
+    LegalNotice,
+    BIconQuestionCircle,
+    SubmitButton
   },
 
   async fetch ({ store, params }) {
@@ -278,17 +335,36 @@ export default {
         u_birthday_year: '',
         u_bank_name: '',
         u_bank_DNI: '',
-        u_fee: '',
         u_mobile: '',
         u_mobile_prefix: '',
         u_phone: '',
-        u_phone_prefix: ''
+        u_phone_prefix: '',
+        u_fee: '37,5'
+      },
+      fees: {
+        // Compromís
+        14: {
+          normal: ['37,5', '50', '75', '100'],
+          reduced: ['12,5']
+        },
+        // BLOC
+        2: {
+          normal: ['36', '50', '75', '100'],
+          reduced: ['18']
+        },
+        // Iniciativa
+        3: {
+          normal: ['40', '60', '80', '100'],
+          reduced: ['10']
+        },
+        // Verds
+        4: {
+          normal: ['40', '60', '80', '100'],
+          reduced: ['10']
+        }
       },
       submitting: false,
-      fees: {
-        normal: ['37,5', '50', '75', '100'],
-        reduced: ['12,5']
-      }
+      showAvals: false
     }
   },
 
@@ -308,6 +384,11 @@ export default {
         this.updateForm(form)
       },
       deep: true
+    },
+
+    // Set party's base fee when changing parties
+    'form.u_party' (party) {
+      this.form.u_fee = this.fees[party].normal[0]
     }
   },
 
@@ -335,12 +416,14 @@ export default {
         }).then(() => {
           this.submitting = false
         })
+    },
+
+    toggleAvals () {
+      this.showAvals = !this.showAvals
+      if (this.showAvals) {
+        this.$refs.avals.focus()
+      }
     }
   }
 }
 </script>
-
-<style lang="scss">
-@import '../sass/variables';
-
-</style>

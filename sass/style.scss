@@ -1,9 +1,11 @@
 @import "variables";
+@import 'bootstrap/scss/bootstrap';
+@import 'bootstrap-vue/src/index.scss';
 @import "buttons";
 @import "pills";
 @import "cards";
 @import "tooltips";
-@import 'bootstrap/scss/bootstrap';
+@import "animations";
 
 :root {
   --card-padding: 1rem;
@@ -58,6 +60,10 @@ a.link-muted {
   a:active {
     color: $text-default;
   }
+}
+
+.dimmed {
+  opacity: .5;
 }
 
 /* Bootstrap vue fix */
