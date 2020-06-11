@@ -98,7 +98,7 @@ label {
 }
 
 .fees {
-  margin: 0 0 2rem 0;
+  margin: 0 0 1rem 0;
 
   &-wrapper {
     border-right: 1px $input-border-color solid;

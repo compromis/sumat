@@ -1,5 +1,5 @@
 <template>
-  <div class="text-center">
+  <div class="text-center my-4">
     <button type="submit" class="btn btn-primary btn-xl font-weight-bold" :disabled="submitting">
       <span v-if="submitting">
         <b-icon-circle-fill animation="throb" />
