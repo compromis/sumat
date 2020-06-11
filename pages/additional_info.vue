@@ -1,5 +1,6 @@
 <template>
   <div>
+    <form-steps :current-step="3" />
     <form :class="{ 'dimmed': submitting }" @submit.prevent="submit">
       <input-field
         v-model="form.u_studies"
@@ -19,11 +20,13 @@
 <script>
 import InputField from '~/components/ui/InputField'
 import SubmitButton from '~/components/ui/SubmitButton'
+import FormSteps from '~/components/blocks/FormSteps'
 
 export default {
   components: {
     InputField,
-    SubmitButton
+    SubmitButton,
+    FormSteps
   },
 
   middleware ({ store, redirect }) {

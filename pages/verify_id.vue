@@ -1,5 +1,6 @@
 <template>
   <div>
+    <form-steps :current-step="1" />
     <form :class="{ 'dimmed': submitting }" @submit.prevent="submit">
       <file-upload
         name="verify_id_front"
@@ -27,11 +28,13 @@
 <script>
 import FileUpload from '~/components/ui/FileUpload'
 import SubmitButton from '~/components/ui/SubmitButton'
+import FormSteps from '~/components/blocks/FormSteps'
 
 export default {
   components: {
     FileUpload,
-    SubmitButton
+    SubmitButton,
+    FormSteps
   },
 
   middleware ({ store, redirect }) {
