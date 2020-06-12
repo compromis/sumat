@@ -1,18 +1,20 @@
 <template>
-  <div>
+  <div class="container verify-sms">
     <form-steps :current-step="2" />
-    <div>T’hem enviat un codi de signatura digital al 600 000 000</div>
     <form :class="{ 'dimmed': submitting }" @submit.prevent="submit">
-      <input-sms name="sms_code" @code-updated="codeUpdated" />
+      <form-section title="T’hem enviat un codi de signatura digital al 600 000 000">
+        <input-sms name="sms_code" @code-updated="codeUpdated" />
+      </form-section>
       <submit-button :submitting="submitting">
         Signa el formulari
       </submit-button>
     </form>
-    <div>No he rebut cap codi</div>
+    <a href="#">No he rebut cap codi</a>
   </div>
 </template>
 
 <script>
+import FormSection from '~/components/ui/FormSection'
 import InputSms from '~/components/ui/InputSms'
 import SubmitButton from '~/components/ui/SubmitButton'
 import FormSteps from '~/components/blocks/FormSteps'
@@ -21,7 +23,8 @@ export default {
   components: {
     SubmitButton,
     FormSteps,
-    InputSms
+    InputSms,
+    FormSection
   },
 
   middleware ({ store, redirect }) {
@@ -78,5 +81,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+  .verify-sms {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 </style>
