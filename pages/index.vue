@@ -258,7 +258,6 @@
           />
         </div>
       </div>
-
       <submit-button :submitting="submitting">
         Envia formulari
       </submit-button>

@@ -1,33 +1,27 @@
 <template>
   <div>
     <form-steps :current-step="2" />
+    <div>T’hem enviat un codi de signatura digital al 600 000 000</div>
     <form :class="{ 'dimmed': submitting }" @submit.prevent="submit">
-      <input-field
-        v-model="sms_code"
-        name="sms_code"
-        label="Codi SMS"
-        :invalid="'sms_code' in errors"
-        :invalid-message="errors['sms_code']"
-        required
-      />
+      <input-sms />
       <submit-button :submitting="submitting">
         Signa el formulari
       </submit-button>
     </form>
+    <div>No he rebut cap codi</div>
   </div>
 </template>
 
 <script>
-import InputField from '~/components/ui/InputField'
+import InputSms from '~/components/ui/InputSms'
 import SubmitButton from '~/components/ui/SubmitButton'
-
 import FormSteps from '~/components/blocks/FormSteps'
 
 export default {
   components: {
-    InputField,
     SubmitButton,
-    FormSteps
+    FormSteps,
+    InputSms
   },
 
   middleware ({ store, redirect }) {
