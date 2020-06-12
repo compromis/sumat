@@ -1,38 +1,48 @@
 <template>
-  <div>
+  <div class="container">
     <form-steps :current-step="1" />
     <form :class="{ 'dimmed': submitting }" @submit.prevent="submit">
-      <file-upload
-        name="verify_id_front"
-        label="DNI Front"
-        :invalid="'verify_id_front' in errors"
-        :invalid-message="errors['verify_id_front']"
-        required
-        @change="(file) => verify_id.front = file"
-      />
-      <file-upload
-        name="verify_id_back"
-        label="DNI Back"
-        :invalid="'verify_id_front' in errors"
-        :invalid-message="errors['verify_id_front']"
-        required
-        @change="(file) => verify_id.back = file"
-      />
+      <form-section title="Adjunta el teu DNI / NIE">
+        <field-group>
+          <input-file
+            name="verify_id_front"
+            label="Anvers"
+            :invalid="'verify_id_front' in errors"
+            :invalid-message="errors['verify_id_front']"
+            required
+            class="c-span-2"
+            @change="(file) => verify_id.front = file"
+          />
+          <input-file
+            name="verify_id_back"
+            label="Revers"
+            :invalid="'verify_id_front' in errors"
+            :invalid-message="errors['verify_id_front']"
+            required
+            class="c-span-2"
+            @change="(file) => verify_id.back = file"
+          />
+        </field-group>
+      </form-section>
       <submit-button :submitting="submitting">
-        Adjunta DNI/NIE
+        Adjunta fitxers
       </submit-button>
     </form>
   </div>
 </template>
 
 <script>
-import FileUpload from '~/components/ui/FileUpload'
+import FormSection from '~/components/ui/FormSection'
+import FieldGroup from '~/components/ui/FieldGroup'
+import InputFile from '~/components/ui/InputFile'
 import SubmitButton from '~/components/ui/SubmitButton'
 import FormSteps from '~/components/blocks/FormSteps'
 
 export default {
   components: {
-    FileUpload,
+    FormSection,
+    FieldGroup,
+    InputFile,
     SubmitButton,
     FormSteps
   },
