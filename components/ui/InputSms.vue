@@ -6,15 +6,15 @@
         :id="'digit_'+i"
         :key="i"
         :ref="'field_'+i"
-        type="text"
+        type="tel"
         :name="'digit_'+i"
         class="input"
-        placeholder="X"
         maxlength="1"
         size="1"
+        :aria-label="`Escriu la posició ${i+1} del codi SMS`"
         :required="required"
-        @keydown="(e) => handleKeyDown(e, $refs[`field_${i}`], $refs[`field_${i-1}`])"
-        @keyup="(e) => handleKeyUp(e, 1, $refs[`field_${i+1}`])"
+        @keydown="handleKeyDown($event, i)"
+        @keyup="handleKeyUp($event, i)"
       >
     </div>
     <div>
@@ -47,15 +47,20 @@ export default {
   },
 
   methods: {
-    handleKeyUp (e, maxlength, target) {
-      if (target) {
-        target.focus()
+    handleKeyUp (e, i) {
+      const target = this.$refs[`field_${i + 1}`]
+
+      if (target && e.code !== 'Backspace') {
+        target[0].focus()
       }
     },
 
-    handleKeyDown (e, origin, previous) {
-      if (e.code === 'Backspace' && origin.value.length === 0 && previous) {
-        previous.focus()
+    handleKeyDown (e, i) {
+      const origin = this.$refs[`field_${i}`]
+      const previous = this.$refs[`field_${i - 1}`]
+
+      if (e.code === 'Backspace' && origin[0].value.length === 0 && previous) {
+        previous[0].focus()
       }
     }
   }

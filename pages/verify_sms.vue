@@ -3,7 +3,7 @@
     <form-steps :current-step="2" />
     <div>T’hem enviat un codi de signatura digital al 600 000 000</div>
     <form :class="{ 'dimmed': submitting }" @submit.prevent="submit">
-      <input-sms />
+      <input-sms name="sms_code" />
       <submit-button :submitting="submitting">
         Signa el formulari
       </submit-button>
