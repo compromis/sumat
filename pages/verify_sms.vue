@@ -3,7 +3,7 @@
     <form-steps :current-step="2" />
     <div>T’hem enviat un codi de signatura digital al 600 000 000</div>
     <form :class="{ 'dimmed': submitting }" @submit.prevent="submit">
-      <input-sms name="sms_code" />
+      <input-sms name="sms_code" @code-updated="codeUpdated" />
       <submit-button :submitting="submitting">
         Signa el formulari
       </submit-button>
@@ -66,6 +66,12 @@ export default {
         }).then(() => {
           this.submitting = false
         })
+    },
+    codeUpdated (newCode) {
+      this.sms_code = newCode
+      if (newCode.length === 6) {
+        this.submit()
+      }
     }
   }
 }

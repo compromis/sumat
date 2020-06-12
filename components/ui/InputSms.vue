@@ -6,6 +6,7 @@
         :id="'digit_'+i"
         :key="i"
         :ref="'field_'+i"
+        v-model="digits[i-1]"
         type="tel"
         :name="'digit_'+i"
         class="input"
@@ -15,6 +16,7 @@
         :required="required"
         @keydown="handleKeyDown($event, i)"
         @keyup="handleKeyUp($event, i)"
+        @paste="handlePaste($event)"
       >
     </div>
     <div>
@@ -45,6 +47,17 @@ export default {
       default: ''
     }
   },
+  data () {
+    return {
+      digits: []
+    }
+  },
+
+  watch: {
+    digits (newCode, oldCode) {
+      this.$emit('code-updated', newCode.join(''))
+    }
+  },
 
   methods: {
     handleKeyUp (e, i) {
@@ -62,6 +75,10 @@ export default {
       if (e.code === 'Backspace' && origin[0].value.length === 0 && previous) {
         previous[0].focus()
       }
+    },
+    handlePaste (e) {
+      const code = (e.clipboardData || window.clipboardData).getData('text').split('')
+      this.digits = code
     }
   }
 }
