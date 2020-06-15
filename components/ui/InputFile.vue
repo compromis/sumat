@@ -1,5 +1,5 @@
 <template>
-  <div class="field field-upload">
+  <div :class="['field', 'field-upload', { 'field-error': invalid }]">
     <div
       class="drop-file"
       :class="{
@@ -62,6 +62,9 @@
           </div>
         </div>
       </div>
+      <div v-if="invalidMessage && invalid" class="invalid-message">
+        {{ invalidMessage }}
+      </div>
     </div>
   </div>
 </template>
@@ -94,6 +97,14 @@ export default {
     required: {
       type: Boolean,
       default: false
+    },
+    invalid: {
+      type: Boolean,
+      default: false
+    },
+    invalidMessage: {
+      type: String,
+      default: ''
     }
   },
 
@@ -142,6 +153,7 @@ export default {
   background: $white;
 
   .drop-file {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -188,5 +200,28 @@ label {
 
 .success {
   color: $success;
+}
+
+.field-error {
+  .drop-file {
+    border-color: $danger;
+    background-color: rgba($danger, .15);
+
+    &:hover {
+      border-color: darken($danger, 10%);
+      background-color: rgba($danger, .25);
+    }
+  }
+}
+
+.invalid-message {
+  position: absolute;
+  background: $danger;
+  bottom: .5rem;
+  left: .5rem;
+  right: .5rem;
+  font-size: .75rem;
+  color: $white;
+  border-radius: 4px;
 }
 </style>

@@ -1,14 +1,16 @@
 <template>
-  <div>
+  <div class="d-none d-md-block">
     <ul v-if="isSimpa">
       <li v-for="(step, i) in stepsSimpa" :key="i" :class="{ 'current-step' : currentStep === i || (currentStep === 3 && i === 1)}">
-        <span>{{ i+1 }}</span>
+        <span v-if="currentStep <= i">{{ i+1 }}</span>
+        <span v-else><b-icon-check font-scale="1.5" /></span>
         <div>{{ step }}</div>
       </li>
     </ul>
     <ul v-else>
       <li v-for="(step, i) in steps" :key="i" :class="{ 'current-step' : currentStep === i }">
-        <span>{{ i+1 }}</span>
+        <span v-if="currentStep <= i">{{ i+1 }}</span>
+        <span v-else><b-icon-check font-scale="1.5" /></span>
         <div>{{ step }}</div>
       </li>
     </ul>
@@ -16,8 +18,13 @@
 </template>
 
 <script>
+import { BIconCheck } from 'bootstrap-vue'
+
 export default {
   name: 'FormSteps',
+  components: {
+    BIconCheck
+  },
   props: {
     currentStep: {
       type: Number,
@@ -26,8 +33,8 @@ export default {
   },
   data () {
     return {
-      steps: ['Dades Personals', 'DNI/NIE', 'Signatura', 'Informació Adicional'],
-      stepsSimpa: ['Dades Personals', 'Informació Adicional']
+      steps: ['Dades personals', 'DNI/NIE', 'Signatura', 'Informació adicional'],
+      stepsSimpa: ['Dades personals', 'Informació adicional']
     }
   },
   computed: {
