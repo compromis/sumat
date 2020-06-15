@@ -14,7 +14,7 @@
             v-model="form.u_labor_code"
             name="u_labor_code"
             label="Professió"
-            class="c-span-2 corner-top-left"
+            class="c-span-2 corner-top-left md:corner-top-right"
             :options="laborCodes"
             inline
           />
@@ -77,7 +77,7 @@
               v-model="form.u_public_employee"
               name="u_public_employee"
               label="Administració"
-              class="c-span-2 corner-top-left corner-bottom-left"
+              class="c-span-2 corner-top-left corner-bottom-left md:reset-corner md:corner-top-left md:corner-top-right"
               :options="publicEmployeeOptions"
               inline
             />
@@ -86,7 +86,7 @@
               name="u_public_employee_cat"
               label="Categoria"
               :options="publicEmployeeType"
-              class="c-span-1"
+              class="c-span-1 md:reset-corner md:corner-bottom-left"
               inline
             />
             <input-select
@@ -94,7 +94,7 @@
               name="u_public_employee_type"
               :options="publicEmployeeOptions"
               label="Tipus"
-              class="c-span-1 corner-bottom-right corner-top-right"
+              class="c-span-1 corner-bottom-right corner-top-right md:corner-bottom-right md:reset-corner"
               inline
             />
           </field-group>

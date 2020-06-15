@@ -24,7 +24,7 @@
             v-model="form.u_name"
             label="Nom"
             name="u_name"
-            class="c-span-2 corner-top-left"
+            class="c-span-2 corner-top-left md:corner-top-right"
             autocomplete="given-name"
             required
             :invalid="'u_name' in errors"
@@ -34,7 +34,7 @@
             v-model="form.u_surname"
             label="Cognoms"
             name="u_surname"
-            class="c-span-2 corner-top-right"
+            class="c-span-2 corner-top-right md:reset-corner"
             autocomplete="family-name"
             required
             :invalid="'u_surname' in errors"
@@ -115,7 +115,7 @@
             type="email"
             name="u_email"
             label="E-mail"
-            class="c-span-2 corner-top-left"
+            class="c-span-2 corner-top-left md:corner-top-right"
             required
             :invalid="'uacc_email' in errors"
             :invalid-message="errors['uacc_email']"
@@ -125,13 +125,13 @@
             type="email"
             name="u_email_twice"
             label="Repeteix l'e-mail"
-            class="c-span-2 corner-top-right"
+            class="c-span-2 corner-top-right md:reset-corner"
             required
             :invalid="'uacc_email_twice' in errors"
             :invalid-message="errors['uacc_email_twice']"
           />
           <input-tel
-            class="c-span-2 corner-bottom-left"
+            class="c-span-2 corner-bottom-left md:reset-corner"
             name="u_mobile"
             label="Mòbil"
             required
@@ -143,7 +143,7 @@
             @number-updated="(number) => form.u_mobile = number"
           />
           <input-tel
-            class="c-span-2 corner-bottom-right"
+            class="c-span-2 corner-bottom-right md:corner-bottom-left"
             name="u_phone"
             label="Fixe (opcional)"
             placeholder="960 000 000"
@@ -184,7 +184,7 @@
               type="text"
               name="u_bank_name"
               label="Titular del compte"
-              class="c-span-3 corner-top-left"
+              class="c-span-3 corner-top-left md:corner-top-right"
               required
               :invalid="'u_bank_name' in errors"
               :invalid-message="errors['u_bank_name']"
@@ -194,7 +194,7 @@
               type="text"
               name="u_bank_DNI"
               label="DNI / NIE"
-              class="c-span-1-full corner-top-right"
+              class="c-span-1-full corner-top-right md:reset-corner"
               required
               maxlength="9"
               :invalid="'u_bank_DNI' in errors"
