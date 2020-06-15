@@ -16,8 +16,8 @@
           <input-file
             name="verify_id_back"
             label="Revers"
-            :invalid="'verify_id_front' in errors"
-            :invalid-message="errors['verify_id_front']"
+            :invalid="'verify_id_back' in errors"
+            :invalid-message="errors['verify_id_back']"
             required
             class="c-span-2"
             @change="(file) => verify_id.back = file"
@@ -85,6 +85,8 @@ export default {
 
     submit () {
       this.submitting = true
+      this.$store.commit('clearErrors')
+
       this.$api.requestSms(this.$store.state.form)
         .then((resp) => {
           this.$store.commit('incrementStep')

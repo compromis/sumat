@@ -403,6 +403,8 @@ export default {
 
     submit () {
       this.submitting = true
+      this.$store.commit('clearErrors')
+
       this.$api.preflight(this.form)
         .then(() => {
           // Redirect adherits to ID verification, otherwise Additional Info

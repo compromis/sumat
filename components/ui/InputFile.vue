@@ -24,7 +24,6 @@
         v-bind="$attrs"
         :name="name"
         :accept="accept"
-        :required="required"
         class="sr-only"
         @change="onFileChange($event, false)"
       >

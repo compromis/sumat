@@ -8,8 +8,8 @@
       <form-section :title="'T’hem enviat un codi de signatura digital al ' + $store.state.form.u_mobile">
         <!-- Input method for desktop -->
         <input-sms
-          :invalid="'sms_code' in errors"
-          :invalid-message="errors['sms_code']"
+          :invalid="'sms_code' in errors || 'sms_ref' in errors"
+          :invalid-message="errors['sms_code'] ? errors['sms_code'] : errors['sms_ref']"
           class="mt-4 d-none d-md-block"
           required
           @code-updated="codeUpdated"
@@ -24,8 +24,8 @@
             pattern="[0-9]*"
             autocomplete="one-time-code"
             required
-            :invalid="'sms_code' in errors"
-            :invalid-message="errors['sms_code']"
+            :invalid="'sms_code' in errors || 'sms_ref' in errors"
+            :invalid-message="errors['sms_code'] ? errors['sms_code'] : errors['sms_ref']"
             maxlength="6"
           />
         </field-group>
@@ -102,6 +102,8 @@ export default {
   methods: {
     submit () {
       this.submitting = true
+      this.$store.commit('clearErrors')
+
       this.$api.verifySms(this.$store.state.form)
         .then((resp) => {
           this.$store.commit('incrementStep')
@@ -120,8 +122,11 @@ export default {
 
     retry () {
       this.submitting = true
+      this.$store.commit('clearErrors')
+
       this.$api.requestSms(this.$store.state.form)
         .then((resp) => {
+          console.log(resp)
           this.canRetry = false
           this.hasRetried = true
           this.$store.commit('updateFormField', { name: 'sms_ref', value: resp.sms_ref })
