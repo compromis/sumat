@@ -28,7 +28,7 @@
         <input
           :id="name"
           ref="number"
-          type="text"
+          type="tel"
           :name="name"
           :value="number"
           class="input"

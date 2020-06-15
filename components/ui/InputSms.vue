@@ -1,28 +1,30 @@
 <template>
-  <fieldset>
+  <div :class="{ 'field': true, 'field-error': invalid }">
     <div class="sms-input-group">
       <input
         v-for="i in 6"
         :id="'digit_'+i"
         :key="i"
-        :ref="'field_'+i"
+        :ref="'digit_'+i"
         v-model="digits[i-1]"
-        type="tel"
+        type="text"
         :name="'digit_'+i"
         class="input"
         maxlength="1"
         size="1"
-        :aria-label="`Escriu la posició ${i+1} del codi SMS`"
+        pattern="[0-9]*"
+        :aria-label="`Escriu la posició ${i} del codi SMS`"
         :required="required"
+        autocomplete="off"
+        :autofocus="i === 1"
         @keydown="handleKeyDown($event, i)"
-        @keyup="handleKeyUp($event, i)"
         @paste="handlePaste($event)"
       >
     </div>
-    <div>
+    <div class="invalid-message">
       {{ invalidMessage }}
     </div>
-  </fieldset>
+  </div>
 </template>
 
 <script>
@@ -30,10 +32,6 @@ export default {
   name: 'InputSms',
 
   props: {
-    name: {
-      type: String,
-      required: true
-    },
     required: {
       type: Boolean,
       default: false
@@ -47,35 +45,49 @@ export default {
       default: ''
     }
   },
+
   data () {
     return {
-      digits: []
+      digits: ['', '', '', '', '', '']
     }
   },
 
   watch: {
-    digits (newCode, oldCode) {
+    digits (newCode) {
       this.$emit('code-updated', newCode.join(''))
     }
   },
 
   methods: {
-    handleKeyUp (e, i) {
-      const target = this.$refs[`field_${i + 1}`]
-
-      if (target && e.code !== 'Backspace') {
-        target[0].focus()
-      }
-    },
-
     handleKeyDown (e, i) {
-      const origin = this.$refs[`field_${i}`]
-      const previous = this.$refs[`field_${i - 1}`]
+      const origin = this.$refs[`digit_${i}`]
+      const previous = this.$refs[`digit_${i - 1}`]
+      const next = this.$refs[`digit_${i + 1}`]
 
-      if (e.code === 'Backspace' && origin[0].value.length === 0 && previous) {
+      if (e.code === 'Backspace') {
+        e.preventDefault()
+        this.digits.splice(i - 1, 1, '')
+        if (previous && origin[0].value.length === 0) {
+          previous[0].focus()
+          previous[0].select()
+        }
+      } else if (e.code === 'ArrowLeft' && previous) {
+        e.preventDefault()
         previous[0].focus()
+        previous[0].select()
+      } else if (e.code === 'ArrowRight' && next) {
+        e.preventDefault()
+        next[0].focus()
+        next[0].select()
+      } else if (['1', '2', '3', '4', '5', '6', '7', '8', '9'].includes(e.key)) {
+        e.preventDefault()
+        this.digits.splice(i - 1, 1, e.key)
+        if (next) {
+          next[0].focus()
+        }
       }
     },
+
     handlePaste (e) {
       const code = (e.clipboardData || window.clipboardData).getData('text').split('')
       this.digits = code
@@ -117,8 +129,12 @@ export default {
       color: $danger;
     }
 
-    &[size='4'] {
-      width: 3.5rem;
+    &:focus {
+      box-shadow: inset 0 0 0 4px var(--primary-semitransparent), $raised-shadow;
+    }
+
+    &:last-child {
+      margin-right: 0;
     }
   }
 
@@ -126,21 +142,12 @@ export default {
     border: 1px solid $danger !important;
     background: mix($danger, $white, 15%);
     padding: 1.25rem var(--card-padding) 1.25rem var(--card-padding);
-  }
-
-  legend {
-    color: $danger;
-    transform: scale(0.7) translateY(calc(-50% + -2rem)) !important;
+    border-radius: $card-radius;
   }
 
   .invalid-message {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
     font-size: .75rem;
-    padding: 0 var(--card-padding);
-    background: $danger;
-    color: $white;
+    color: $danger;
+    margin-top: 1rem;
   }
 </style>
