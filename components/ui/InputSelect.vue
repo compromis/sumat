@@ -1,5 +1,5 @@
 <template>
-  <div :class="{ 'select-wrapper': true, 'empty': !value }">
+  <div :class="{ 'select-wrapper': true, 'empty': !value, 'inline-select': inline }">
     <label :for="name" class="sr-only">{{ label }}</label>
     <select :id="name" :name="name" :required="required" @change="(e) => $emit('input', e.target.value)">
       <option value="" hidden selected disabled>
@@ -32,6 +32,10 @@ export default {
       default: ''
     },
     required: {
+      type: Boolean,
+      default: false
+    },
+    inline: {
       type: Boolean,
       default: false
     }
@@ -77,6 +81,17 @@ export default {
     font-weight: 300;
     transform: rotate(90deg);
     pointer-events: none;
+  }
+}
+
+.inline-select {
+  select {
+    border-radius: 0;
+    padding: 1.25rem var(--card-padding);
+  }
+
+  &::after {
+    top: .45rem;
   }
 }
 
