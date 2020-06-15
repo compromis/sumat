@@ -1,5 +1,5 @@
 <template>
-  <fieldset :class="{ 'input-inline-group field': true, 'field-error': invalid }">
+  <fieldset :class="{ 'field': true, 'input-inline-group' : !block, 'input-block-group': block, 'field-error': invalid }">
     <legend class="input-inline-group-label">
       {{ label }}
     </legend>
@@ -54,6 +54,10 @@ export default {
       type: Boolean,
       default: false
     },
+    block: {
+      type: Boolean,
+      default: false
+    },
     invalidMessage: {
       type: String,
       default: ''
@@ -102,5 +106,9 @@ export default {
   padding: 0 var(--card-padding);
   background: $danger;
   color: $white;
+}
+
+.input-block-group {
+  margin: 0 0 1rem 0;
 }
 </style>
