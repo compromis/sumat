@@ -30,7 +30,15 @@ export const state = () => ({
     sms_code: ''
   },
   additional_form: {
-    u_studies: ''
+    u_labor_code: '',
+    u_labor: '',
+    u_union: '',
+    u_studies: '',
+    u_movements: '',
+    u_public_employee: '',
+    u_public_employee_cat: '',
+    u_public_employee_type: '',
+    sectorials: ''
   },
   info: {
     collectius: [],

@@ -27,7 +27,7 @@ export default {
       default: 'name'
     },
     value: {
-      type: String,
+      type: [String, Number],
       default: ''
     },
     checked: {

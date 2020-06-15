@@ -32,7 +32,8 @@ export default {
 @import '../../sass/variables';
 
 button {
-  width: 260px;
+  width: 275px;
+  letter-spacing: -0.02em;
 }
 
 @include media-breakpoint-down(sm) {

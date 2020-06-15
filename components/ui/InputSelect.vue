@@ -1,5 +1,5 @@
 <template>
-  <div :class="{ 'select-wrapper': true, 'empty': !value, 'inline-select': inline }">
+  <div :class="{ 'field select-wrapper': true, 'empty': !value, 'inline-select': inline }">
     <label :for="name" class="sr-only">{{ label }}</label>
     <select :id="name" :name="name" :required="required" @change="(e) => $emit('input', e.target.value)">
       <option value="" hidden selected disabled>
@@ -28,7 +28,7 @@ export default {
       default: ''
     },
     value: {
-      type: String,
+      type: [String, Number],
       default: ''
     },
     required: {
@@ -62,6 +62,7 @@ export default {
     background-color: var(--white);
     font-size: $label-size;
     padding: var(--card-padding);
+    padding-right: 3.25rem;
     width: 100%;
     color: $text-default;
     border-radius: $card-radius;
@@ -88,6 +89,7 @@ export default {
   select {
     border-radius: 0;
     padding: 1.25rem var(--card-padding);
+    padding-right: 3.25rem;
   }
 
   &::after {

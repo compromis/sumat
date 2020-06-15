@@ -126,7 +126,6 @@ export default {
 
       this.$api.requestSms(this.$store.state.form)
         .then((resp) => {
-          console.log(resp)
           this.canRetry = false
           this.hasRetried = true
           this.$store.commit('updateFormField', { name: 'sms_ref', value: resp.sms_ref })

@@ -1,19 +1,18 @@
-.slide-enter-active {
-  transition-duration: 0.3s;
-  transition-timing-function: ease-in;
-}
-
+.slide-enter-active,
 .slide-leave-active {
   transition-duration: 0.3s;
   transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
 }
 
 .slide-enter-to, .slide-leave {
-  max-height: 500px;
+  max-height: 1000px;
   overflow: hidden;
+  opacity: 1;
 }
 
 .slide-enter, .slide-leave-to {
   overflow: hidden;
+  transform: translateY(-1.5rem);
   max-height: 0;
+  opacity: 0;
 }

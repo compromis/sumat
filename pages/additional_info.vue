@@ -6,12 +6,15 @@
         id="mes-info"
         title="Vols afegir més informació?"
       >
+        <template v-slot:additional-info>
+          <span class="text-muted">Tots els camps són opcionals</span>
+        </template>
         <field-group>
           <input-select
             v-model="form.u_labor_code"
             name="u_labor_code"
             label="Professió"
-            class="c-span-1 corner-top-left"
+            class="c-span-2 corner-top-left"
             :options="laborCodes"
             inline
           />
@@ -19,7 +22,7 @@
             v-model="form.u_labor"
             name="u_labor"
             label="Descripció..."
-            class="c-span-3 corner-top-right"
+            class="c-span-2 corner-top-right"
             maxlength="60"
             :invalid="'u_labor' in errors"
             :invalid-message="errors['u_labor']"
@@ -55,24 +58,26 @@
       </form-section>
       <form-section
         id="funcionari"
-        title="Ets Funcionari?"
+        title="Ets funcionari/a?"
       >
         <input-radio-group
           v-model="isPublicEmployee"
           name="isPublicEmployee"
+          label="Funcionari/a"
+          label-sr-only
           block
           :options="[
-            { value: 1, text: 'Si' },
+            { value: 1, text: 'Sí' },
             { value: 0, text: 'No' }
           ]"
         />
-        <transition name="fade">
+        <transition name="slide">
           <field-group v-if="isPublicEmployee">
             <input-select
               v-model="form.u_public_employee"
               name="u_public_employee"
               label="Administració"
-              class="c-span-2 corner-bottom-right"
+              class="c-span-2 corner-top-left corner-bottom-left"
               :options="publicEmployeeOptions"
               inline
             />
@@ -81,7 +86,7 @@
               name="u_public_employee_cat"
               label="Categoria"
               :options="publicEmployeeType"
-              class="c-span-1 corner-bottom-right"
+              class="c-span-1"
               inline
             />
             <input-select
@@ -89,7 +94,7 @@
               name="u_public_employee_type"
               :options="publicEmployeeOptions"
               label="Tipus"
-              class="c-span-1 corner-bottom-right"
+              class="c-span-1 corner-bottom-right corner-top-right"
               inline
             />
           </field-group>
@@ -98,9 +103,11 @@
       <submit-button :submitting="submitting">
         Adjunta informació
       </submit-button>
-      <button @click="skip">
-        Skip
-      </button>
+      <div class="text-center">
+        <button class="btn-link-muted" @click="skip">
+          Omet aquest pas
+        </button>
+      </div>
     </form>
   </div>
 </template>
@@ -139,13 +146,13 @@ export default {
         u_union: '',
         u_studies: '',
         u_movements: '',
-        u_public_employee: 0,
+        u_public_employee: '',
         u_public_employee_cat: '',
         u_public_employee_type: '',
         sectorials: ''
       },
       submitting: false,
-      isPublicEmployee: false,
+      isPublicEmployee: 0,
       publicEmployeeOptions: [
         { value: 1, text: 'Administració de l’Estat' },
         { value: 2, text: 'Administració autonòmica' },
@@ -190,6 +197,15 @@ export default {
         this.$store.commit('updateAdditionalForm', form)
       },
       deep: true
+    },
+
+    isPublicEmployee (newValue) {
+      // Reset public employee values if user changes to No
+      if (newValue === 0) {
+        this.form.u_public_employee = ''
+        this.form.u_public_employee_cat = ''
+        this.form.u_public_employee_type = ''
+      }
     }
   },
 
@@ -223,13 +239,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.fade-enter-active, .fade-leave-active {
-  transition: .25s ease-in-out;
-  max-height: 1000px;
-}
-.fade-enter, .fade-leave-to {
-  max-height: 0;
-  transform: translateY(-1.5rem);
-  opacity: 0;
-}
+
 </style>

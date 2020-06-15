@@ -1,6 +1,6 @@
 <template>
-  <fieldset :class="{ 'field': true, 'input-inline-group' : !block, 'input-block-group': block, 'field-error': invalid }">
-    <legend class="input-inline-group-label">
+  <fieldset :class="{ 'field': true, 'input-inline-group': !block, 'input-block-group': block, 'field-error': invalid }">
+    <legend :class="['input-inline-group-label', { 'sr-only': labelSrOnly }]">
       {{ label }}
     </legend>
     <input-radio
@@ -39,7 +39,7 @@ export default {
       required: true
     },
     value: {
-      type: String,
+      type: [String, Number],
       default: ''
     },
     options: {
@@ -61,6 +61,10 @@ export default {
     invalidMessage: {
       type: String,
       default: ''
+    },
+    labelSrOnly: {
+      type: Boolean,
+      default: false
     }
   }
 }
