@@ -196,6 +196,8 @@ export default {
   methods: {
     submit () {
       this.submitting = true
+      this.$store.commit('clearErrors')
+
       this.$api.attachAdditionalInfo(this.$store.state.additional_form)
         .then((resp) => {
           this.$store.commit('incrementStep')

@@ -265,8 +265,13 @@
     color: $text-muted;
     text-decoration: underline;
 
-    &:hover {
+    &:hover:not(:disabled) {
       text-decoration: underline;
+      color: $text-default;
+    }
+
+    &:disabled {
+      opacity: .5;
     }
   }
 }

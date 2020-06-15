@@ -42,18 +42,22 @@ export default {
 
   /* Corners */
   .corner {
+    &-top-left.field-error,
     &-top-left input {
       border-top-left-radius: $card-radius;
     }
 
+    &-top-right.field-error,
     &-top-right input {
       border-top-right-radius: $card-radius;
     }
 
+    &-bottom-left.field-error,
     &-bottom-left input {
       border-bottom-left-radius: $card-radius;
     }
 
+    &-bottom-right.field-error,
     &-bottom-right input {
       border-bottom-right-radius: $card-radius;
     }
@@ -65,6 +69,7 @@ export default {
     .fields {
       grid-template-columns: 1fr 1fr;
 
+      .c-span-1-full,
       .c-span-2,
       .c-span-3,
       .c-span-4 {

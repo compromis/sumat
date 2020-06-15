@@ -29,8 +29,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../../sass/variables';
+
 button {
-  width: 240px;
-  max-width: 100%;
+  width: 260px;
+}
+
+@include media-breakpoint-down(sm) {
+  button {
+    width: 100%;
+  }
 }
 </style>

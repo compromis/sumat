@@ -194,7 +194,7 @@
               type="text"
               name="u_bank_DNI"
               label="DNI / NIE"
-              class="corner-top-right"
+              class="c-span-1-full corner-top-right"
               required
               maxlength="9"
               :invalid="'u_bank_DNI' in errors"
@@ -403,6 +403,8 @@ export default {
 
     submit () {
       this.submitting = true
+      this.$store.commit('clearErrors')
+
       this.$api.preflight(this.form)
         .then(() => {
           // Redirect adherits to ID verification, otherwise Additional Info

@@ -72,9 +72,9 @@ fieldset {
 
 label {
   margin-right: 1rem;
-  font-size: 2rem;
+  font-size: 1.75rem;
   text-align: center;
-  width: 140px;
+  width: 120px;
   justify-content: center;
 }
 
@@ -107,6 +107,8 @@ label {
 
     &:last-child {
       border-right: 0;
+      margin-right: 0;
+      padding-right: 0;
     }
   }
 }

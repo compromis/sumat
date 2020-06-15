@@ -76,6 +76,10 @@ export default {
       type: Boolean,
       default: false
     },
+    invalidMessage: {
+      type: String,
+      default: ''
+    },
     required: {
       type: Boolean,
       default: false
@@ -180,7 +184,7 @@ export default {
   select {
     appearance: none;
     border: none;
-    background-color: var(--white);
+    background-color: transparent;
     font-size: $label-size;
     width: 100%;
     color: $text-default;

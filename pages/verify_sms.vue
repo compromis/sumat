@@ -2,20 +2,59 @@
   <div class="container verify-sms">
     <form-steps :current-step="2" />
     <form :class="{ 'dimmed': submitting }" @submit.prevent="submit">
-      <form-section title="T’hem enviat un codi de signatura digital al 600 000 000">
-        <input-sms name="sms_code" @code-updated="codeUpdated" />
+      <div v-if="hasRetried" class="alert alert-success">
+        T'hem enviat un nou codi.
+      </div>
+      <form-section :title="'T’hem enviat un codi de signatura digital al ' + $store.state.form.u_mobile">
+        <!-- Input method for desktop -->
+        <input-sms
+          :invalid="'sms_code' in errors || 'sms_ref' in errors"
+          :invalid-message="errors['sms_code'] ? errors['sms_code'] : errors['sms_ref']"
+          class="mt-4 d-none d-md-block"
+          required
+          @code-updated="codeUpdated"
+        />
+        <!-- Input for small screens -->
+        <field-group class="d-md-none mt-2">
+          <input-field
+            v-model="sms_code"
+            name="sms_code"
+            label="Codi SMS"
+            class="c-span-4"
+            pattern="[0-9]*"
+            autocomplete="one-time-code"
+            required
+            :invalid="'sms_code' in errors || 'sms_ref' in errors"
+            :invalid-message="errors['sms_code'] ? errors['sms_code'] : errors['sms_ref']"
+            maxlength="6"
+          />
+        </field-group>
       </form-section>
       <submit-button :submitting="submitting">
         Signa el formulari
       </submit-button>
     </form>
-    <a href="#">No he rebut cap codi</a>
+    <div v-tooltip="!canRetry ? 'Podràs demanar un nou codi si no reps cap SMS en un minut' : false">
+      <button
+        class="btn-link-muted"
+        type="button"
+        :disabled="!canRetry"
+        @click="retry"
+      >
+        No he rebut cap codi
+      </button>
+    </div>
+    <nuxt-link to="/" class="btn-link-muted mt-2">
+      Modificar mòbil
+    </nuxt-link>
   </div>
 </template>
 
 <script>
 import FormSection from '~/components/ui/FormSection'
+import FieldGroup from '~/components/ui/FieldGroup'
 import InputSms from '~/components/ui/InputSms'
+import InputField from '~/components/ui/InputField'
 import SubmitButton from '~/components/ui/SubmitButton'
 import FormSteps from '~/components/blocks/FormSteps'
 
@@ -24,7 +63,9 @@ export default {
     SubmitButton,
     FormSteps,
     InputSms,
-    FormSection
+    InputField,
+    FormSection,
+    FieldGroup
   },
 
   middleware ({ store, redirect }) {
@@ -36,7 +77,9 @@ export default {
   data () {
     return {
       sms_code: '',
-      submitting: false
+      submitting: false,
+      canRetry: false,
+      hasRetried: false
     }
   },
 
@@ -52,9 +95,15 @@ export default {
     }
   },
 
+  mounted () {
+    setTimeout(() => { this.canRetry = true }, 60000)
+  },
+
   methods: {
     submit () {
       this.submitting = true
+      this.$store.commit('clearErrors')
+
       this.$api.verifySms(this.$store.state.form)
         .then((resp) => {
           this.$store.commit('incrementStep')
@@ -70,6 +119,25 @@ export default {
           this.submitting = false
         })
     },
+
+    retry () {
+      this.submitting = true
+      this.$store.commit('clearErrors')
+
+      this.$api.requestSms(this.$store.state.form)
+        .then((resp) => {
+          console.log(resp)
+          this.canRetry = false
+          this.hasRetried = true
+          this.$store.commit('updateFormField', { name: 'sms_ref', value: resp.sms_ref })
+          setTimeout(() => { this.canRetry = true }, 60000)
+        }).catch((resp) => {
+          this.$store.commit('setErrors', resp.errors)
+        }).then(() => {
+          this.submitting = false
+        })
+    },
+
     codeUpdated (newCode) {
       this.sms_code = newCode
       if (newCode.length === 6) {

@@ -79,6 +79,10 @@ export const mutations = {
     state.errors = payload
   },
 
+  clearErrors (state) {
+    state.errors = {}
+  },
+
   setParty (state, payload) {
     state.form.u_party = payload
   },
