@@ -42,18 +42,22 @@ export default {
 
   /* Corners */
   .corner {
+    &-top-left,
     &-top-left input {
       border-top-left-radius: $card-radius;
     }
 
+    &-top-right,
     &-top-right input {
       border-top-right-radius: $card-radius;
     }
 
+    &-bottom-left,
     &-bottom-left input {
       border-bottom-left-radius: $card-radius;
     }
 
+    &-bottom-right,
     &-bottom-right input {
       border-bottom-right-radius: $card-radius;
     }
