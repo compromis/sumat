@@ -22,6 +22,9 @@
 <script>
 import InputRadioButton from '~/components/ui/InputRadioButton'
 import CompromisLogo from '~/components/logos/CompromisLogo'
+import BlocLogo from '~/components/logos/BlocLogo'
+import IniciativaLogo from '~/components/logos/IniciativaLogo'
+import VerdsLogo from '~/components/logos/VerdsLogo'
 
 export default {
   components: {
@@ -46,17 +49,18 @@ export default {
         {
           id: '2',
           name: 'BLOC',
-          logo: null
+          logo: BlocLogo,
+          logoStyle: { maxWidth: '120px' }
         },
         {
           id: '3',
           name: 'Iniciativa',
-          logo: null
+          logo: IniciativaLogo
         },
         {
           id: '4',
           name: 'Verds',
-          logo: null
+          logo: VerdsLogo
         }
       ],
       hideIfUnchecked: true

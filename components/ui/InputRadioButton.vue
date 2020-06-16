@@ -41,6 +41,10 @@ export default {
       type: [Object, Boolean],
       default: false
     },
+    logoStyle: {
+      type: Object,
+      default: null
+    },
     value: {
       type: [String, Number],
       default: ''
@@ -116,9 +120,10 @@ label {
 .logo {
   display: block;
   color: $text-muted;
-  width: 100%;
-  max-width: 150px;
+  width: 80%;
+  height: 30px;
   margin: 0 auto;
+  object-fit: contain;
 }
 
 @include media-breakpoint-down(sm) {
@@ -128,10 +133,6 @@ label {
       max-height: 0 !important;
       padding: 0 1.5rem !important;
       margin: 0 !important;
-    }
-
-    .logo {
-      margin: 0;
     }
   }
 }
