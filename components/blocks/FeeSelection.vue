@@ -57,7 +57,7 @@ export default {
     },
     fees: {
       type: Object,
-      default: null
+      default: () => ({ normal: [], reduced: [] })
     }
   }
 }
