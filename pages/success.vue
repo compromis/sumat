@@ -1,6 +1,6 @@
 <template>
-  <div>
-    Success!
+  <div class="hero">
+    gràcies pel teu compromís
   </div>
 </template>
 
@@ -15,5 +15,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  @import '../sass/variables';
 
+  .hero {
+    background: $gradient;
+    font-size: clamp(2rem, 4vw, 6rem);
+    color: $white;
+    text-align: center;
+    padding: 4vw;
+    font-weight: bold;
+    letter-spacing: -.03em;
+  }
 </style>

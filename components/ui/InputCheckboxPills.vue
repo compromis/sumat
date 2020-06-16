@@ -58,7 +58,7 @@ export default {
 .pill-list {
   display: flex;
   list-style: none;
-  margin: 1rem 0;
+  margin: 0;
   padding: 0;
   flex-wrap: wrap;
 
@@ -90,7 +90,7 @@ export default {
 
 fieldset {
   background: var(--white);
-  padding: 0 var(--card-padding);
+  padding: var(--card-padding);
 }
 
 label {
