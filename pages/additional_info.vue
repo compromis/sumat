@@ -100,6 +100,14 @@
           </field-group>
         </transition>
       </form-section>
+      <form-section
+        id="sectorials"
+        title="Vols apuntar-te a una sectorial?"
+      >
+        <field-group>
+          <input-checkbox-pills v-model="form.sectorials" :options="this.$store.state.info.sectorials" name="sectorials" label="Sectorials" class="c-span-4" />
+        </field-group>
+      </form-section>
       <submit-button :submitting="submitting">
         Adjunta informació
       </submit-button>
@@ -108,6 +116,7 @@
           Omet aquest pas
         </button>
       </div>
+      </form-section>
     </form>
   </div>
 </template>
@@ -115,6 +124,7 @@
 <script>
 import InputField from '~/components/ui/InputField'
 import InputSelect from '~/components/ui/InputSelect'
+import InputCheckboxPills from '~/components/ui/InputCheckboxPills'
 import InputRadioGroup from '~/components/ui/InputRadioGroup'
 import SubmitButton from '~/components/ui/SubmitButton'
 import FormSteps from '~/components/blocks/FormSteps'
@@ -129,13 +139,18 @@ export default {
     FormSteps,
     FormSection,
     FieldGroup,
-    InputRadioGroup
+    InputRadioGroup,
+    InputCheckboxPills
   },
 
   middleware ({ store, redirect }) {
     if (![2, 4].includes(store.state.step)) {
       // return redirect('/')
     }
+  },
+
+  async fetch ({ store, params }) {
+    await store.dispatch('getInfo')
   },
 
   data () {
@@ -149,7 +164,7 @@ export default {
         u_public_employee: '',
         u_public_employee_cat: '',
         u_public_employee_type: '',
-        sectorials: ''
+        sectorials: []
       },
       submitting: false,
       isPublicEmployee: 0,
@@ -183,11 +198,7 @@ export default {
       return this.$store.state.errors
     },
     laborCodes () {
-      return [
-        { value: 0, text: 'Code 0' },
-        { value: 1, text: 'Code 1' }
-      ]
-      // todo: map through this.$store.info.labor_codes, return [{value: obj-name, text: obj-value}]
+      return Object.entries(this.$store.state.info.labor_codes).map(entry => ({ value: entry[0], text: entry[1] }))
     }
   },
 
