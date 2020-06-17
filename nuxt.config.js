@@ -67,7 +67,16 @@ export default {
     // Doc: https://bootstrap-vue.js.org
     'bootstrap-vue/nuxt',
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    ['nuxt-fontawesome', {
+      component: 'fa',
+      imports: [
+        {
+          set: '@fortawesome/free-brands-svg-icons',
+          icons: ['faFacebook', 'faTwitter', 'faInstagram', 'faWhatsapp', 'faYoutube', 'faTelegram']
+        }
+      ]
+    }]
   ],
   /*
   ** Axios module configuration
