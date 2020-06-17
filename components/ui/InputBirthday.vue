@@ -8,7 +8,7 @@
       <input
         :id="`${name}_day`"
         ref="day"
-        type="text"
+        type="tel"
         :name="`${name}_day`"
         :value="day"
         class="input"
@@ -25,7 +25,7 @@
       <input
         :id="`${name}_day`"
         ref="month"
-        type="text"
+        type="tel"
         :name="`${name}_month`"
         :value="month"
         class="input text-center"
@@ -43,7 +43,7 @@
       <input
         :id="`${name}_day`"
         ref="year"
-        type="text"
+        type="tel"
         :name="`${name}_year`"
         :value="year"
         class="input"

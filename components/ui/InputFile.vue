@@ -28,8 +28,11 @@
         @change="onFileChange($event, false)"
       >
       <div v-if="!selectedFile" class="no-file">
-        <div class="icon">
+        <div class="icon d-none d-md-block">
           <b-icon-upload />
+        </div>
+        <div class="icon d-md-none">
+          <b-icon-camera />
         </div>
         <div class="instructions d-none d-md-block">
           Arrosega o selecciona una foto
@@ -69,13 +72,14 @@
 </template>
 
 <script>
-import { BIconUpload, BIconFileEarmarkCheck, BIconCircleFill } from 'bootstrap-vue'
+import { BIconUpload, BIconCamera, BIconFileEarmarkCheck, BIconCircleFill } from 'bootstrap-vue'
 
 export default {
   name: 'InputFile',
 
   components: {
     BIconUpload,
+    BIconCamera,
     BIconFileEarmarkCheck,
     BIconCircleFill
   },
