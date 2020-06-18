@@ -116,7 +116,6 @@ export const mutations = {
   },
 
   setCredentials (state, payload) {
-    console.log('setting', payload)
     state.credentials.number = payload.number
     state.credentials.token = payload.token
   },
