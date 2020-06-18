@@ -6,7 +6,7 @@
     </div>
     <div v-if="isSimpa" class="container">
       <div class="c-card success-text">
-        <span class="c-card num-afiliat"><span>Núm. Afiliat:</span> <span class="num-afiliat-num">{{ affNumber }}</span></span>
+        <span class="c-card num-afiliat"><span>Núm.</span> <span class="num-afiliat-num">{{ affNumber }}</span></span>
         <div class="success-text-bold">
           Activa’t a l’Espai Compromís
         </div>
@@ -18,20 +18,20 @@
             Revisa el teu correu i estableix una contrasenya
           </div>
         </div>
-        <a class="btn btn-primary btn-lg" :href="'https://'+emailDomain">
+        <a class="btn btn-primary btn-lg" :href="'https://' + emailDomain" target="_blank" rel="noopener">
           Ves a {{ emailDomain }}
         </a>
       </div>
     </div>
     <div v-else class="container">
       <div class="c-card success-text">
-        <span class="c-card num-afiliat"><span>Núm. Afiliat:</span> <span class="num-afiliat-num">{{ affNumber }}</span></span>
+        <span class="c-card num-afiliat"><span>Núm.</span> <span class="num-afiliat-num">{{ affNumber }}</span></span>
         <b-icon-hand-thumbs-up class="icon" />
-        Hem rebut les teues dades i estem processant la teua afiliació. Tan pronte com l’acceptem rebràs un e-mail de confirmació.
+        Hem rebut les teues dades i estem processant la teua afiliació. Tan pronte com s’accepte rebràs un e-mail de confirmació per activar el teu usuari.
       </div>
       <div class="c-card">
         <div class="success-text">
-          Mentre esperes...
+          Mentrestant, ens veiems a les xarxes!
         </div>
         <ul class="social-list">
           <li><a href="https://www.facebook.com/coaliciocompromis"><fa :icon="['fab', 'facebook']" /></a></li>
@@ -62,17 +62,12 @@ export default {
       return this.$store.state.form.u_type === '2'
     },
     emailDomain () {
-      const s = this.$store.state.form.u_email
-      return s.split('@')[1]
+      return this.$store.state.form.uacc_email.split('@')[1]
     },
     welcome () {
-      if (this.$store.state.form.u_gender === 'M') {
-        return `Benvingut, ${this.$store.state.form.u_name}`
-      } else if (this.$store.state.form.u_gender === 'F') {
-        return `Benvinguda, ${this.$store.state.form.u_name}`
-      } else {
-        return `Benvingudes, ${this.$store.state.form.u_name}`
-      }
+      const { form } = this.$store.state
+      const greetings = { M: 'Benvingut', F: 'Benvinguda', A: 'Benvingudes' }
+      return `${greetings[form.u_gender]}, ${form.u_name}`
     },
     affNumber () {
       return this.$store.state.credentials.number
@@ -85,22 +80,30 @@ export default {
 @import '../sass/variables';
 
 .success {
+  width: 100%;
+
   .hero {
+    display: flex;
+    flex-direction: column;
     background: $gradient;
     font-size: clamp(2rem, 4vw, 6rem);
     height: 40vh;
+    min-height: 300px;
     color: $white;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    padding: 4vw;
+    padding: 1rem;
     font-weight: bold;
     letter-spacing: -.03em;
     line-height: 1.2;
 
     &-welcome {
       display: block;
-      font-size: 1.5rem;
+      font-size: clamp(1.5rem, 4vw, 1.75rem);
       font-weight: 400;
       letter-spacing: -.02em;
+      margin-top: -5rem;
     }
   }
 
@@ -119,7 +122,7 @@ export default {
 
   .container {
     position: relative;
-    margin-top: -10vh;
+    margin-top: -6rem;
     max-width: 700px;
   }
 
@@ -141,7 +144,7 @@ export default {
     flex-direction: column;
     font-size: 0.8rem;
     padding: .75rem;
-    top: -2rem;
+    top: -1.5rem;
     right: 2rem;
 
     &-num {
@@ -163,6 +166,7 @@ export default {
       width: 4rem;
       background: $gray-200;
       font-size: 1.5rem;
+      font-weight: bold;
       border-radius: 100%;
       margin-right: 1rem;
     }
@@ -175,35 +179,6 @@ export default {
   }
 }
 
-a.apple-link {
-  display: block;
-  position: relative;
-  margin: .5rem 0 1rem 0;
-  font-size: 1.2rem;
-  font-weight: 700;
-  background: $primary;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  opacity: 0.75;
-
-  span {
-    transition: 0.25s ease-in-out;
-    border-bottom: 2px solid transparent;
-  }
-
-  &:hover {
-    text-decoration: none;
-
-    span {
-      border-color: $gradient;
-    }
-  }
-
-  &::after {
-    content: " >";
-  }
-}
-
 ul {
   list-style: none;
   margin: 0;
@@ -213,6 +188,8 @@ ul {
   align-items: center;
   justify-content: center;
   margin-top: 1.5rem;
+  flex-wrap: wrap;
+  width: 100%;
 }
 
 li {
@@ -225,21 +202,49 @@ li {
     align-items: center;
     justify-content: center;
     font-size: 2rem;
-    background: $gray-400;
+    background: var(--gray-400);
     height: 4rem;
     width: 4rem;
     border-radius: 100%;
     color: $white;
+    transition: .15s ease-in-out;
+
+    &:hover {
+      background: var(--gray-500);
+    }
   }
 
   li {
-    margin-right: 1.25rem;
+    margin: .5rem;
   }
 }
 
 @keyframes icon {
-  40%  {transform: scale(1.5) rotate(-20deg);}
-  70% {transform: scale(1) rotate(0);}
+  40% {
+    transform: scale(1.5) rotate(-20deg);
+  }
+  70% {
+    transform: scale(1) rotate(0);
+  }
 }
 
+@include media-breakpoint-down(md) {
+  .success {
+    .c-card {
+      padding: 1rem;
+    }
+
+    .icon {
+      font-size: 5rem;
+    }
+
+    .num-afiliat {
+      padding: .75rem;
+    }
+  }
+
+  .social-list {
+    font-size: 1rem;
+  }
+}
 </style>

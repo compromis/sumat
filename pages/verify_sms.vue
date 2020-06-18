@@ -1,53 +1,55 @@
 <template>
-  <div class="container verify-sms">
-    <form-steps :current-step="2" />
-    <form :class="{ 'dimmed': submitting }" @submit.prevent="submit">
-      <div v-if="hasRetried" class="alert alert-success">
-        T'hem enviat un nou codi.
-      </div>
-      <form-section :title="'T’hem enviat un codi de signatura digital al ' + $store.state.form.u_mobile">
-        <!-- Input method for desktop -->
-        <input-sms
-          :invalid="'sms_code' in errors || 'sms_ref' in errors"
-          :invalid-message="errors['sms_code'] ? errors['sms_code'] : errors['sms_ref']"
-          class="mt-4 d-none d-md-block"
-          required
-          @code-updated="codeUpdated"
-        />
-        <!-- Input for small screens -->
-        <field-group class="d-md-none mt-2">
-          <input-field
-            v-model="sms_code"
-            name="sms_code"
-            label="Codi SMS"
-            class="c-span-4"
-            pattern="[0-9]*"
-            autocomplete="one-time-code"
-            required
+  <main>
+    <div class="container verify-sms">
+      <form-steps :current-step="2" />
+      <form :class="{ 'dimmed': submitting }" @submit.prevent="submit">
+        <div v-if="hasRetried" class="alert alert-success">
+          T'hem enviat un nou codi.
+        </div>
+        <form-section :title="'T’hem enviat un codi de signatura digital al ' + $store.state.form.u_mobile">
+          <!-- Input method for desktop -->
+          <input-sms
             :invalid="'sms_code' in errors || 'sms_ref' in errors"
             :invalid-message="errors['sms_code'] ? errors['sms_code'] : errors['sms_ref']"
-            maxlength="6"
+            class="mt-4 d-none d-md-block"
+            required
+            @code-updated="codeUpdated"
           />
-        </field-group>
-      </form-section>
-      <submit-button :submitting="submitting">
-        Signa el formulari
-      </submit-button>
-    </form>
-    <div v-tooltip="!canRetry ? 'Podràs demanar un nou codi si no reps cap SMS en un minut' : false">
-      <button
-        class="btn-link-muted"
-        type="button"
-        :disabled="!canRetry"
-        @click="retry"
-      >
-        No he rebut cap codi
-      </button>
+          <!-- Input for small screens -->
+          <field-group class="d-md-none mt-2">
+            <input-field
+              v-model="sms_code"
+              name="sms_code"
+              label="Codi SMS"
+              class="c-span-4"
+              pattern="[0-9]*"
+              autocomplete="one-time-code"
+              required
+              :invalid="'sms_code' in errors || 'sms_ref' in errors"
+              :invalid-message="errors['sms_code'] ? errors['sms_code'] : errors['sms_ref']"
+              maxlength="6"
+            />
+          </field-group>
+        </form-section>
+        <submit-button :submitting="submitting">
+          Signa el formulari
+        </submit-button>
+      </form>
+      <div v-tooltip="!canRetry ? 'Podràs demanar un nou codi si no reps cap SMS en un minut' : false">
+        <button
+          class="btn-link-muted"
+          type="button"
+          :disabled="!canRetry"
+          @click="retry"
+        >
+          No he rebut cap codi
+        </button>
+      </div>
+      <nuxt-link to="/" class="btn-link-muted mt-2">
+        Modificar mòbil
+      </nuxt-link>
     </div>
-    <nuxt-link to="/" class="btn-link-muted mt-2">
-      Modificar mòbil
-    </nuxt-link>
-  </div>
+  </main>
 </template>
 
 <script>

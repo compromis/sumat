@@ -1,124 +1,126 @@
 <template>
-  <div class="container">
-    <form-steps :current-step="3" />
-    <form :class="{ 'dimmed': submitting }" @submit.prevent="submit">
-      <form-section
-        id="mes-info"
-        title="Vols afegir més informació?"
-      >
-        <template v-slot:additional-info>
-          <span class="text-muted">Tots els camps són opcionals</span>
-        </template>
-        <field-group>
-          <input-select
-            v-model="form.u_labor_code"
-            name="u_labor_code"
-            label="Professió"
-            class="c-span-2 corner-top-left md:corner-top-right"
-            :options="laborCodes"
-            inline
-          />
-          <input-field
-            v-model="form.u_labor"
-            name="u_labor"
-            label="Descripció..."
-            class="c-span-2 corner-top-right"
-            maxlength="60"
-            :invalid="'u_labor' in errors"
-            :invalid-message="errors['u_labor']"
-          />
-          <input-field
-            v-model="form.u_studies"
-            name="u_studies"
-            label="Estudis"
-            class="c-span-4"
-            maxlength="70"
-            :invalid="'u_studies' in errors"
-            :invalid-message="errors['u_studies']"
-          />
-          <input-field
-            v-model="form.u_union"
-            name="u_union"
-            label="Sindicat"
-            maxlength="45"
-            class="c-span-2 corner-bottom-left"
-            :invalid="'u_union' in errors"
-            :invalid-message="errors['u_union']"
-          />
-          <input-field
-            v-model="form.u_movements"
-            name="u_movements"
-            label="Moviments culturals"
-            maxlength="45"
-            class="c-span-2 corner-bottom-right"
-            :invalid="'u_movements' in errors"
-            :invalid-message="errors['u_movements']"
-          />
-        </field-group>
-      </form-section>
-      <form-section
-        id="funcionari"
-        title="Ets funcionari/a?"
-      >
-        <input-radio-group
-          v-model="isPublicEmployee"
-          name="isPublicEmployee"
-          label="Funcionari/a"
-          label-sr-only
-          block
-          :options="[
-            { value: 1, text: 'Sí' },
-            { value: 0, text: 'No' }
-          ]"
-        />
-        <transition name="slide">
-          <field-group v-if="isPublicEmployee">
+  <main>
+    <div class="container">
+      <form-steps :current-step="3" />
+      <form :class="{ 'dimmed': submitting }" @submit.prevent="submit">
+        <form-section
+          id="mes-info"
+          title="Vols afegir més informació?"
+        >
+          <template v-slot:additional-info>
+            <span class="text-muted">Tots els camps són opcionals</span>
+          </template>
+          <field-group>
             <input-select
-              v-model="form.u_public_employee"
-              name="u_public_employee"
-              label="Administració"
-              class="c-span-2 corner-top-left corner-bottom-left md:reset-corner md:corner-top-left md:corner-top-right"
-              :options="publicEmployeeOptions"
+              v-model="form.u_labor_code"
+              name="u_labor_code"
+              label="Professió"
+              class="c-span-2 corner-top-left md:corner-top-right"
+              :options="laborCodes"
               inline
             />
-            <input-select
-              v-model="form.u_public_employee_cat"
-              name="u_public_employee_cat"
-              label="Categoria"
-              :options="publicEmployeeType"
-              class="c-span-1 md:reset-corner md:corner-bottom-left"
-              inline
+            <input-field
+              v-model="form.u_labor"
+              name="u_labor"
+              label="Descripció..."
+              class="c-span-2 corner-top-right"
+              maxlength="60"
+              :invalid="'u_labor' in errors"
+              :invalid-message="errors['u_labor']"
             />
-            <input-select
-              v-model="form.u_public_employee_type"
-              name="u_public_employee_type"
-              :options="publicEmployeeOptions"
-              label="Tipus"
-              class="c-span-1 corner-bottom-right corner-top-right md:corner-bottom-right md:reset-corner"
-              inline
+            <input-field
+              v-model="form.u_studies"
+              name="u_studies"
+              label="Estudis"
+              class="c-span-4"
+              maxlength="70"
+              :invalid="'u_studies' in errors"
+              :invalid-message="errors['u_studies']"
+            />
+            <input-field
+              v-model="form.u_union"
+              name="u_union"
+              label="Sindicat"
+              maxlength="45"
+              class="c-span-2 corner-bottom-left"
+              :invalid="'u_union' in errors"
+              :invalid-message="errors['u_union']"
+            />
+            <input-field
+              v-model="form.u_movements"
+              name="u_movements"
+              label="Moviments culturals"
+              maxlength="45"
+              class="c-span-2 corner-bottom-right"
+              :invalid="'u_movements' in errors"
+              :invalid-message="errors['u_movements']"
             />
           </field-group>
-        </transition>
-      </form-section>
-      <form-section
-        id="sectorials"
-        title="Vols apuntar-te a una sectorial?"
-      >
-        <field-group>
-          <input-checkbox-pills v-model="form.sectorials" :options="this.$store.state.info.sectorials" name="sectorials" label="Sectorials" class="c-span-4" />
-        </field-group>
-      </form-section>
-      <submit-button :submitting="submitting">
-        Adjunta informació
-      </submit-button>
-      <div class="text-center">
-        <button class="btn-link-muted" @click="skip">
-          Omet aquest pas
-        </button>
-      </div>
-      </form-section>
-    </form>
-  </div>
+        </form-section>
+        <form-section
+          id="funcionari"
+          title="Ets funcionari/a?"
+        >
+          <input-radio-group
+            v-model="isPublicEmployee"
+            name="isPublicEmployee"
+            label="Funcionari/a"
+            label-sr-only
+            block
+            :options="[
+              { value: 1, text: 'Sí' },
+              { value: 0, text: 'No' }
+            ]"
+          />
+          <transition name="slide">
+            <field-group v-if="isPublicEmployee">
+              <input-select
+                v-model="form.u_public_employee"
+                name="u_public_employee"
+                label="Administració"
+                class="c-span-2 corner-top-left corner-bottom-left md:reset-corner md:corner-top-left md:corner-top-right"
+                :options="publicEmployeeOptions"
+                inline
+              />
+              <input-select
+                v-model="form.u_public_employee_cat"
+                name="u_public_employee_cat"
+                label="Categoria"
+                :options="publicEmployeeType"
+                class="c-span-1 md:reset-corner md:corner-bottom-left"
+                inline
+              />
+              <input-select
+                v-model="form.u_public_employee_type"
+                name="u_public_employee_type"
+                :options="publicEmployeeOptions"
+                label="Tipus"
+                class="c-span-1 corner-bottom-right corner-top-right md:corner-bottom-right md:reset-corner"
+                inline
+              />
+            </field-group>
+          </transition>
+        </form-section>
+        <form-section
+          id="sectorials"
+          title="Vols apuntar-te a una sectorial?"
+        >
+          <field-group>
+            <input-checkbox-pills v-model="form.sectorials" :options="this.$store.state.info.sectorials" name="sectorials" label="Sectorials" class="c-span-4" />
+          </field-group>
+        </form-section>
+        <submit-button :submitting="submitting">
+          Adjunta informació
+        </submit-button>
+        <div class="text-center">
+          <button class="btn-link-muted" @click="skip">
+            Omet aquest pas
+          </button>
+        </div>
+        </form-section>
+      </form>
+    </div>
+  </main>
 </template>
 
 <script>

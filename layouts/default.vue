@@ -2,9 +2,7 @@
   <div :class="`partit-${party}`">
     <app-nav />
     <global-errors />
-    <main>
-      <nuxt />
-    </main>
+    <nuxt />
   </div>
 </template>
 
