@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container verify-id">
     <form-steps :current-step="1" />
     <form :class="{ 'dimmed': submitting }" @submit.prevent="submit">
       <form-section title="Adjunta el teu DNI / NIE">
@@ -106,3 +106,16 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+  .verify-id {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    form {
+      width: 100%;
+    }
+  }
+</style>

@@ -29,6 +29,10 @@
   --gradient-end: #{$gradient-end};
 }
 
+body {
+  padding-top: 4rem;
+}
+
 .partit-3 {
   --primary: #{$primary-iniciativa};
   --primary-semitransparent: #{rgba($primary-iniciativa, .5)};
@@ -63,6 +67,15 @@ a.link-muted {
 
 .dimmed {
   opacity: .5;
+}
+
+main {
+  min-height: 80vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Bootstrap vue fix */

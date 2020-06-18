@@ -1,13 +1,15 @@
 <template>
   <div class="container">
-    <h2>Adhereix-te!</h2>
-    <p>
-      A Compromís apostem per una nova manera de fer política.
-      I sabem que el nostre principal actiu ets tu.
-      Per això pensem que la millor manera de donar a conèixer
-      el nostre projecte és confiar en la teua implicació,
-      il·lusió i desig de canvi. Ens ajudes?
-    </p>
+    <div class="hero">
+      <h2>Suma’t!</h2>
+      <p>
+        A Compromís apostem per una nova manera de fer política.
+        I sabem que el nostre principal actiu ets tu.
+        Per això pensem que la millor manera de donar a conèixer
+        el nostre projecte és confiar en la teua implicació,
+        il·lusió i desig de canvi. Ens ajudes?
+      </p>
+    </div>
 
     <form :class="{ 'dimmed': submitting }" @submit.prevent="submit">
       <form-section id="party" title="Partit" title-hidden>
@@ -443,3 +445,26 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+  @import '../sass/variables';
+
+  .hero {
+    h2 {
+      letter-spacing: -.04em;
+      background: $gradient;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      width: fit-content;
+      font-size: 8rem;
+      font-size: clamp(4.5rem, 8vw, 8rem);
+    }
+
+    p {
+      font-size: 1.5rem;
+      font-size: clamp(1.25rem, 4vw, 1.5rem);
+      color: $text-muted;
+      line-height: 1.25;
+    }
+  }
+</style>

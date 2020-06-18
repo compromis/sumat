@@ -56,7 +56,7 @@ ul {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  margin: 1.5rem 0;
+  margin: 2rem 0;
 
   .current-step {
     color: $text-default;
