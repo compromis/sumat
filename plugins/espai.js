@@ -19,7 +19,8 @@ class API {
     return this._call('post', 'verify_sms', params)
   }
 
-  attachAdditionalInfo (params) {
+  attachAdditionalInfo (form, credentials) {
+    const params = { ...form, ...credentials }
     return this._call('post', 'additional_info', params)
   }
 

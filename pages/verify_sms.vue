@@ -92,6 +92,9 @@ export default {
   watch: {
     sms_code (value) {
       this.$store.commit('updateFormField', { name: 'sms_code', value })
+      if (value.length === 6) {
+        this.submit()
+      }
     }
   },
 
@@ -106,6 +109,8 @@ export default {
 
       this.$api.verifySms(this.$store.state.form)
         .then((resp) => {
+          const { number, token } = resp.result
+          this.$store.commit('setCredentials', { number, token })
           this.$store.commit('incrementStep')
           this.$router.push({ name: 'additional_info' })
         }).catch((resp) => {
@@ -139,9 +144,6 @@ export default {
 
     codeUpdated (newCode) {
       this.sms_code = newCode
-      if (newCode.length === 6) {
-        this.submit()
-      }
     }
   }
 }

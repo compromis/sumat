@@ -225,7 +225,7 @@ export default {
       this.submitting = true
       this.$store.commit('clearErrors')
 
-      this.$api.attachAdditionalInfo(this.$store.state.additional_form)
+      this.$api.attachAdditionalInfo(this.$store.state.additional_form, this.$store.state.credentials)
         .then((resp) => {
           this.$store.commit('incrementStep')
           this.$router.push({ name: 'success' })

@@ -18,6 +18,10 @@
         <type-selection v-model="form.u_type" />
       </form-section>
 
+      <div v-if="Object.keys($store.state.errors).length > 0" class="alert alert-warning">
+        Revisa els errors marcats en roig i torna a enviar el formulari
+      </div>
+
       <form-section id="dades-personals" title="Dades personals">
         <field-group>
           <input-field
@@ -406,9 +410,15 @@ export default {
       this.$store.commit('clearErrors')
 
       this.$api.preflight(this.form)
-        .then(() => {
+        .then((resp) => {
           // Redirect adherits to ID verification, otherwise Additional Info
           const name = (this.form.u_type === '1') ? 'verify_id' : 'additional_info'
+          // Set user credentials for additional info if simpa
+          if ('result' in resp) {
+            const { number, token } = resp.result
+            this.$store.commit('setCredentials', { number, token })
+          }
+          // Redirect to next step
           this.$store.commit('incrementStep')
           this.$router.push({ name })
         }).catch((resp) => {

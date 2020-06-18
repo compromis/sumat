@@ -58,6 +58,10 @@ export const state = () => ({
     iniciativa: '3',
     verds: '4',
     compromis: '14'
+  },
+  credentials: {
+    number: '',
+    token: ''
   }
 })
 
@@ -109,6 +113,12 @@ export const mutations = {
 
   incrementStep (state) {
     state.step++
+  },
+
+  setCredentials (state, payload) {
+    console.log('setting', payload)
+    state.credentials.number = payload.number
+    state.credentials.token = payload.token
   },
 
   clearError (state, payload) {
