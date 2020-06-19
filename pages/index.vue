@@ -491,4 +491,11 @@ export default {
     color: var(--white);
     font-weight: bold;
   }
+
+  @include media-breakpoint-down (sm) {
+    .hero h1 {
+      font-size: 4.5rem;
+      font-size: clamp(4.5rem, 8vw, 8rem);
+    }
+  }
 </style>
