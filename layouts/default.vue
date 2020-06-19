@@ -3,16 +3,19 @@
     <app-nav />
     <global-errors />
     <nuxt />
+    <app-footer />
   </div>
 </template>
 
 <script>
 import AppNav from '~/components/layout/AppNav'
+import AppFooter from '~/components/layout/AppFooter'
 import GlobalErrors from '~/components/ui/GlobalErrors'
 
 export default {
   components: {
     AppNav,
+    AppFooter,
     GlobalErrors
   },
   computed: {

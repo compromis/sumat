@@ -1,12 +1,15 @@
 <template>
-  <div class="success">
+  <main class="success">
     <div class="hero">
       <span class="hero-welcome">{{ welcome }}</span>
       <span>Gràcies pel teu compromís</span>
     </div>
     <div v-if="isSimpa" class="container">
       <div class="c-card success-text">
-        <span class="c-card num-afiliat"><span>Núm.</span> <span class="num-afiliat-num">{{ affNumber }}</span></span>
+        <div class="c-card num-afiliat">
+          <span>Núm.</span>
+          <span class="num-afiliat-num">{{ affNumber }}</span>
+        </div>
         <div class="success-text-bold">
           Activa’t a l’Espai Compromís
         </div>
@@ -18,20 +21,28 @@
             Revisa el teu correu i estableix una contrasenya
           </div>
         </div>
-        <a class="btn btn-primary btn-lg" :href="'https://' + emailDomain" target="_blank" rel="noopener">
+        <a
+          class="btn btn-primary btn-lg"
+          :href="'https://' + emailDomain"
+          target="_blank"
+          rel="noopener"
+        >
           Ves a {{ emailDomain }}
         </a>
       </div>
     </div>
     <div v-else class="container">
       <div class="c-card success-text">
-        <span class="c-card num-afiliat"><span>Núm.</span> <span class="num-afiliat-num">{{ affNumber }}</span></span>
+        <div class="c-card num-afiliat">
+          <span>Núm.</span>
+          <span class="num-afiliat-num">{{ affNumber }}</span>
+        </div>
         <b-icon-hand-thumbs-up class="icon" />
         Hem rebut les teues dades i estem processant la teua afiliació. Tan pronte com s’accepte rebràs un e-mail de confirmació per activar el teu usuari.
       </div>
       <div class="c-card">
         <div class="success-text">
-          Mentrestant, ens veiems a les xarxes!
+          Mentrestant, ens veiem a les xarxes!
         </div>
         <ul class="social-list">
           <li><a href="https://www.facebook.com/coaliciocompromis"><fa :icon="['fab', 'facebook']" /></a></li>
@@ -42,7 +53,7 @@
         </ul>
       </div>
     </div>
-  </div>
+  </main>
 </template>
 
 <script>
@@ -80,7 +91,7 @@ export default {
 @import '../sass/variables';
 
 .success {
-  width: 100%;
+  justify-content: flex-start;
 
   .hero {
     display: flex;
@@ -88,6 +99,7 @@ export default {
     background: $gradient;
     font-size: clamp(2rem, 4vw, 6rem);
     height: 40vh;
+    width: 100%;
     min-height: 300px;
     color: $white;
     align-items: center;
@@ -169,6 +181,7 @@ export default {
       font-weight: bold;
       border-radius: 100%;
       margin-right: 1rem;
+      flex-shrink: 0;
     }
   }
 
