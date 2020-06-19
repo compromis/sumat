@@ -83,11 +83,7 @@ export default {
   components: {
     BIconHandThumbsUp
   },
-  middleware ({ store, redirect }) {
-    if (![3, 5].includes(store.state.step)) {
-      // return redirect('/')
-    }
-  },
+
   computed: {
     isSimpa () {
       return this.$store.state.form.u_type === '2'

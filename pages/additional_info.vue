@@ -145,12 +145,6 @@ export default {
     InputCheckboxPills
   },
 
-  middleware ({ store, redirect }) {
-    if (![2, 4].includes(store.state.step)) {
-      return redirect('/')
-    }
-  },
-
   async fetch ({ store, params }) {
     await store.dispatch('getInfo')
   },

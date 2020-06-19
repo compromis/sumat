@@ -71,12 +71,6 @@ export default {
     FieldGroup
   },
 
-  middleware ({ store, redirect }) {
-    if (!store.state.step !== 3) {
-      return redirect('/')
-    }
-  },
-
   data () {
     return {
       sms_code: '',
