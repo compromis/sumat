@@ -402,6 +402,15 @@ export default {
     }
   },
 
+  mounted () {
+    /* Set referer */
+    const urlParams = new URLSearchParams(window.location.search)
+    const referer = urlParams.get('ref')
+    if (referer) {
+      this.$store.commit('updateFormField', { name: 'referer', value: referer })
+    }
+  },
+
   methods: {
     updateForm (form) {
       this.$store.commit('updateForm', form)
