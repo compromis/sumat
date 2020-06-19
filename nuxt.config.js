@@ -12,8 +12,21 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' },
-      { property: 'og:image', content: '/thumbnail.png' }
+      { hid: 'description', name: 'description', content: 'A Compromís apostem per una nova manera de fer política. I sabem que el nostre principal actiu ets tu. Per això pensem que la millor manera de donar a conèixer el nostre projecte és confiar en la teua implicació, il·lusió i desig de canvi. Ens ajudes?' },
+      { property: 'og:image', content: 'https://sumat.compromis.net/thumbnail.png' },
+      { property: 'og:title', content: "Suma't a Compromís" },
+      { property: 'og:description', content: 'A Compromís apostem per una nova manera de fer política. Ens ajudes?' },
+      { property: 'og:type', content: 'website' },
+      { property: 'og:url', content: 'https://sumat.compromis.net' },
+      { property: 'og:type', content: 'website' },
+      { property: 'fb:app_id', content: '252515324782640' },
+      { property: 'twitter:site', content: '@compromis' },
+      { property: 'twitter:account_id', content: '1510092958' },
+      { property: 'twitter:card', content: 'summary_large_image' },
+      { property: 'twitter:title', content: "Suma't a Compromís" },
+      { property: 'twitter:description', content: 'A Compromís apostem per una nova manera de fer política. Ens ajudes?' },
+      { property: 'twitter:image', content: 'https://sumat.compromis.net/thumbnail.png' },
+      { property: 'twitter:url', content: 'http://compromis.net' }
     ],
     link: [
       {
