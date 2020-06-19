@@ -81,7 +81,7 @@ export default {
         e.preventDefault()
         next[0].focus()
         next[0].select()
-      } else if (['1', '2', '3', '4', '5', '6', '7', '8', '9'].includes(e.key)) {
+      } else if (['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'].includes(e.key)) {
         e.preventDefault()
         this.digits.splice(i - 1, 1, e.key)
         if (next) {
