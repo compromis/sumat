@@ -11,9 +11,10 @@
       :label="option.text"
       :checked="value === option.value"
       :required="required"
+      :aria-describedby="name + 'Error'"
       @input="(value) => { $emit('input', value); $store.commit('clearError', name) }"
     />
-    <div v-if="invalid && invalidMessage" class="invalid-message">
+    <div v-if="invalid && invalidMessage" :id="name + 'Error'" class="invalid-message">
       {{ invalidMessage }}
     </div>
   </fieldset>

@@ -36,9 +36,11 @@
           pattern="[0-9]*"
           :placeholder="placeholder"
           :required="required"
+          :aria-describedby="name + 'Error'"
+          :aria-invalid="invalid"
           @input="$emit('number-updated', $event.target.value)"
         >
-        <div v-if="invalid && invalidMessage" class="invalid-message">
+        <div v-if="invalid && invalidMessage" :id="name + 'Error'" class="invalid-message">
           {{ invalidMessage }}
         </div>
       </div>

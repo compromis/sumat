@@ -7,6 +7,7 @@
         'is-loading': isSaving,
         'is-dragging': isDragging
       }"
+      aria-live="polite"
       @click="selectFile"
       @drag.prevent=""
       @dragstart.prevent="isDragging = true"
@@ -25,6 +26,7 @@
         :name="name"
         :accept="accept"
         class="sr-only"
+        :aria-describedby="name + 'Error ' + name + 'Instructions ' + name + 'Specs'"
         @change="onFileChange($event, false)"
       >
       <div v-if="!selectedFile" class="no-file">
@@ -34,13 +36,13 @@
         <div class="icon d-md-none">
           <b-icon-camera />
         </div>
-        <div class="instructions d-none d-md-block">
+        <div :id="name + 'Instructions'" class="instructions d-none d-md-block">
           Arrosega o selecciona una foto
         </div>
         <div class="instructions d-md-none">
           Fes una foto o selecciona un arxiu
         </div>
-        <div class="instructions-detail">
+        <div :id="name + 'Specs'" class="instructions-detail">
           Fitxers <strong>.jpg</strong>, <strong>.jpeg</strong>,
           <strong>.png</strong>, <strong>.tiff</strong> o <strong>.pdf</strong>
           fins a <strong>2MB</strong>.
@@ -59,12 +61,12 @@
           <div class="icon success">
             <b-icon-file-earmark-check />
           </div>
-          <div class="instructions success">
+          <div :id="name + 'Instructions'" class="instructions success">
             Fitxer adjuntat
           </div>
         </div>
       </div>
-      <div v-if="invalidMessage && invalid" class="invalid-message">
+      <div v-if="invalidMessage && invalid" :id="name + 'Error'" class="invalid-message">
         {{ invalidMessage }}
       </div>
     </div>
@@ -169,7 +171,8 @@ export default {
     transition: 150ms ease-in-out;
 
     &.is-dragging,
-    &.is-dragging:hover {
+    &.is-dragging:hover,
+    &:focus-within {
       background: rgba($primary, .15);
       border-color: var(--primary);
     }

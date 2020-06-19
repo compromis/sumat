@@ -1,14 +1,17 @@
 <template>
-  <div class="nav">
+  <nav class="nav">
     <div class="container d-flex">
-      <a href="https://compromis.net">
+      <a href="https://compromis.net" class="logo" aria-label="Compromís">
         <compromis-logo />
       </a>
-      <div class="ml-auto d-flex align-items-center">
-        <a href="https://compromis.net/espai" class="btn-link-muted d-none d-sm-inline">Inicia sessió</a>
+      <div class="site-title">
+        Formulari d’adhesió
+      </div>
+      <div class="ml-auto align-items-center d-none d-md-flex">
+        <a href="https://compromis.net/espai" class="btn-link-muted d-inline">Inicia sessió</a>
       </div>
     </div>
-  </div>
+  </nav>
 </template>
 
 <script>
@@ -35,8 +38,27 @@ export default {
     z-index: 1000;
     border-bottom: 1px var(--gray-100) solid;
 
-    svg {
-      height: 1.75rem;
+    .logo {
+      display: block;
+      transition: .15s ease-in-out;
+
+      svg {
+        height: 1.75rem;
+      }
+    }
+
+    .site-title {
+      color: $text-muted;
+      font-size: 1.2rem;
+      padding-left: .5rem;
+      letter-spacing: -.02em;
+    }
+  }
+
+  @include media-breakpoint-down (sm) {
+    .logo {
+      width: 2rem;
+      overflow: hidden;
     }
   }
 </style>

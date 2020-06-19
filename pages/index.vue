@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <div class="hero">
-      <h2>Suma’t!</h2>
+    <header class="hero">
+      <h1>Suma’t!</h1>
       <p>
         A Compromís apostem per una nova manera de fer política.
         I sabem que el nostre principal actiu ets tu.
@@ -9,7 +9,7 @@
         el nostre projecte és confiar en la teua implicació,
         il·lusió i desig de canvi. Ens ajudes?
       </p>
-    </div>
+    </header>
 
     <form :class="{ 'dimmed': submitting }" @submit.prevent="submit">
       <form-section id="party" title="Partit" title-hidden>
@@ -20,8 +20,10 @@
         <type-selection v-model="form.u_type" />
       </form-section>
 
-      <div v-if="Object.keys($store.state.errors).length > 0" class="alert alert-warning">
-        Revisa els errors marcats en roig i torna a enviar el formulari
+      <div ref="errorWarning" aria-live="polite" :tabindex="Object.keys($store.state.errors).length > 0 ? 0 : false">
+        <div v-if="Object.keys($store.state.errors).length > 0" class="c-card error-warning" role="alert">
+          👇 Alguns camps contenen errors. Revisa el formulari i torna'l a enviar
+        </div>
       </div>
 
       <form-section id="dades-personals" title="Dades personals">
@@ -315,6 +317,7 @@ export default {
   },
 
   asyncData ({ store, route, params }) {
+    /* Set party and type */
     if (route.name === 'simpatitzant') {
       store.commit('setType', '2')
     } else if ('party' in params) {
@@ -402,6 +405,15 @@ export default {
     }
   },
 
+  mounted () {
+    /* Set referer */
+    const urlParams = new URLSearchParams(window.location.search)
+    const referer = urlParams.get('ref')
+    if (referer) {
+      this.$store.commit('updateFormField', { name: 'referer', value: referer })
+    }
+  },
+
   methods: {
     updateForm (form) {
       this.$store.commit('updateForm', form)
@@ -427,10 +439,12 @@ export default {
           // Set errors
           this.$store.commit('setErrors', resp.errors)
           // Scroll to top
+          const formStart = this.$refs.errorWarning
           window.scrollTo({
-            top: 0,
+            top: formStart.offsetTop - 80,
             behavior: 'smooth'
           })
+          formStart.focus()
         }).then(() => {
           this.submitting = false
         })
@@ -440,6 +454,9 @@ export default {
       this.showAvals = !this.showAvals
       if (this.showAvals) {
         this.$refs.avals.focus()
+      } else {
+        this.form.u_aval_1 = ''
+        this.form.u_aval_2 = ''
       }
     }
   }
@@ -450,7 +467,7 @@ export default {
   @import '../sass/variables';
 
   .hero {
-    h2 {
+    h1 {
       letter-spacing: -.04em;
       background: $gradient;
       -webkit-background-clip: text;
@@ -458,6 +475,7 @@ export default {
       width: fit-content;
       font-size: 8rem;
       font-size: clamp(4.5rem, 8vw, 8rem);
+      margin-top: 1rem;
     }
 
     p {
@@ -466,5 +484,11 @@ export default {
       color: $text-muted;
       line-height: 1.25;
     }
+  }
+
+  .error-warning {
+    background: var(--gray-900);
+    color: var(--white);
+    font-weight: bold;
   }
 </style>

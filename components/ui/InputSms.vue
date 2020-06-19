@@ -15,13 +15,15 @@
         pattern="[0-9]*"
         :aria-label="`Escriu la posició ${i} del codi SMS`"
         :required="required"
+        aria-describedby="smsError"
+        :aria-invalid="invalid"
         autocomplete="off"
         :autofocus="i === 1"
         @keydown="handleKeyDown($event, i)"
         @paste="handlePaste($event)"
       >
     </div>
-    <div class="invalid-message">
+    <div v-if="invalid" id="smsError" class="invalid-message">
       {{ invalidMessage }}
     </div>
   </div>

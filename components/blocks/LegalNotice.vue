@@ -5,9 +5,9 @@
       Les teues dades s'enviaran de forma segura a través d'una connexió xifrada SSL
     </div>
     <p class="legal text-muted my-4">
-      <strong>Compromís</strong> en compliment del que estableix la Llei Orgànica 3/2018,
-      de 5 de desembre, de Protecció de Dades Personals i Drets Digitals, li informem que les dades
-      personals que va a proporcionar-nos seran incorporades a un fitxer automatitzat de Compromís,
+      <strong>Compromís</strong> en compliment del que estableix la <strong>Llei Orgànica 3/2018,
+        de 5 de desembre</strong>, de <strong>Protecció de Dades Personals i Drets Digitals</strong>, li informem que les dades
+      personals que va a proporcionar-nos seran incorporades a un fitxer automatitzat de <strong>Compromís</strong>,
       que com a responsable del fitxer, tractarà els mateixos a fi de tramitar la seua afiliació,
       permetre l'exercici dels drets i deures, gestionar la seua participació i oferir-li informació
       sobre les nostres activitats, ja siga per correu ordinari, electrònic, SMS o un altre mitjà de

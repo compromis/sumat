@@ -86,14 +86,14 @@
                 v-model="form.u_public_employee_cat"
                 name="u_public_employee_cat"
                 label="Categoria"
-                :options="publicEmployeeType"
+                :options="publicEmployeeCategory"
                 class="c-span-1 md:reset-corner md:corner-bottom-left"
                 inline
               />
               <input-select
                 v-model="form.u_public_employee_type"
                 name="u_public_employee_type"
-                :options="publicEmployeeOptions"
+                :options="publicEmployeeTypes"
                 label="Tipus"
                 class="c-span-1 corner-bottom-right corner-top-right md:corner-bottom-right md:reset-corner"
                 inline
@@ -147,7 +147,7 @@ export default {
 
   middleware ({ store, redirect }) {
     if (![2, 4].includes(store.state.step)) {
-      // return redirect('/')
+      return redirect('/')
     }
   },
 
@@ -188,9 +188,9 @@ export default {
         { value: 'C2', text: 'C2' },
         { value: 'APF', text: 'APF' }
       ],
-      publicEmployeeType: [
-        { value: 'C', text: 'C' },
-        { value: 'I', text: 'I' }
+      publicEmployeeTypes: [
+        { value: 'C', text: 'Carrera' },
+        { value: 'I', text: 'Interinatge' }
       ]
     }
   },

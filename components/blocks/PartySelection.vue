@@ -77,13 +77,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-@import '../../sass/variables';
-
-@include media-breakpoint-down(sm) {
-  .field {
-    color: red;
-  }
-}
-</style>
