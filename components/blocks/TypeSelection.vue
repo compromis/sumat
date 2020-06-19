@@ -9,16 +9,16 @@
         @input="(value) => $emit('input', value)"
       >
         <div v-if="party === '2'">
-          Com a adherit/da tindràs tots els drets i deures recollits en les <a href="#">bases del BLOC</a>.
+          Com a adherit/da tindràs tots els drets i deures recollits en les <a href="https://comprom.is/estatutsbloc" target="_blank">bases del BLOC</a>.
         </div>
         <div v-else-if="party === '3'">
-          Com a adherit/da tindràs tots els drets i deures recollits en les <a href="#">bases d'Iniciativa</a>.
+          Com a adherit/da tindràs tots els drets i deures recollits en les <a href="https://comprom.is/estatutsiniciativa" target="_blank">bases d'Iniciativa</a>.
         </div>
         <div v-else-if="party === '4'">
-          Com a adherit/da tindràs tots els drets i deures recollits en les <a href="#">bases dels Verds</a>.
+          Com a adherit/da tindràs tots els drets i deures recollits en les <a href="https://comprom.is/estatutsverds" target="_blank">bases dels Verds</a>.
         </div>
         <div v-else>
-          Com a adherit/da tindràs tots els drets i deures recollits en les <a href="#">bases de Compromís</a>.
+          Com a adherit/da tindràs tots els drets i deures recollits en les <a href="https://comprom.is/estatuts" target="_blank">bases de Compromís</a>.
         </div>
       </input-radio-button>
     </div>
