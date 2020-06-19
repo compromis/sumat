@@ -5,7 +5,7 @@
     </legend>
     <div class="row fees">
       <div class="fees-wrapper">
-        <span class="fee-list-label">Quota normal</span>
+        <span id="quotaNormalLabel" class="fee-list-label">Quota normal</span>
         <div class="fee-list fee-list-normal">
           <input-radio-button
             v-for="fee in fees.normal"
@@ -15,13 +15,14 @@
             :value="fee"
             :label="fee+'€'"
             :checked="value === fee"
+            aria-describedby="quotaNormalLabel quotaNormalFreq"
             @input="(value) => $emit('input', value)"
           />
         </div>
-        <span class="fee-list-subtitle">Cada 6 mesos</span>
+        <span id="quotaNormalFreq" class="fee-list-subtitle">Cada 6 mesos</span>
       </div>
       <div class="fees-wrapper">
-        <span class="fee-list-label">Quota reduïda <span class="fee-list-label-info">(estudiants, parats, jubilats)</span></span>
+        <span id="quotaReduidaLabel" class="fee-list-label">Quota reduïda <span class="fee-list-label-info">(estudiants, parats, jubilats)</span></span>
         <div class="fee-list fee-list-reduced">
           <input-radio-button
             v-for="fee in fees.reduced"
@@ -31,10 +32,11 @@
             :value="fee"
             :label="fee+'€'"
             :checked="value === fee"
+            aria-describedby="quotaReduidaLabel quotaReduidaFreq"
             @input="(value) => $emit('input', value)"
           />
         </div>
-        <span class="fee-list-subtitle">Cada 6 mesos</span>
+        <span id="quotaReduidaFreq" class="fee-list-subtitle">Cada 6 mesos</span>
       </div>
     </div>
   </fieldset>

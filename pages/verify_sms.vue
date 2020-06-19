@@ -35,16 +35,17 @@
           Signa el formulari
         </submit-button>
       </form>
-      <div v-tooltip="!canRetry ? 'Podràs demanar un nou codi si no reps cap SMS en un minut' : false">
-        <button
-          class="btn-link-muted"
-          type="button"
-          :disabled="!canRetry"
-          @click="retry"
-        >
-          No he rebut cap codi
-        </button>
-      </div>
+      <button
+        v-tooltip="!canRetry ? {
+          trigger: 'hover click focus',
+          content: 'Podràs demanar un nou codi si no reps cap SMS en un minut'
+        } : false"
+        :class="['btn-link-muted', { 'disabled': !canRetry }]"
+        type="button"
+        @click="retry"
+      >
+        No he rebut cap codi
+      </button>
       <nuxt-link to="/" class="btn-link-muted mt-2">
         Modificar mòbil
       </nuxt-link>
@@ -72,7 +73,7 @@ export default {
 
   middleware ({ store, redirect }) {
     if (!store.state.step !== 3) {
-      // return redirect('/')
+      return redirect('/')
     }
   },
 
@@ -128,6 +129,7 @@ export default {
     },
 
     retry () {
+      if (!this.canRetry) { return }
       this.submitting = true
       this.$store.commit('clearErrors')
 
@@ -157,5 +159,9 @@ export default {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+  }
+
+  .disabled {
+    opacity: .5;
   }
 </style>

@@ -20,6 +20,7 @@
       :value="value"
       class="sr-only"
       :checked="checked"
+      :aria-describedby="ariaDescribedby"
       @input="$emit('input', value)"
     >
   </label>
@@ -56,6 +57,10 @@ export default {
     hiddenIfUnchecked: {
       type: Boolean,
       default: false
+    },
+    ariaDescribedby: {
+      type: String,
+      default: null
     }
   }
 }

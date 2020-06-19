@@ -45,11 +45,31 @@
           Mentrestant, ens veiem a les xarxes!
         </div>
         <ul class="social-list">
-          <li><a href="https://www.facebook.com/coaliciocompromis"><fa :icon="['fab', 'facebook']" /></a></li>
-          <li><a href="https://twitter.com/compromis"><fa :icon="['fab', 'twitter']" /></a></li>
-          <li><a href="https://www.instagram.com/compromis_net/"><fa :icon="['fab', 'instagram']" /></a></li>
-          <li><a href="https://www.youtube.com/user/coaliciocompromis"><fa :icon="['fab', 'youtube']" /></a></li>
-          <li><a href="https://t.me/compromis"><fa :icon="['fab', 'telegram']" /></a></li>
+          <li>
+            <a href="https://www.facebook.com/coaliciocompromis" aria-label="Facebook">
+              <fa :icon="['fab', 'facebook']" />
+            </a>
+          </li>
+          <li>
+            <a href="https://twitter.com/compromis" aria-label="Twitter">
+              <fa :icon="['fab', 'twitter']" />
+            </a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/compromis_net/" aria-label="Instagram">
+              <fa :icon="['fab', 'instagram']" />
+            </a>
+          </li>
+          <li>
+            <a href="https://www.youtube.com/user/coaliciocompromis" aria-label="YouTube">
+              <fa :icon="['fab', 'youtube']" />
+            </a>
+          </li>
+          <li>
+            <a href="https://t.me/compromis" aria-label="Telegram">
+              <fa :icon="['fab', 'telegram']" />
+            </a>
+          </li>
         </ul>
       </div>
     </div>

@@ -2,6 +2,7 @@
   <div :class="{ 'field': true, 'field-error': invalid, 'has-value': value }">
     <label :for="name" class="label">{{ label }}</label>
     <input
+      :id="name"
       :type="type"
       :name="name"
       :value="value"
@@ -10,9 +11,11 @@
       :autocomplete="autocomplete"
       :required="required"
       :pattern="pattern"
+      :aria-describedby="name + 'Error'"
+      :aria-invalid="invalid"
       @input="(e) => $emit('input', e.target.value)"
     >
-    <div v-if="invalid && invalidMessage" class="invalid-message">
+    <div v-if="invalid && invalidMessage" :id="name + 'Error'" class="invalid-message">
       {{ invalidMessage }}
     </div>
   </div>
