@@ -10,7 +10,9 @@
         </div>
         <div class="help col-md-5 mt-4 mt-md-0">
           <b-icon-question-circle />
-          Necessites ajuda? Contacta amb <a href="mailto:web@compromis.net" class="btn-link-muted">web@compromis.net</a>
+          <i18n path="footer.help" tag="span">
+            <a href="mailto:web@compromis.net" class="btn-link-muted">web@compromis.net</a>
+          </i18n>
         </div>
       </div>
     </div>

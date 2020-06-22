@@ -5,7 +5,7 @@
         <compromis-logo />
       </a>
       <div class="site-title">
-        Formulari d’adhesió
+        {{ $t('nav.title') }}
       </div>
       <div class="ml-auto align-items-center d-flex">
         <span class="sr-only">Idioma</span>

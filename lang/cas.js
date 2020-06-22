@@ -107,5 +107,11 @@ export default {
     },
     submit: 'Adjuntar información',
     skip: 'Omitir este paso'
+  },
+  nav: {
+    title: 'Formulario de adhesión'
+  },
+  footer: {
+    help: '¿Necesitas ayuda? Contacta con {0}'
   }
 }
