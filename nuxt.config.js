@@ -95,7 +95,28 @@ export default {
           icons: ['faFacebook', 'faTwitter', 'faInstagram', 'faWhatsapp', 'faYoutube', 'faTelegram']
         }
       ]
-    }]
+    }],
+    [
+      'nuxt-i18n',
+      {
+        locales: [{
+          code: 'val',
+          iso: 'ca',
+          file: 'val.js'
+        },
+        {
+          code: 'cas',
+          iso: 'es-ES',
+          file: 'cas.js'
+        }],
+        lazy: true,
+        langDir: 'lang/',
+        defaultLocale: 'val',
+        vueI18n: {
+          fallbackLocale: 'val'
+        }
+      }
+    ]
   ],
   /*
   ** Axios module configuration

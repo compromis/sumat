@@ -8,7 +8,13 @@
         Formulari d’adhesió
       </div>
       <div class="ml-auto align-items-center d-none d-md-flex">
-        <a href="https://compromis.net/espai" class="btn-link-muted d-inline">Inicia sessió</a>
+        <span class="sr-only">Idioma</span>
+        <button :class="['btn-link-muted mr-2', { 'selected': $i18n.locale === 'val' }]" :aria-pressed="$i18n.locale === 'val'" @click="setLocale('val')">
+          Valencià
+        </button>
+        <button :class="['btn-link-muted', { 'selected': $i18n.locale === 'cas' }]" :aria-pressed="$i18n.locale === 'cas'" @click="setLocale('cas')">
+          Castellano
+        </button>
       </div>
     </div>
   </nav>
@@ -20,6 +26,12 @@ import CompromisLogo from '~/components/logos/CompromisLogo'
 export default {
   components: {
     CompromisLogo
+  },
+
+  methods: {
+    setLocale (locale) {
+      this.$i18n.locale = locale
+    }
   }
 }
 </script>
@@ -53,6 +65,11 @@ export default {
       padding-left: .5rem;
       letter-spacing: -.02em;
     }
+  }
+
+  .selected {
+    font-weight: bold;
+    color: var(--gray-900);
   }
 
   @include media-breakpoint-down (sm) {
