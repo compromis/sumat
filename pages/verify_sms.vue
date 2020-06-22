@@ -71,6 +71,12 @@ export default {
     FieldGroup
   },
 
+  middleware ({ store, redirect }) {
+    if (store.state.step !== 'verify_sms') {
+      return redirect('/')
+    }
+  },
+
   data () {
     return {
       sms_code: '',
@@ -108,7 +114,7 @@ export default {
         .then((resp) => {
           const { number, token } = resp.result
           this.$store.commit('setCredentials', { number, token })
-          this.$store.commit('incrementStep')
+          this.$store.commit('setStep', 'additional_info')
           this.$router.push({ name: 'additional_info' })
         }).catch((resp) => {
           this.$store.commit('setErrors', resp.errors)

@@ -98,9 +98,8 @@ export const mutations = {
     state.form.u_type = payload
   },
 
-
-  incrementStep (state) {
-    state.step++
+  setStep (state, payload) {
+    state.step = payload
   },
 
   setCredentials (state, payload) {

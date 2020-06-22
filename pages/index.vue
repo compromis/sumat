@@ -433,7 +433,7 @@ export default {
             this.$store.commit('setCredentials', { number, token })
           }
           // Redirect to next step
-          this.$store.commit('incrementStep')
+          this.$store.commit('setStep', name)
           this.$router.push({ name })
         }).catch((resp) => {
           // Set errors

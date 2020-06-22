@@ -149,6 +149,12 @@ export default {
     await store.dispatch('getInfo')
   },
 
+  middleware ({ store, redirect }) {
+    if (![2, 4].includes(store.state.step)) {
+      return redirect('/')
+    }
+  },
+
   data () {
     return {
       form: {
@@ -223,7 +229,7 @@ export default {
 
       this.$api.attachAdditionalInfo(this.$store.state.additional_form, this.$store.state.credentials)
         .then((resp) => {
-          this.$store.commit('incrementStep')
+          this.$store.commit('setStep', 'success')
           this.$router.push({ name: 'success' })
         }).catch((resp) => {
           this.$store.commit('setErrors', resp.errors)
@@ -238,7 +244,7 @@ export default {
     },
 
     skip () {
-      this.$store.commit('incrementStep')
+      this.$store.commit('setStep', 'success')
       this.$router.push({ name: 'success' })
     }
   }

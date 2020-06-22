@@ -42,7 +42,7 @@
       </div>
       <div class="c-card">
         <div class="success-text">
-          Mentrestant, ens veiem a les xarxes!
+          Mentrestant, pots seguir-nos a les xarxes
         </div>
         <ul class="social-list">
           <li>
@@ -82,6 +82,12 @@ import { BIconHandThumbsUp } from 'bootstrap-vue'
 export default {
   components: {
     BIconHandThumbsUp
+  },
+
+  middleware ({ store, redirect }) {
+    if (store.state.step !== 'success') {
+      return redirect('/')
+    }
   },
 
   computed: {

@@ -59,6 +59,12 @@ export default {
     }
   },
 
+  middleware ({ store, redirect }) {
+    if (store.state.step !== 'verify_id') {
+      return redirect('/')
+    }
+  },
+
   computed: {
     errors () {
       return this.$store.state.errors
@@ -85,7 +91,7 @@ export default {
 
       this.$api.requestSms(this.$store.state.form)
         .then((resp) => {
-          this.$store.commit('incrementStep')
+          this.$store.commit('setStep', 'verify_sms')
           this.$store.commit('updateFormField', { name: 'sms_ref', value: resp.sms_ref })
           this.$router.push({ name: 'verify_sms' })
         }).catch((resp) => {
