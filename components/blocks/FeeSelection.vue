@@ -22,7 +22,7 @@
         <span id="quotaNormalFreq" class="fee-list-subtitle">{{ $t('fees.biannual') }}</span>
       </div>
       <div class="fees-wrapper">
-        <span id="quotaReduidaLabel" class="fee-list-label">{{ $t('fees.reduced') }} <span class="fee-list-label-info"> {{ $t('fees.reducedinfo') }}</span></span>
+        <span id="quotaReduidaLabel" class="fee-list-label">{{ $t('fees.reduced') }}<span class="fee-list-label-info"> {{ $t('fees.reducedinfo') }}</span></span>
         <div class="fee-list fee-list-reduced">
           <input-radio-button
             v-for="fee in fees.reduced"

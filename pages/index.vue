@@ -6,17 +6,17 @@
     </header>
 
     <form :class="{ 'dimmed': submitting }" @submit.prevent="submit">
-      <form-section id="party" :title="$t('type.party')" title-hidden>
+      <form-section id="party" :title="$t('party.title')" title-hidden>
         <party-selection v-model="form.u_party" />
       </form-section>
 
-      <form-section id="type" :title="$t('type.type')" title-hidden>
+      <form-section id="type" :title="$t('type.title')" title-hidden>
         <type-selection v-model="form.u_type" />
       </form-section>
 
       <div ref="errorWarning" aria-live="polite" :tabindex="Object.keys($store.state.errors).length > 0 ? 0 : false">
         <div v-if="Object.keys($store.state.errors).length > 0" class="c-card error-warning" role="alert">
-          {{ $t('type.errors') }}
+          {{ $t('errors') }}
         </div>
       </div>
 

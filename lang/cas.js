@@ -3,11 +3,15 @@ export default {
     title: 'Súmate',
     leadin: 'En Compromís apostamos por una nueva manera de hacer política. Y sabemos que nuestro principal activo eres tu. Por eso pensamos que la mejor manera de dar a conocer nuestro proyecto es confiar en tu implicación, ilusión y deseo de cambio. ¿Nos ayudas?'
   },
-  type: {
-    party: 'Partido',
-    type: 'Tipo de afiliación',
-    errors: '👇 Algunos campos contienen errores. Revisa el formulario y vuelve a enviarlo'
+  party: {
+    title: 'Partido',
+    show: 'Muestra más partidos',
+    hide: 'Muestra menos partidos'
   },
+  type: {
+    title: 'Tipo de afiliación'
+  },
+  errors: '👇 Algunos campos contienen errores. Revisa el formulario y vuelve a enviarlo',
   personal: {
     title: 'Datos personales',
     name: 'Nombre',
