@@ -56,7 +56,7 @@ export default {
     submit: 'Adjuntar archivos',
     instructions_desktop: 'Arrastra o selecciona una foto',
     instructions_mobile: 'Haz una foto o selecciona un archivo',
-    filetypes: 'Archivos <strong>.jpg</strong>, <strong>.jpeg</strong>, <strong>.png</strong>, <strong>.tiff</strong> o <strong>.pdf</strong> hasta <strong>2MB</strong>.',
+    filetypes: 'Archivos {0}, {1}, {2}, o {3} hasta {4}.',
     uploading: 'Subiendo...',
     uploaded: 'Archivo adjuntado'
   },

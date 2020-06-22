@@ -42,7 +42,13 @@
         <div class="instructions d-md-none">
           {{ $t('verify_id.instructions_mobile') }}
         </div>
-        <div :id="name + 'Specs'" class="instructions-detail" v-html="$t('verify_id.filetypes')" />
+        <i18n :id="name + 'Specs'" path="verify_id.filetypes" tag="div" class="instructions-detail">
+          <strong>.jpg</strong>
+          <strong>.png</strong>
+          <strong>.tiff</strong>
+          <strong>.pdf</strong>
+          <strong>2MB</strong>
+        </i18n>
       </div>
       <div v-else class="has-file">
         <div v-if="isSaving">

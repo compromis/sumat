@@ -56,7 +56,7 @@ export default {
     submit: 'Adjunta fitxers',
     instructions_desktop: 'Arrosega o selecciona una foto',
     instructions_mobile: 'Fes una foto o selecciona un arxiu',
-    filetypes: 'Fitxers <strong>.jpg</strong>, <strong>.jpeg</strong>, <strong>.png</strong>, <strong>.tiff</strong> o <strong>.pdf</strong> fins a <strong>2MB</strong>.',
+    filetypes: 'Fitxers {0}, {1}, {2}, o {3} fins a {4}.',
     uploading: 'Pujant...',
     uploaded: 'Fitxer adjuntat'
   },
