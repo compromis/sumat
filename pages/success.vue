@@ -86,7 +86,7 @@ export default {
 
   middleware ({ store, redirect }) {
     if (store.state.step !== 'success') {
-      // return redirect('/')
+      return redirect('/')
     }
   },
 
