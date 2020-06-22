@@ -15,7 +15,7 @@
           {{ $t('type.rights.iniciativa') }} <a href="https://comprom.is/estatutsiniciativa" target="_blank">bases d'Iniciativa</a>.
         </div>
         <div v-else-if="party === '4'">
-          {{ $t('type.rights.verds') }} <a href="https://comprom.is/estatutsverds" target="_blank">bases de VerdsEQuo</a>.
+          {{ $t('type.rights.verds') }} <a href="https://comprom.is/estatutsverds" target="_blank">bases de VerdsEquo</a>.
         </div>
         <div v-else>
           {{ $t('type.rights.compromis') }} <a href="https://comprom.is/estatuts" target="_blank">bases de Compromís</a>.
