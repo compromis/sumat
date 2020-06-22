@@ -51,7 +51,7 @@ export default {
     right: 0;
     background: rgba($white, .8);
     backdrop-filter: blur(10px);
-    padding: .75rem;
+    padding: .75rem 0;
     z-index: 1000;
     border-bottom: 1px var(--gray-100) solid;
 
