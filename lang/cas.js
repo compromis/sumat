@@ -108,6 +108,19 @@ export default {
     submit: 'Adjuntar información',
     skip: 'Omitir este paso'
   },
+  success: {
+    thankyou: 'Gracias por tu compromiso',
+    greetings: {
+      M: 'Bienvenido',
+      F: 'Bienvenida',
+      A: 'Bienvenidas'
+    },
+    activate: 'Actívate al Espai Compromís',
+    step1: 'Revisa tu correo correu y establece una contraseña',
+    goto: 'Ir a {emailDomain}',
+    processing: 'Hemos recibido tus datos y estamos procensando tu afiliación. Tan pronto como se acepte recibirás un e-mail de confirmación para activar tu usuario.',
+    meanwhile: 'Mientras tanto, puedes seguirnos en redes sociales'
+  },
   nav: {
     title: 'Formulario de adhesión'
   },
