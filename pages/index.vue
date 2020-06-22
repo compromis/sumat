@@ -6,25 +6,25 @@
     </header>
 
     <form :class="{ 'dimmed': submitting }" @submit.prevent="submit">
-      <form-section id="party" title="Partit" title-hidden>
+      <form-section id="party" :title="$t('party.title')" title-hidden>
         <party-selection v-model="form.u_party" />
       </form-section>
 
-      <form-section id="type" title="Tipus d'afiliació" title-hidden>
+      <form-section id="type" :title="$t('type.title')" title-hidden>
         <type-selection v-model="form.u_type" />
       </form-section>
 
       <div ref="errorWarning" aria-live="polite" :tabindex="Object.keys($store.state.errors).length > 0 ? 0 : false">
         <div v-if="Object.keys($store.state.errors).length > 0" class="c-card error-warning" role="alert">
-          👇 Alguns camps contenen errors. Revisa el formulari i torna'l a enviar
+          {{ $t('errors') }}
         </div>
       </div>
 
-      <form-section id="dades-personals" title="Dades personals">
+      <form-section id="dades-personals" :title="$t('personal.title')">
         <field-group>
           <input-field
             v-model="form.u_name"
-            label="Nom"
+            :label="$t('personal.name')"
             name="u_name"
             class="c-span-2 corner-top-left md:corner-top-right"
             autocomplete="given-name"
@@ -34,7 +34,7 @@
           />
           <input-field
             v-model="form.u_surname"
-            label="Cognoms"
+            :label="$t('personal.surname')"
             name="u_surname"
             class="c-span-2 corner-top-right md:reset-corner"
             autocomplete="family-name"
@@ -53,7 +53,7 @@
           />
           <input-birthday
             name="u_birthday"
-            label="Data de naixement"
+            :label="$t('personal.birthday')"
             :day="form.u_birthday_day"
             :month="form.u_birthday_month"
             :year="form.u_birthday_year"
@@ -66,7 +66,7 @@
           />
           <input-radio-group
             v-model="form.u_gender"
-            label="Gènere"
+            :label="$t('personal.gender')"
             name="u_gender"
             :options="[
               { value: 'M', text: 'Home' },
@@ -80,7 +80,7 @@
           />
           <input-field
             v-model="form.u_address"
-            label="Adreça"
+            :label="$t('personal.address')"
             name="u_address"
             class="c-span-2 corner-bottom-left"
             autocomplete="street-address"
@@ -90,7 +90,7 @@
           />
           <input-field
             v-model="form.u_city"
-            label="Població"
+            :label="$t('personal.city')"
             name="u_city"
             required
             :invalid="'u_city' in errors"
@@ -98,7 +98,7 @@
           />
           <input-field
             v-model="form.u_postal"
-            label="Codi postal"
+            :label="$t('personal.postal')"
             name="u_postal"
             class="corner-bottom-right"
             autocomplete="postal-code"
@@ -110,7 +110,7 @@
         </field-group>
       </form-section>
 
-      <form-section id="contacte" title="Informació de contacte">
+      <form-section id="contacte" :title="$t('contact.title')">
         <field-group>
           <input-field
             v-model="form.uacc_email"
@@ -126,7 +126,7 @@
             v-model="form.uacc_email_twice"
             type="email"
             name="u_email_twice"
-            label="Repeteix l'e-mail"
+            :label="$t('contact.repeatemail')"
             class="c-span-2 corner-top-right md:reset-corner"
             required
             :invalid="'uacc_email_twice' in errors"
@@ -135,7 +135,7 @@
           <input-tel
             class="c-span-2 corner-bottom-left md:reset-corner"
             name="u_mobile"
-            label="Mòbil"
+            :label="$t('contact.mobilephone')"
             required
             :invalid="'u_mobile' in errors"
             :invalid-message="errors['u_mobile']"
@@ -147,7 +147,7 @@
           <input-tel
             class="c-span-2 corner-bottom-right md:corner-bottom-left"
             name="u_phone"
-            label="Fixe (opcional)"
+            :label="$t('contact.phone')"
             placeholder="960 000 000"
             :invalid="'u_phone' in errors"
             :invalid-message="errors['u_phone']"
@@ -159,17 +159,17 @@
         </field-group>
         <template v-slot:additional-info>
           <button v-b-modal.no-email class="btn-link-muted" type="button">
-            No tinc e-mail ni/o mòbil
+            {{ $t('contact.stoneage') }}
           </button>
         </template>
       </form-section>
 
-      <form-section id="collectiu" title="Col·lectiu" help="Si no trobes el teu municipi, sel·lecciona el col·lectiu més proper a tu.">
+      <form-section id="collectiu" :title="$t('collectiu.title')" :help="$t('collectiu.help')">
         <field-group>
           <input-select
             v-model="form.collectiu"
             name="collectiu"
-            label="Selecciona un col·lectiu"
+            :label="$t('collectiu.select')"
             :options="collectius"
             class="c-span-4"
             required
@@ -178,14 +178,14 @@
       </form-section>
 
       <transition name="slide">
-        <form-section v-if="form.u_type === '1'" id="quota" title="Domiciliació bancària">
+        <form-section v-if="form.u_type === '1'" id="quota" :title="$t('fees.title')">
           <fee-selection v-model="form.u_fee" :fees="fees[form.u_party]" />
           <field-group>
             <input-field
               v-model="form.u_bank_name"
               type="text"
               name="u_bank_name"
-              label="Titular del compte"
+              :label="$t('fees.name')"
               class="c-span-3 corner-top-left md:corner-top-right"
               required
               :invalid="'u_bank_name' in errors"
@@ -216,12 +216,12 @@
         </form-section>
       </transition>
 
-      <div v-if="form.u_type === '1' && form.u_party !== '2'" ref="avals" role="region" tabindex="-1" aria-label="Avals">
+      <div v-if="form.u_type === '1' && form.u_party !== '2'" ref="avals" role="region" tabindex="-1" :aria-label="$t('avals.avals')">
         <transition name="slide">
           <form-section
             v-if="showAvals"
             id="avals"
-            title="Avals"
+            :title="$t('avals.title')"
             class="mb-2"
           >
             <field-group>
@@ -247,12 +247,12 @@
           </form-section>
         </transition>
         <div>
-          <button class="btn btn-link-muted" type="button" aria-controls="avals" :aria-expanded="showAvals" @click="toggleAvals">
-            {{ showAvals ? 'No vull adjuntar avals' : 'Vols adjuntar avals?' }}
+          <button class="btn btn-link-muted" type="button" :aria-controls=" $t('avals.title')" :aria-expanded="showAvals" @click="toggleAvals">
+            {{ showAvals ? $t('avals.close') : $t('avals.prompt') }}
           </button>
           <b-icon-question-circle
             v-tooltip="{
-              content: 'Si ja coneixes a dos adherits a Compromís, pots introduir el seus DNIs perquè confirmen la teua alta. Si no, serà el portaveu del teu col·lectiu local l\'encarregat de confirmar l\'alta.',
+              content: $t('avals.tooltip'),
               trigger: 'hover click focus'
             }"
             role="button"

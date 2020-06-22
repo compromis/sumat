@@ -13,7 +13,7 @@
     </div>
     <div class="d-md-none col">
       <button type="button" class="btn-link-muted btn-sm" @click="hideIfUnchecked = !hideIfUnchecked">
-        {{ hideIfUnchecked ? 'Mostra més partits' : 'Amaga els partits' }}
+        {{ hideIfUnchecked ? $t('party.show') : $t('party.hide') }}
       </button>
     </div>
   </div>
