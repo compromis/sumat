@@ -7,12 +7,12 @@
       <div class="site-title">
         Formulari d’adhesió
       </div>
-      <div class="ml-auto align-items-center d-none d-md-flex">
+      <div class="ml-auto align-items-center d-flex">
         <span class="sr-only">Idioma</span>
-        <button :class="['btn-link-muted mr-2', { 'selected': $i18n.locale === 'val' }]" :aria-pressed="$i18n.locale === 'val'" @click="setLocale('val')">
+        <button :class="['btn-link-muted mr-2', { 'selected d-none d-md-inline': $i18n.locale === 'val' }]" :aria-pressed="$i18n.locale === 'val'" @click="setLocale('val')">
           Valencià
         </button>
-        <button :class="['btn-link-muted', { 'selected': $i18n.locale === 'cas' }]" :aria-pressed="$i18n.locale === 'cas'" @click="setLocale('cas')">
+        <button :class="['btn-link-muted', { 'selected d-none d-md-inline': $i18n.locale === 'cas' }]" :aria-pressed="$i18n.locale === 'cas'" @click="setLocale('cas')">
           Castellano
         </button>
       </div>
