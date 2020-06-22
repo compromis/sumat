@@ -150,7 +150,7 @@ export default {
   },
 
   middleware ({ store, redirect }) {
-    if (![2, 4].includes(store.state.step)) {
+    if (store.state.step !== 'additional_info') {
       return redirect('/')
     }
   },
@@ -230,7 +230,7 @@ export default {
       this.$api.attachAdditionalInfo(this.$store.state.additional_form, this.$store.state.credentials)
         .then((resp) => {
           this.$store.commit('setStep', 'success')
-          this.$router.push({ name: 'success' })
+          this.$router.push({ name: 'success___' + this.$i18n.locale })
         }).catch((resp) => {
           this.$store.commit('setErrors', resp.errors)
           // Scroll to top
@@ -245,7 +245,7 @@ export default {
 
     skip () {
       this.$store.commit('setStep', 'success')
-      this.$router.push({ name: 'success' })
+      this.$router.push({ name: 'success___' + this.$i18n.locale })
     }
   }
 }

@@ -312,10 +312,10 @@ export default {
 
   asyncData ({ store, route, params }) {
     /* Set party and type */
-    if (route.meta) {
-      store.commit('setType', route.meta[0].type)
-      store.commit('setParty', route.meta[0].party)
-    }
+    const type = route.meta[0].type || '1'
+    const party = route.meta[0].party || '14'
+    store.commit('setType', type)
+    store.commit('setParty', party)
   },
 
   data () {
@@ -428,7 +428,7 @@ export default {
           }
           // Redirect to next step
           this.$store.commit('setStep', name)
-          this.$router.push({ name })
+          this.$router.push({ name: name + '___' + this.$i18n.locale })
         }).catch((resp) => {
           // Set errors
           this.$store.commit('setErrors', resp.errors)

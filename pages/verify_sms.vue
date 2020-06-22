@@ -115,7 +115,7 @@ export default {
           const { number, token } = resp.result
           this.$store.commit('setCredentials', { number, token })
           this.$store.commit('setStep', 'additional_info')
-          this.$router.push({ name: 'additional_info' })
+          this.$router.push({ name: 'additional_info___' + this.$i18n.locale })
         }).catch((resp) => {
           this.$store.commit('setErrors', resp.errors)
           // Scroll to top

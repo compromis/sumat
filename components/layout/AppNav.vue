@@ -7,12 +7,12 @@
       <div class="site-title">
         Formulari d’adhesió
       </div>
-      <div class="ml-auto align-items-center d-none d-md-flex">
+      <div class="ml-auto align-items-center d-flex">
         <span class="sr-only">Idioma</span>
-        <button :class="['btn-link-muted mr-2', { 'selected': $i18n.locale === 'val' }]" :aria-pressed="$i18n.locale === 'val'" @click="setLocale('val')">
+        <button :class="['btn-link-muted mr-2', { 'selected d-none d-md-inline': $i18n.locale === 'val' }]" :aria-pressed="$i18n.locale === 'val'" @click="setLocale('val')">
           Valencià
         </button>
-        <button :class="['btn-link-muted', { 'selected': $i18n.locale === 'cas' }]" :aria-pressed="$i18n.locale === 'cas'" @click="setLocale('cas')">
+        <button :class="['btn-link-muted', { 'selected d-none d-md-inline': $i18n.locale === 'cas' }]" :aria-pressed="$i18n.locale === 'cas'" @click="setLocale('cas')">
           Castellano
         </button>
       </div>
@@ -30,7 +30,12 @@ export default {
 
   methods: {
     setLocale (locale) {
+      const langs = { cas: 'es', val: 'ca' }
       this.$i18n.locale = locale
+      this.$store.commit('updateFormField', { name: 'u_lang', value: langs[locale] })
+      /* Redirect to new path */
+      const name = (locale === 'val') ? this.$route.name.replace(/___cas/g, '___val') : this.$route.name.replace(/___val/g, '___cas')
+      this.$router.push({ name })
     }
   }
 }
