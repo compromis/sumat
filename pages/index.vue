@@ -428,7 +428,7 @@ export default {
           }
           // Redirect to next step
           this.$store.commit('setStep', name)
-          this.$router.push({ name })
+          this.$router.push({ name: name + '___' + this.$i18n.locale })
         }).catch((resp) => {
           // Set errors
           this.$store.commit('setErrors', resp.errors)

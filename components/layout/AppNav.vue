@@ -33,6 +33,9 @@ export default {
       const langs = { cas: 'es', val: 'ca' }
       this.$i18n.locale = locale
       this.$store.commit('updateFormField', { name: 'u_lang', value: langs[locale] })
+      /* Redirect to new path */
+      const name = (locale === 'val') ? this.$route.name.replace(/___cas/g, '___val') : this.$route.name.replace(/___val/g, '___cas')
+      this.$router.push({ name })
     }
   }
 }

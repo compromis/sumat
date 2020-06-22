@@ -73,7 +73,8 @@ export default {
       const parties = this.$store.state.partySlugs
       const party = this.$store.state.form.u_party
       const simpatitzant = e.target.value === '2' ? 'simpatitzant' : ''
-      history.replaceState({}, null, parties[party] + simpatitzant)
+      const lang = this.$i18n.locale === 'cas' ? '/cas' : ''
+      history.replaceState({}, null, lang + parties[party] + simpatitzant)
     }
   }
 }

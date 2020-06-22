@@ -110,6 +110,8 @@ export default {
           iso: 'es-ES'
         }],
         defaultLocale: 'val',
+        seo: false,
+        baseUrl: 'https://sumat.compromis.net',
         vueI18n: {
           fallbackLocale: 'val',
           messages: {

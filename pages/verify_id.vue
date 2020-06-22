@@ -93,7 +93,7 @@ export default {
         .then((resp) => {
           this.$store.commit('setStep', 'verify_sms')
           this.$store.commit('updateFormField', { name: 'sms_ref', value: resp.sms_ref })
-          this.$router.push({ name: 'verify_sms' })
+          this.$router.push({ name: 'verify_sms___' + this.$i18n.locale })
         }).catch((resp) => {
           this.$store.commit('setErrors', resp.errors)
           // Scroll to top

@@ -22,6 +22,9 @@ export default {
     party () {
       return this.$store.state.form.u_party
     }
+  },
+  head () {
+    return this.$nuxtI18nSeo()
   }
 }
 </script>
