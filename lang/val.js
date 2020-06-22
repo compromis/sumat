@@ -48,5 +48,26 @@ export default {
     prompt: 'Vols adjuntar avals?',
     close: 'No vull adjuntar avals',
     tooltip: "Si ja coneixes a dos adherits a Compromís, pots introduir el seus DNIs perquè confirmen la teua alta. Si no, serà el portaveu del teu col·lectiu local l'encarregat de confirmar l'alta."
+  },
+  verify_id: {
+    title: 'Adjunta el teu DNI / NIE',
+    front: 'Anvers',
+    back: 'Revers',
+    submit: 'Adjunta fitxers',
+    instructions_desktop: 'Arrosega o selecciona una foto',
+    instructions_mobile: 'Fes una foto o selecciona un arxiu',
+    filetypes: 'Fitxers <strong>.jpg</strong>, <strong>.jpeg</strong>, <strong>.png</strong>, <strong>.tiff</strong> o <strong>.pdf</strong> fins a <strong>2MB</strong>.',
+    uploading: 'Pujant...',
+    uploaded: 'Fitxer adjuntat'
+  },
+  verify_sms: {
+    title: 'T’hem enviat un codi de signatura digital al {number}',
+    new_code: "T'hem enviat un nou codi.",
+    label: 'Codi SMS',
+    sign: 'Signa el formulari',
+    after_minute: 'Podràs demanar un nou codi si no reps cap SMS en un minut',
+    retry: 'No he rebut cap codi',
+    modify: 'Modificar mòbil',
+    instruction: 'Escriu la posició {digit} del codi SMS'
   }
 }

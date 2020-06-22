@@ -4,9 +4,9 @@
       <form-steps :current-step="2" />
       <form :class="{ 'dimmed': submitting }" @submit.prevent="submit">
         <div v-if="hasRetried" class="alert alert-success">
-          T'hem enviat un nou codi.
+          {{ $t('verify_sms.new_code') }}
         </div>
-        <form-section :title="'T’hem enviat un codi de signatura digital al ' + $store.state.form.u_mobile">
+        <form-section :title="$t('verify_sms.title', { number: $store.state.form.u_mobile })">
           <!-- Input method for desktop -->
           <input-sms
             :invalid="'sms_code' in errors || 'sms_ref' in errors"
@@ -20,7 +20,7 @@
             <input-field
               v-model="sms_code"
               name="sms_code"
-              label="Codi SMS"
+              :label="$t('verify_sms.label')"
               class="c-span-4"
               pattern="[0-9]*"
               autocomplete="one-time-code"
@@ -32,22 +32,22 @@
           </field-group>
         </form-section>
         <submit-button :submitting="submitting">
-          Signa el formulari
+          {{ $t('verify_sms.sign') }}
         </submit-button>
       </form>
       <button
         v-tooltip="!canRetry ? {
           trigger: 'hover click focus',
-          content: 'Podràs demanar un nou codi si no reps cap SMS en un minut'
+          content: this.$t('verify_sms.after_minute')
         } : false"
         :class="['btn-link-muted', { 'disabled': !canRetry }]"
         type="button"
         @click="retry"
       >
-        No he rebut cap codi
+        {{ $t('verify_sms.retry') }}
       </button>
       <nuxt-link to="/" class="btn-link-muted mt-2">
-        Modificar mòbil
+        {{ $t('verify_sms.modify') }}
       </nuxt-link>
     </div>
   </main>
@@ -73,7 +73,7 @@ export default {
 
   middleware ({ store, redirect }) {
     if (store.state.step !== 'verify_sms') {
-      return redirect('/')
+      // return redirect('/')
     }
   },
 

@@ -48,5 +48,26 @@ export default {
     prompt: 'Quieres adjuntar avales?',
     close: 'No quiero adjuntar avales',
     tooltip: 'Si ya conoces a dos adheridos a Compromís, puedes introducir sus DNIs porque confirman tu alta. Si no, será el portavoz de tu colectivo local el encargado de confirmar el alta.'
+  },
+  verify_id: {
+    title: 'Adjunta tu DNI / NIE',
+    front: 'Anverso',
+    back: 'Reverso',
+    submit: 'Adjuntar archivos',
+    instructions_desktop: 'Arrastra o selecciona una foto',
+    instructions_mobile: 'Haz una foto o selecciona un archivo',
+    filetypes: 'Archivos <strong>.jpg</strong>, <strong>.jpeg</strong>, <strong>.png</strong>, <strong>.tiff</strong> o <strong>.pdf</strong> hasta <strong>2MB</strong>.',
+    uploading: 'Subiendo...',
+    uploaded: 'Archivo adjuntado'
+  },
+  verify_sms: {
+    title: 'Te hemos enviado un código de firma digital al {number}',
+    new_code: 'Te hemos enviado un código nuevo.',
+    label: 'Código SMS',
+    sign: 'Firmar formulario',
+    after_minute: 'Podrás pedir un código nuevo si no recibes el SMS en un minuto',
+    retry: 'No he recibido ningún código',
+    modify: 'Modificar móvil',
+    instruction: 'Escribe la posición {digit} del código SMS'
   }
 }

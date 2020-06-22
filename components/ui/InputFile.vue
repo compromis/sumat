@@ -37,16 +37,12 @@
           <b-icon-camera />
         </div>
         <div :id="name + 'Instructions'" class="instructions d-none d-md-block">
-          Arrosega o selecciona una foto
+          {{ $t('verify_id.instructions_desktop') }}
         </div>
         <div class="instructions d-md-none">
-          Fes una foto o selecciona un arxiu
+          {{ $t('verify_id.instructions_mobile') }}
         </div>
-        <div :id="name + 'Specs'" class="instructions-detail">
-          Fitxers <strong>.jpg</strong>, <strong>.jpeg</strong>,
-          <strong>.png</strong>, <strong>.tiff</strong> o <strong>.pdf</strong>
-          fins a <strong>2MB</strong>.
-        </div>
+        <div :id="name + 'Specs'" class="instructions-detail" v-html="$t('verify_id.filetypes')" />
       </div>
       <div v-else class="has-file">
         <div v-if="isSaving">
@@ -54,7 +50,7 @@
             <b-icon-circle-fill animation="throb" />
           </div>
           <div class="instructions">
-            Pujant...
+            {{ $t('verify_id.uploading') }}
           </div>
         </div>
         <div v-else>
@@ -62,7 +58,7 @@
             <b-icon-file-earmark-check />
           </div>
           <div :id="name + 'Instructions'" class="instructions success">
-            Fitxer adjuntat
+            {{ $t('verify_id.uploaded') }}
           </div>
         </div>
       </div>
