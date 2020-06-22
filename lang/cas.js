@@ -1,6 +1,6 @@
 export default {
   hero: {
-    title: "Suma't",
+    title: 'Súmate',
     leadin: 'En Compromís apostamos por una nueva manera de hacer política. Y sabemos que nuestro principal activo eres tu. Por eso pensamos que la mejor manera de dar a conocer nuestro proyecto es confiar en tu implicación, ilusión y deseo de cambio. ¿Nos ayudas?'
   },
   type: {
@@ -32,7 +32,12 @@ export default {
   },
   fees: {
     title: 'Domiciliación bancaria',
-    name: 'Titular de la cuenta'
+    name: 'Titular de la cuenta',
+    fee: 'Cuota',
+    normal: 'Cuota normal',
+    biannual: 'Cada seis meses',
+    reduced: 'Cuota reducida',
+    reducedinfo: '(estudiantes, parados, jubilados)'
   },
   avals: {
     title: 'Avales',

@@ -32,7 +32,12 @@ export default {
   },
   fees: {
     title: 'Domiciliació bancària',
-    name: 'Titular del compte'
+    name: 'Titular del compte',
+    fee: 'Quota',
+    normal: 'Quota normal',
+    biannual: 'Cada sis mesos',
+    reduced: 'Quota reduïda',
+    reducedinfo: '(estudiants, parats, jubilats)'
   },
   avals: {
     title: 'Avals',

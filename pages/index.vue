@@ -147,7 +147,7 @@
           <input-tel
             class="c-span-2 corner-bottom-right md:corner-bottom-left"
             name="u_phone"
-            :label="$t('contact.mobilephone')"
+            :label="$t('contact.phone')"
             placeholder="960 000 000"
             :invalid="'u_phone' in errors"
             :invalid-message="errors['u_phone']"

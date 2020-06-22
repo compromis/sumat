@@ -1,11 +1,11 @@
 <template>
   <fieldset>
     <legend class="sr-only">
-      Quota
+      {{ $t('fees.fee') }}
     </legend>
     <div class="row fees">
       <div class="fees-wrapper">
-        <span id="quotaNormalLabel" class="fee-list-label">Quota normal</span>
+        <span id="quotaNormalLabel" class="fee-list-label">{{ $t('fees.normal') }}</span>
         <div class="fee-list fee-list-normal">
           <input-radio-button
             v-for="fee in fees.normal"
@@ -19,10 +19,10 @@
             @input="(value) => $emit('input', value)"
           />
         </div>
-        <span id="quotaNormalFreq" class="fee-list-subtitle">Cada 6 mesos</span>
+        <span id="quotaNormalFreq" class="fee-list-subtitle">{{ $t('fees.biannual') }}</span>
       </div>
       <div class="fees-wrapper">
-        <span id="quotaReduidaLabel" class="fee-list-label">Quota reduïda <span class="fee-list-label-info">(estudiants, parats, jubilats)</span></span>
+        <span id="quotaReduidaLabel" class="fee-list-label">{{ $t('fees.reduced') }} <span class="fee-list-label-info"> {{ $t('fees.reducedinfo') }}</span></span>
         <div class="fee-list fee-list-reduced">
           <input-radio-button
             v-for="fee in fees.reduced"
@@ -36,7 +36,7 @@
             @input="(value) => $emit('input', value)"
           />
         </div>
-        <span id="quotaReduidaFreq" class="fee-list-subtitle">Cada 6 mesos</span>
+        <span id="quotaReduidaFreq" class="fee-list-subtitle">{{ $t('fees.biannual') }}</span>
       </div>
     </div>
   </fieldset>
