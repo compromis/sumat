@@ -2,7 +2,7 @@
   <main class="success">
     <div class="hero">
       <span class="hero-welcome">{{ welcome }}</span>
-      <span>Gràcies pel teu compromís</span>
+      <span>{{ $t('success.thankyou') }}</span>
     </div>
     <div v-if="isSimpa" class="container">
       <div class="c-card success-text">
@@ -11,14 +11,14 @@
           <span class="num-afiliat-num">{{ affNumber }}</span>
         </div>
         <div class="success-text-bold">
-          Activa’t a l’Espai Compromís
+          {{ $t('success.activate') }}
         </div>
         <div class="success-step">
           <div class="success-step-number">
             1
           </div>
           <div class="success-step-text">
-            Revisa el teu correu i estableix una contrasenya
+            {{ $t('success.step1') }}
           </div>
         </div>
         <a
@@ -27,7 +27,7 @@
           target="_blank"
           rel="noopener"
         >
-          Ves a {{ emailDomain }}
+          {{ $t('success.goto', { emailDomain }) }}
         </a>
       </div>
     </div>
@@ -38,11 +38,11 @@
           <span class="num-afiliat-num">{{ affNumber }}</span>
         </div>
         <b-icon-hand-thumbs-up class="icon" />
-        Hem rebut les teues dades i estem processant la teua afiliació. Tan pronte com s’accepte rebràs un e-mail de confirmació per activar el teu usuari.
+        {{ $t('success.processing') }}
       </div>
       <div class="c-card">
         <div class="success-text">
-          Mentrestant, pots seguir-nos a les xarxes
+          {{ $t('success.meanwhile') }}
         </div>
         <ul class="social-list">
           <li>
@@ -86,7 +86,7 @@ export default {
 
   middleware ({ store, redirect }) {
     if (store.state.step !== 'success') {
-      return redirect('/')
+      // return redirect('/')
     }
   },
 
@@ -99,8 +99,7 @@ export default {
     },
     welcome () {
       const { form } = this.$store.state
-      const greetings = { M: 'Benvingut', F: 'Benvinguda', A: 'Benvingudes' }
-      return `${greetings[form.u_gender]}, ${form.u_name}`
+      return `${this.$t('success.greetings.' + form.u_gender)}, ${form.u_name}!`
     },
     affNumber () {
       return this.$store.state.credentials.number

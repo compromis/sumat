@@ -13,7 +13,7 @@
         maxlength="1"
         size="1"
         pattern="[0-9]*"
-        :aria-label="`Escriu la posició ${i} del codi SMS`"
+        :aria-label="$t('verify_sms.digit', {digit: i})"
         :required="required"
         aria-describedby="smsError"
         :aria-invalid="invalid"

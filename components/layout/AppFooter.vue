@@ -8,9 +8,11 @@
           <span>96 382 66 06</span> -
           <a href="mailto:info@compromis.net" class="btn-link-muted">info@compromis.net</a>
         </div>
-        <div class="col-md-5 text-right mt-4 mt-md-0">
+        <div class="help col-md-5 mt-4 mt-md-0">
           <b-icon-question-circle />
-          Necessites ajuda? Contacta amb <a href="mailto:web@compromis.net" class="btn-link-muted">web@compromis.net</a>
+          <i18n path="footer.help" tag="span">
+            <a href="mailto:web@compromis.net" class="btn-link-muted">web@compromis.net</a>
+          </i18n>
         </div>
       </div>
     </div>
@@ -43,5 +45,11 @@ export default {
 
   address {
     display: inline;
+  }
+
+  @include media-breakpoint-up (md) {
+    .help {
+      text-align: right;
+    }
   }
 </style>

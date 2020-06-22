@@ -5,7 +5,7 @@
         <compromis-logo />
       </a>
       <div class="site-title">
-        Formulari d’adhesió
+        {{ $t('nav.title') }}
       </div>
       <div class="ml-auto align-items-center d-flex">
         <span class="sr-only">Idioma</span>
@@ -51,7 +51,7 @@ export default {
     right: 0;
     background: rgba($white, .8);
     backdrop-filter: blur(10px);
-    padding: .75rem;
+    padding: .75rem 0;
     z-index: 1000;
     border-bottom: 1px var(--gray-100) solid;
 

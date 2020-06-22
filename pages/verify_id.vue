@@ -3,11 +3,11 @@
     <div class="container verify-id">
       <form-steps :current-step="1" />
       <form :class="{ 'dimmed': submitting }" @submit.prevent="submit">
-        <form-section title="Adjunta el teu DNI / NIE">
+        <form-section :title="$t('verify_id.title')">
           <field-group>
             <input-file
               name="verify_id_front"
-              label="Anvers"
+              :label="$t('verify_id.front')"
               :invalid="'verify_id_front' in errors"
               :invalid-message="errors['verify_id_front']"
               required
@@ -16,7 +16,7 @@
             />
             <input-file
               name="verify_id_back"
-              label="Revers"
+              :label="$t('verify_id.back')"
               :invalid="'verify_id_back' in errors"
               :invalid-message="errors['verify_id_back']"
               required
@@ -26,7 +26,7 @@
           </field-group>
         </form-section>
         <submit-button :submitting="submitting">
-          Adjunta fitxers
+          {{ $t('verify_id.submit') }}
         </submit-button>
       </form>
     </div>
