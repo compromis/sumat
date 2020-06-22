@@ -69,5 +69,43 @@ export default {
     retry: 'No he rebut cap codi',
     modify: 'Modificar mòbil',
     instruction: 'Escriu la posició {digit} del codi SMS'
+  },
+  additional_info: {
+    generic: {
+      title: 'Vols afegir més informació?',
+      all_optional: 'Tots els camps són opcionals',
+      labor_code: 'Professió',
+      labor: 'Descripció...',
+      studies: 'Estudis',
+      union: 'Sindicat',
+      movements: 'Moviments'
+    },
+    public_employee: {
+      title: 'Ets funcionari/a?',
+      yesno: 'Funcionari/a',
+      department: 'Administració',
+      category: 'Categoria',
+      type: 'Tipus',
+      departments: [
+        'Administració de l’Estat',
+        'Administració autonòmica',
+        'Administració provincial',
+        'Administració local',
+        'Sanitat',
+        'Educació',
+        'Justícia',
+        'Altre'
+      ],
+      types: {
+        C: 'Carrera',
+        I: 'Interinatge'
+      }
+    },
+    sectorials: {
+      title: 'Vols apuntar-te a una sectorial?',
+      label: 'Sectorials'
+    },
+    submit: 'Adjunta informació',
+    skip: 'Omet aquest pas'
   }
 }

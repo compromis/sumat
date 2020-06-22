@@ -69,5 +69,43 @@ export default {
     retry: 'No he recibido ningún código',
     modify: 'Modificar móvil',
     instruction: 'Escribe la posición {digit} del código SMS'
+  },
+  additional_info: {
+    generic: {
+      title: '¿Quieres añadir información?',
+      all_optional: 'Todos los campos son opcionales',
+      labor_code: 'Profesión',
+      labor: 'Descripción...',
+      studies: 'Estudios',
+      union: 'Sindicato',
+      movements: 'Movimientos'
+    },
+    public_employee: {
+      title: '¿Eres funcionario/a?',
+      yesno: 'Funcionario/a',
+      department: 'Administración',
+      category: 'Categoría',
+      type: 'Tipo',
+      departments: [
+        'Administración del Estado',
+        'Administración autonómica',
+        'Administración provincial',
+        'Administración local',
+        'Sanidad',
+        'Educación',
+        'Justicia',
+        'Otro'
+      ],
+      types: {
+        C: 'Carrera',
+        I: 'Interinaje'
+      }
+    },
+    sectorials: {
+      title: '¿Quieres apuntarte a una sectorial?',
+      label: 'Sectoriales'
+    },
+    submit: 'Adjuntar información',
+    skip: 'Omitir este paso'
   }
 }

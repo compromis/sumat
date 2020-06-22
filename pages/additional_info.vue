@@ -3,18 +3,15 @@
     <div class="container">
       <form-steps :current-step="3" />
       <form :class="{ 'dimmed': submitting }" @submit.prevent="submit">
-        <form-section
-          id="mes-info"
-          title="Vols afegir més informació?"
-        >
+        <form-section id="mes-info" :title="$t('additional_info.generic.title')">
           <template v-slot:additional-info>
-            <span class="text-muted">Tots els camps són opcionals</span>
+            <span class="text-muted">{{ $t('additional_info.generic.all_optional') }}</span>
           </template>
           <field-group>
             <input-select
               v-model="form.u_labor_code"
               name="u_labor_code"
-              label="Professió"
+              :label="$t('additional_info.generic.labor_code')"
               class="c-span-2 corner-top-left md:corner-top-right"
               :options="laborCodes"
               inline
@@ -22,7 +19,7 @@
             <input-field
               v-model="form.u_labor"
               name="u_labor"
-              label="Descripció..."
+              :label="$t('additional_info.generic.labor')"
               class="c-span-2 corner-top-right"
               maxlength="60"
               :invalid="'u_labor' in errors"
@@ -31,7 +28,7 @@
             <input-field
               v-model="form.u_studies"
               name="u_studies"
-              label="Estudis"
+              :label="$t('additional_info.generic.studies')"
               class="c-span-4"
               maxlength="70"
               :invalid="'u_studies' in errors"
@@ -40,7 +37,7 @@
             <input-field
               v-model="form.u_union"
               name="u_union"
-              label="Sindicat"
+              :label="$t('additional_info.generic.union')"
               maxlength="45"
               class="c-span-2 corner-bottom-left"
               :invalid="'u_union' in errors"
@@ -49,7 +46,7 @@
             <input-field
               v-model="form.u_movements"
               name="u_movements"
-              label="Moviments culturals"
+              :label="$t('additional_info.generic.movements')"
               maxlength="45"
               class="c-span-2 corner-bottom-right"
               :invalid="'u_movements' in errors"
@@ -57,14 +54,11 @@
             />
           </field-group>
         </form-section>
-        <form-section
-          id="funcionari"
-          title="Ets funcionari/a?"
-        >
+        <form-section id="funcionari" :title="$t('additional_info.public_employee.title')">
           <input-radio-group
             v-model="isPublicEmployee"
             name="isPublicEmployee"
-            label="Funcionari/a"
+            :label="$t('additional_info.public_employee.yesno')"
             label-sr-only
             block
             :options="[
@@ -77,7 +71,7 @@
               <input-select
                 v-model="form.u_public_employee"
                 name="u_public_employee"
-                label="Administració"
+                :label="$t('additional_info.public_employee.department')"
                 class="c-span-2 corner-top-left corner-bottom-left md:reset-corner md:corner-top-left md:corner-top-right"
                 :options="publicEmployeeOptions"
                 inline
@@ -85,7 +79,7 @@
               <input-select
                 v-model="form.u_public_employee_cat"
                 name="u_public_employee_cat"
-                label="Categoria"
+                :label="$t('additional_info.public_employee.category')"
                 :options="publicEmployeeCategory"
                 class="c-span-1 md:reset-corner md:corner-bottom-left"
                 inline
@@ -94,30 +88,26 @@
                 v-model="form.u_public_employee_type"
                 name="u_public_employee_type"
                 :options="publicEmployeeTypes"
-                label="Tipus"
+                :label="$t('additional_info.public_employee.type')"
                 class="c-span-1 corner-bottom-right corner-top-right md:corner-bottom-right md:reset-corner"
                 inline
               />
             </field-group>
           </transition>
         </form-section>
-        <form-section
-          id="sectorials"
-          title="Vols apuntar-te a una sectorial?"
-        >
+        <form-section id="sectorials" :title="$t('additional_info.sectorials.title')">
           <field-group>
-            <input-checkbox-pills v-model="form.sectorials" :options="this.$store.state.info.sectorials" name="sectorials" label="Sectorials" class="c-span-4" />
+            <input-checkbox-pills v-model="form.sectorials" :options="this.$store.state.info.sectorials" name="sectorials" :label="$t('additional_info.sectorials.label')" class="c-span-4" />
           </field-group>
         </form-section>
         <submit-button :submitting="submitting">
-          Adjunta informació
+          {{ $t('additional_info.submit') }}
         </submit-button>
         <div class="text-center">
           <button class="btn-link-muted" @click="skip">
-            Omet aquest pas
+            {{ $t('additional_info.skip') }}
           </button>
         </div>
-        </form-section>
       </form>
     </div>
   </main>
@@ -151,7 +141,7 @@ export default {
 
   middleware ({ store, redirect }) {
     if (store.state.step !== 'additional_info') {
-      return redirect('/')
+      // return redirect('/')
     }
   },
 
@@ -171,14 +161,14 @@ export default {
       submitting: false,
       isPublicEmployee: 0,
       publicEmployeeOptions: [
-        { value: 1, text: 'Administració de l’Estat' },
-        { value: 2, text: 'Administració autonòmica' },
-        { value: 3, text: 'Administració provincial' },
-        { value: 4, text: 'Administració local' },
-        { value: 5, text: 'Sanitat' },
-        { value: 6, text: 'Educació' },
-        { value: 7, text: 'Justícia' },
-        { value: 100, text: 'Altre' }
+        { value: 1, text: this.$t('additional_info.public_employee.departments.0') },
+        { value: 2, text: this.$t('additional_info.public_employee.departments.1') },
+        { value: 3, text: this.$t('additional_info.public_employee.departments.2') },
+        { value: 4, text: this.$t('additional_info.public_employee.departments.3') },
+        { value: 5, text: this.$t('additional_info.public_employee.departments.4') },
+        { value: 6, text: this.$t('additional_info.public_employee.departments.5') },
+        { value: 7, text: this.$t('additional_info.public_employee.departments.6') },
+        { value: 100, text: this.$t('additional_info.public_employee.departments.7') }
       ],
       publicEmployeeCategory: [
         { value: 'A1', text: 'A1' },
@@ -189,8 +179,8 @@ export default {
         { value: 'APF', text: 'APF' }
       ],
       publicEmployeeTypes: [
-        { value: 'C', text: 'Carrera' },
-        { value: 'I', text: 'Interinatge' }
+        { value: 'C', text: this.$t('additional_info.public_employee.types.C') },
+        { value: 'I', text: this.$t('additional_info.public_employee.types.I') }
       ]
     }
   },
