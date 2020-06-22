@@ -318,11 +318,9 @@ export default {
 
   asyncData ({ store, route, params }) {
     /* Set party and type */
-    if (route.name === 'simpatitzant') {
-      store.commit('setType', '2')
-    } else if ('party' in params) {
-      store.commit('setPartyFromSlug', params.party)
-      store.commit('setTypeFromSlug', params.type)
+    if (route.meta) {
+      store.commit('setType', route.meta[0].type)
+      store.commit('setParty', route.meta[0].party)
     }
   },
 
@@ -412,6 +410,8 @@ export default {
     if (referer) {
       this.$store.commit('updateFormField', { name: 'referer', value: referer })
     }
+
+    this.form = this.$store.state.form
   },
 
   methods: {
@@ -458,6 +458,27 @@ export default {
         this.form.u_aval_1 = ''
         this.form.u_aval_2 = ''
       }
+  },
+
+  head () {
+    let title = false
+    const titles = {
+      2: "Suma't al BLOC - Compromís",
+      3: "Suma't a Iniciativa - Compromís",
+      4: "Suma't a VerdsEquo - Compromís",
+      14: "Suma't a Compromís"
+    }
+
+    if ('party' in this.$route.meta) {
+      title = titles[this.$route.meta.party]
+    }
+
+    return {
+      title,
+      meta: [
+        { hid: 'twitter:title', property: 'twitter:title', content: title },
+        { hid: 'og:title', property: 'og:title', content: title }
+      ]
     }
   }
 }
@@ -470,7 +491,7 @@ export default {
     h1 {
       letter-spacing: -.04em;
       background: $gradient;
-      -webkit-background-clip: text;
+      background-clip: text;
       -webkit-text-fill-color: transparent;
       width: fit-content;
       font-size: 8rem;

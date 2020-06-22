@@ -54,12 +54,6 @@ export const state = () => ({
     4: '/verds/',
     14: '/'
   },
-  partiesFromSlug: {
-    bloc: '2',
-    iniciativa: '3',
-    verds: '4',
-    compromis: '14'
-  },
   credentials: {
     number: '',
     token: ''
@@ -104,13 +98,6 @@ export const mutations = {
     state.form.u_type = payload
   },
 
-  setPartyFromSlug (state, payload) {
-    state.form.u_party = (payload) ? state.partiesFromSlug[payload] : '14'
-  },
-
-  setTypeFromSlug (state, payload) {
-    state.form.u_type = (payload === 'simpatitzant') ? '2' : '1'
-  },
 
   incrementStep (state) {
     state.step++

@@ -1,6 +1,7 @@
 
 export default {
   mode: 'universal',
+  target: 'static',
   /*
   ** Headers of the page
   */
@@ -14,7 +15,7 @@ export default {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: 'A Compromís apostem per una nova manera de fer política. I sabem que el nostre principal actiu ets tu. Per això pensem que la millor manera de donar a conèixer el nostre projecte és confiar en la teua implicació, il·lusió i desig de canvi. Ens ajudes?' },
       { property: 'og:image', content: 'https://sumat.compromis.net/thumbnail.png' },
-      { property: 'og:title', content: "Suma't a Compromís" },
+      { hid: 'og:title', property: 'og:title', content: "Suma't a Compromís" },
       { property: 'og:description', content: 'A Compromís apostem per una nova manera de fer política. Ens ajudes?' },
       { property: 'og:type', content: 'website' },
       { property: 'og:url', content: 'https://sumat.compromis.net' },
@@ -23,7 +24,7 @@ export default {
       { property: 'twitter:site', content: '@compromis' },
       { property: 'twitter:account_id', content: '1510092958' },
       { property: 'twitter:card', content: 'summary_large_image' },
-      { property: 'twitter:title', content: "Suma't a Compromís" },
+      { hid: 'twitter:title', property: 'twitter:title', content: "Suma't a Compromís" },
       { property: 'twitter:description', content: 'A Compromís apostem per una nova manera de fer política. Ens ajudes?' },
       { property: 'twitter:image', content: 'https://sumat.compromis.net/thumbnail.png' },
       { property: 'twitter:url', content: 'http://compromis.net' }
@@ -111,13 +112,50 @@ export default {
       routes.push({
         name: 'simpatitzant',
         path: '/simpatitzant',
-        component: resolve(__dirname, 'pages/index.vue')
+        component: resolve(__dirname, 'pages/index.vue'),
+        meta: { type: '2', party: '14' }
       })
 
       routes.push({
-        name: 'party-type',
-        path: '/:party/:type?',
-        component: resolve(__dirname, 'pages/index.vue')
+        name: 'party-bloc',
+        path: '/bloc',
+        component: resolve(__dirname, 'pages/index.vue'),
+        meta: { type: '1', party: '2' }
+      })
+
+      routes.push({
+        name: 'party-iniciativa',
+        path: '/iniciativa',
+        component: resolve(__dirname, 'pages/index.vue'),
+        meta: { type: '1', party: '3' }
+      })
+
+      routes.push({
+        name: 'party-verds',
+        path: '/verds',
+        component: resolve(__dirname, 'pages/index.vue'),
+        meta: { type: '1', party: '4' }
+      })
+
+      routes.push({
+        name: 'party-bloc-simpa',
+        path: '/bloc/simpatitzant',
+        component: resolve(__dirname, 'pages/index.vue'),
+        meta: { type: '2', party: '2' }
+      })
+
+      routes.push({
+        name: 'party-iniciativa-simpa',
+        path: '/iniciativa/simpatitzant',
+        component: resolve(__dirname, 'pages/index.vue'),
+        meta: { type: '2', party: '3' }
+      })
+
+      routes.push({
+        name: 'party-verds-simpa',
+        path: '/verds/simpatitzant',
+        component: resolve(__dirname, 'pages/index.vue'),
+        meta: { type: '2', party: '4' }
       })
     }
   },
