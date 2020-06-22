@@ -4,8 +4,8 @@
       {{ label }}
     </legend>
     <ul class="pill-list">
-      <li v-for="option in options" :key="option.id" class="pill" :class="{'checked' : value.includes(option.id)}">
-        <label :for="name + option.id">
+      <li v-for="option in options" :key="option.id" class="pill">
+        <label :for="name + option.id" :class="{'checked' : value.includes(option.id)}">
           <input :id="name + option.id" v-model="sectorials" :name="name" type="checkbox" :value="option.id">
           <span>{{ option.name }}</span>
         </label>
@@ -62,7 +62,7 @@ export default {
   padding: 0;
   flex-wrap: wrap;
 
-  .pill {
+  .pill label {
     box-shadow: inset 0 0 0 1px var(--gray-400);
     border-radius: 2rem;
     padding: .4rem 1rem;
