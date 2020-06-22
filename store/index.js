@@ -28,7 +28,8 @@ export const state = () => ({
     verify_id_back: '',
     sms_ref: '',
     sms_code: '',
-    referer: 'online'
+    referer: 'online',
+    u_lang: 'ca'
   },
   additional_form: {
     u_labor_code: '',

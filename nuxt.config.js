@@ -1,3 +1,5 @@
+import val from './lang/val.js'
+import cas from './lang/cas.js'
 
 export default {
   mode: 'universal',
@@ -101,19 +103,19 @@ export default {
       {
         locales: [{
           code: 'val',
-          iso: 'ca',
-          file: 'val.js'
+          iso: 'ca'
         },
         {
           code: 'cas',
-          iso: 'es-ES',
-          file: 'cas.js'
+          iso: 'es-ES'
         }],
-        lazy: true,
-        langDir: 'lang/',
         defaultLocale: 'val',
         vueI18n: {
-          fallbackLocale: 'val'
+          fallbackLocale: 'val',
+          messages: {
+            val,
+            cas
+          }
         }
       }
     ]

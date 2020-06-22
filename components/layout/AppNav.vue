@@ -30,7 +30,9 @@ export default {
 
   methods: {
     setLocale (locale) {
+      const langs = { cas: 'es', val: 'ca' }
       this.$i18n.locale = locale
+      this.$store.commit('updateFormField', { name: 'u_lang', value: langs[locale] })
     }
   }
 }
