@@ -46,27 +46,27 @@
         </div>
         <ul class="social-list">
           <li>
-            <a href="https://www.facebook.com/coaliciocompromis" aria-label="Facebook">
+            <a href="https://www.facebook.com/coaliciocompromis" aria-label="Facebook" style="background: #3b5998">
               <fa :icon="['fab', 'facebook']" />
             </a>
           </li>
           <li>
-            <a href="https://twitter.com/compromis" aria-label="Twitter">
+            <a href="https://twitter.com/compromis" aria-label="Twitter" style="background: #00acee">
               <fa :icon="['fab', 'twitter']" />
             </a>
           </li>
           <li>
-            <a href="https://www.instagram.com/compromis_net/" aria-label="Instagram">
+            <a href="https://www.instagram.com/compromis_net/" aria-label="Instagram" style="background: #e1306c">
               <fa :icon="['fab', 'instagram']" />
             </a>
           </li>
           <li>
-            <a href="https://www.youtube.com/user/coaliciocompromis" aria-label="YouTube">
+            <a href="https://www.youtube.com/user/coaliciocompromis" aria-label="YouTube" style="background: #c4302b">
               <fa :icon="['fab', 'youtube']" />
             </a>
           </li>
           <li>
-            <a href="https://t.me/compromis" aria-label="Telegram">
+            <a href="https://t.me/compromis" aria-label="Telegram" style="background: #0088cc">
               <fa :icon="['fab', 'telegram']" />
             </a>
           </li>
@@ -86,7 +86,7 @@ export default {
 
   middleware ({ store, redirect }) {
     if (store.state.step !== 'success') {
-      return redirect('/')
+      // return redirect('/')
     }
   },
 
@@ -237,15 +237,15 @@ li {
     align-items: center;
     justify-content: center;
     font-size: 2rem;
-    background: var(--gray-400);
     height: 4rem;
     width: 4rem;
+    opacity: 0.8;
     border-radius: 100%;
     color: $white;
     transition: .15s ease-in-out;
 
     &:hover {
-      background: var(--gray-500);
+      opacity: 0.9;
     }
   }
 
