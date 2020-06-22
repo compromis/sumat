@@ -458,27 +458,28 @@ export default {
         this.form.u_aval_1 = ''
         this.form.u_aval_2 = ''
       }
-  },
+    },
 
-  head () {
-    let title = false
-    const titles = {
-      2: "Suma't al BLOC - Compromís",
-      3: "Suma't a Iniciativa - Compromís",
-      4: "Suma't a VerdsEquo - Compromís",
-      14: "Suma't a Compromís"
-    }
+    head () {
+      let title = false
+      const titles = {
+        2: "Suma't al BLOC - Compromís",
+        3: "Suma't a Iniciativa - Compromís",
+        4: "Suma't a VerdsEquo - Compromís",
+        14: "Suma't a Compromís"
+      }
 
-    if ('party' in this.$route.meta) {
-      title = titles[this.$route.meta.party]
-    }
+      if ('party' in this.$route.meta) {
+        title = titles[this.$route.meta.party]
+      }
 
-    return {
-      title,
-      meta: [
-        { hid: 'twitter:title', property: 'twitter:title', content: title },
-        { hid: 'og:title', property: 'og:title', content: title }
-      ]
+      return {
+        title,
+        meta: [
+          { hid: 'twitter:title', property: 'twitter:title', content: title },
+          { hid: 'og:title', property: 'og:title', content: title }
+        ]
+      }
     }
   }
 }
