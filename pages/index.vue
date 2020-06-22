@@ -312,10 +312,10 @@ export default {
 
   asyncData ({ store, route, params }) {
     /* Set party and type */
-    if (route.meta) {
-      store.commit('setType', route.meta[0].type)
-      store.commit('setParty', route.meta[0].party)
-    }
+    const type = route.meta[0].type || '1'
+    const party = route.meta[0].party || '14'
+    store.commit('setType', type)
+    store.commit('setParty', party)
   },
 
   data () {
