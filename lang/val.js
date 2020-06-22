@@ -9,7 +9,22 @@ export default {
     hide: 'Amaga els partits'
   },
   type: {
-    title: "Tipus d'afiliació"
+    title: "Tipus d'afiliació",
+    sympathizer: 'Simpatitzant',
+    joined: 'Adherit/da',
+    affiliate: 'Afiliat/da',
+    rights: {
+      compromis: 'Com a adherit/da tindràs tots els drets i deures recollits en les',
+      bloc: 'Com a adherit/da tindràs tots els drets i deures recollits en les',
+      iniciativa: 'Com a adherit/da tindràs tots els drets i deures recollits en les',
+      verds: 'Com a adherit/da tindràs tots els drets i deures recollits en les'
+    },
+    sympathizers: {
+      compromis: "Si encara no t'has decidit adherir-te a Compromís, pots participar com a simpatitzant.",
+      bloc: "Si encara no t'has decidit afiliar-te al BLOC, pots participar com a simpatitzant.",
+      iniciativa: "Si encara no t'has decidit afiliar-te a Iniciativa, pots participar com a simpatitzant.",
+      verds: "Si encara no t'has decidit afiliar-te a VerdsEquo, pots participar com a simpatitzant."
+    }
   },
   errors: "👇 Alguns camps contenen errors. Revisa el formulari i torna'l a enviar",
   personal: {

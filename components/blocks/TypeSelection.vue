@@ -4,21 +4,21 @@
       <input-radio-button
         name="u_type"
         value="1"
-        :label="party === '14' ? 'Adherit/da' : 'Afiliat/da'"
+        :label="party === '14' ? $t('type.joined') : $t('type.affiliate')"
         :checked="value === '1'"
         @input="(value) => $emit('input', value)"
       >
         <div v-if="party === '2'">
-          Com a adherit/da tindràs tots els drets i deures recollits en les <a href="https://comprom.is/estatutsbloc" target="_blank">bases del BLOC</a>.
+          {{ $t('type.rights.bloc') }} <a href="https://comprom.is/estatutsbloc" target="_blank">bases del Bloc</a>.
         </div>
         <div v-else-if="party === '3'">
-          Com a adherit/da tindràs tots els drets i deures recollits en les <a href="https://comprom.is/estatutsiniciativa" target="_blank">bases d'Iniciativa</a>.
+          {{ $t('type.rights.iniciativa') }} <a href="https://comprom.is/estatutsiniciativa" target="_blank">bases d'Iniciativa</a>.
         </div>
         <div v-else-if="party === '4'">
-          Com a adherit/da tindràs tots els drets i deures recollits en les <a href="https://comprom.is/estatutsverds" target="_blank">bases dels Verds</a>.
+          {{ $t('type.rights.verds') }} <a href="https://comprom.is/estatutsverds" target="_blank">bases de VerdsEQuo</a>.
         </div>
         <div v-else>
-          Com a adherit/da tindràs tots els drets i deures recollits en les <a href="https://comprom.is/estatuts" target="_blank">bases de Compromís</a>.
+          {{ $t('type.rights.compromis') }} <a href="https://comprom.is/estatuts" target="_blank">bases de Compromís</a>.
         </div>
       </input-radio-button>
     </div>
@@ -26,21 +26,21 @@
       <input-radio-button
         name="u_type"
         value="2"
-        label="Simpatitizant"
+        :label="$t('type.sympathizer')"
         :checked="value === '2'"
         @input="(value) => $emit('input', value)"
       >
         <div v-if="party === '2'">
-          Si encara no t'has decidit afiliar-te al BLOC, pots participar com a simpatitzant.
+          {{ $t('type.sympathizers.bloc') }}
         </div>
         <div v-else-if="party === '3'">
-          Si encara no t'has decidit afiliar-te a Iniciativa, pots participar com a simpatitzant.
+          {{ $t('type.sympathizers.iniciativa') }}
         </div>
         <div v-else-if="party === '4'">
-          Si encara no t'has decidit afiliar-te als Verds, pots participar com a simpatitzant.
+          {{ $t('type.sympathizers.verds') }}
         </div>
         <div v-else>
-          Si encara no t'has decidit adherir-te a Compromís, pots participar com a simpatitzant.
+          {{ $t('type.sympathizers.compromis') }}
         </div>
       </input-radio-button>
     </div>

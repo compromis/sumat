@@ -9,7 +9,22 @@ export default {
     hide: 'Muestra menos partidos'
   },
   type: {
-    title: 'Tipo de afiliación'
+    title: 'Tipo de afiliación',
+    sympathizer: 'Simpatizante',
+    joined: 'Adherido/a',
+    affiliate: 'Afiliado/a',
+    rights: {
+      compromis: 'Como adherido/a tendrás todos los derechos y deberes recogidos en las',
+      bloc: 'Como adherido/a tendrás todos los derechos y deberes recogidos en las',
+      iniciativa: 'Como adherido/a tendrás todos los derechos y deberes recogidos en las',
+      verds: 'Como adherido/a tendrás todos los derechos y deberes recogidos en las'
+    },
+    sympathizers: {
+      compromis: 'Si aún no te has decidido a adherirte a Compromís, puedes participar como simpatizante.',
+      bloc: 'Si aún no te has decidido afiliarte al Bloc, puedes participar como simpatizante.',
+      iniciativa: 'Si aún no te has decidido afiliarte a Iniciativa, puedes participar como simpatizante.',
+      verds: 'Si aún no te has decidido afiliarte a VerdsEquo, puedes participar como simpatizante.'
+    }
   },
   errors: '👇 Algunos campos contienen errores. Revisa el formulario y vuelve a enviarlo',
   personal: {
