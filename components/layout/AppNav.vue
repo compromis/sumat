@@ -9,12 +9,15 @@
       </div>
       <div class="ml-auto align-items-center d-flex">
         <span class="sr-only">Idioma</span>
-        <button :class="['btn-link-muted mr-2', { 'selected d-none d-md-inline': $i18n.locale === 'val' }]" :aria-pressed="$i18n.locale === 'val'" @click="setLocale('val')">
-          Valencià
-        </button>
-        <button :class="['btn-link-muted', { 'selected d-none d-md-inline': $i18n.locale === 'cas' }]" :aria-pressed="$i18n.locale === 'cas'" @click="setLocale('cas')">
-          Castellano
-        </button>
+        <nuxt-link
+          v-for="locale in $i18n.locales"
+          :key="locale.code"
+          :to="switchLocalePath(locale.code)"
+          :class="['btn-link-muted ml-2', { 'selected d-none d-md-inline': $i18n.locale === locale.code }]"
+          :aria-pressed="$i18n.locale === locale.code"
+        >
+          {{ locale.name }}
+        </nuxt-link>
       </div>
     </div>
   </nav>
@@ -28,14 +31,10 @@ export default {
     CompromisLogo
   },
 
-  methods: {
-    setLocale (locale) {
-      const langs = { cas: 'es', val: 'ca' }
-      this.$i18n.locale = locale
-      this.$store.commit('updateFormField', { name: 'u_lang', value: langs[locale] })
-      /* Redirect to new path */
-      const name = (locale === 'val') ? this.$route.name.replace(/___cas/g, '___val') : this.$route.name.replace(/___val/g, '___cas')
-      this.$router.push({ name })
+  watch: {
+    '$i18n.locale' (newLocale) {
+      const codes = { val: 'CA', cas: 'ES' }
+      this.$store.commit('updateFormField', { name: 'u_lang', value: codes[newLocale] })
     }
   }
 }

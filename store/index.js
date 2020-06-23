@@ -29,7 +29,7 @@ export const state = () => ({
     sms_ref: '',
     sms_code: '',
     referer: 'online',
-    u_lang: 'ca'
+    u_lang: 'CA'
   },
   additional_form: {
     u_labor_code: '',

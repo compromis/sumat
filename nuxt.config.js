@@ -103,21 +103,23 @@ export default {
       {
         locales: [{
           code: 'val',
-          iso: 'ca'
+          name: 'Valencià',
+          iso: 'ca',
+          file: 'val.js'
         },
         {
           code: 'cas',
-          iso: 'es-ES'
+          name: 'Castellano',
+          iso: 'es-ES',
+          file: 'cas.js'
         }],
         defaultLocale: 'val',
         seo: false,
         baseUrl: 'https://sumat.compromis.net',
+        lazy: true,
+        langDir: 'lang/',
         vueI18n: {
-          fallbackLocale: 'val',
-          messages: {
-            val,
-            cas
-          }
+          fallbackLocale: 'val'
         }
       }
     ]
