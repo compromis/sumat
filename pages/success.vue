@@ -84,9 +84,9 @@ export default {
     BIconHandThumbsUp
   },
 
-  middleware ({ store, redirect }) {
-    if (store.state.step !== 'success') {
-      // return redirect('/')
+  middleware ({ store, redirect, route }) {
+    if (store.state.step !== 'success' && !('override' in route.query)) {
+      return redirect('/')
     }
   },
 

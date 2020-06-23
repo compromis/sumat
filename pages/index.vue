@@ -306,14 +306,14 @@ export default {
     SubmitButton
   },
 
-  async fetch ({ store, params }) {
+  async fetch ({ store }) {
     await store.dispatch('getInfo')
   },
 
   asyncData ({ store, route }) {
     /* Set party and type */
-    const type = route.meta[0].type || '1'
-    const party = route.meta[0].party || '14'
+    const type = route.meta[0].type || store.state.form.u_type
+    const party = route.meta[0].party || store.state.form.u_party
     store.commit('setType', type)
     store.commit('setParty', party)
   },

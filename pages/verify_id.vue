@@ -59,8 +59,8 @@ export default {
     }
   },
 
-  middleware ({ store, redirect }) {
-    if (store.state.step !== 'verify_id') {
+  middleware ({ store, redirect, route }) {
+    if (store.state.step !== 'verify_id' && !('override' in route.query)) {
       return redirect('/')
     }
   },

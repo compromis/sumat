@@ -135,13 +135,13 @@ export default {
     InputCheckboxPills
   },
 
-  async fetch ({ store, params }) {
+  async fetch ({ store }) {
     await store.dispatch('getInfo')
   },
 
-  middleware ({ store, redirect }) {
-    if (store.state.step !== 'additional_info') {
-      // return redirect('/')
+  middleware ({ store, redirect, route }) {
+    if (store.state.step !== 'additional_info' && !('override' in route.query)) {
+      return redirect('/')
     }
   },
 

@@ -71,9 +71,9 @@ export default {
     FieldGroup
   },
 
-  middleware ({ store, redirect }) {
-    if (store.state.step !== 'verify_sms') {
-      // return redirect('/')
+  middleware ({ store, redirect, route }) {
+    if (store.state.step !== 'verify_sms' && !('override' in route.query)) {
+      return redirect('/')
     }
   },
 
