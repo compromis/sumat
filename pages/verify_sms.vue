@@ -46,7 +46,7 @@
       >
         {{ $t('verify_sms.retry') }}
       </button>
-      <nuxt-link to="/" class="btn-link-muted mt-2">
+      <nuxt-link :to="localePath('/')" class="btn-link-muted mt-2">
         {{ $t('verify_sms.modify') }}
       </nuxt-link>
     </div>

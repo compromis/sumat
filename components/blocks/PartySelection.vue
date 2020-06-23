@@ -71,8 +71,7 @@ export default {
     handlePartyChange (e) {
       const parties = this.$store.state.partySlugs
       const simpatitzant = this.$store.state.form.u_type === '2' ? 'simpatitzant' : ''
-      const lang = this.$i18n.locale === 'cas' ? '/cas' : ''
-      history.replaceState({}, null, lang + parties[e.target.value] + simpatitzant)
+      history.replaceState({}, null, this.localePath(parties[e.target.value] + simpatitzant))
       this.hideIfUnchecked = true
     }
   }
