@@ -1,5 +1,5 @@
 <template>
-  <div :class="['field', 'field-upload', { 'field-error': invalid }]">
+  <div :class="['field', 'field-upload', { 'field-error': invalid || errors }]">
     <div
       class="drop-file"
       :class="{
@@ -47,7 +47,7 @@
           <strong>.png</strong>
           <strong>.tiff</strong>
           <strong>.pdf</strong>
-          <strong>2MB</strong>
+          <strong>6MB</strong>
         </i18n>
       </div>
       <div v-else class="has-file">
@@ -68,8 +68,8 @@
           </div>
         </div>
       </div>
-      <div v-if="invalidMessage && invalid" :id="name + 'Error'" class="invalid-message">
-        {{ invalidMessage }}
+      <div v-if="(invalidMessage && invalid) || errors" :id="name + 'Error'" class="invalid-message">
+        {{ invalidMessage || errors.file[0] }}
       </div>
     </div>
   </div>
@@ -119,7 +119,7 @@ export default {
     return {
       selectedFile: null,
       uploadedFile: null,
-      errors: [],
+      errors: null,
       isSaving: false,
       isDragging: false
     }
@@ -127,19 +127,19 @@ export default {
 
   methods: {
     onFileChange (e, dragged) {
-      this.errors = []
+      this.errors = null
       this.selectedFile = dragged ? e.dataTransfer.files[0] : e.target.files[0]
       this.isSaving = true
 
       const formData = new FormData()
-      formData.append('file', this.selectedFile)
-
+      formData.append('file', this.selectedFile, this.selectedFile.name)
       this.$api.uploadFile('id_validation', formData)
         .then((response) => {
           this.uploadedFile = response.file
           this.$emit('change', response.file)
-        }).catch((errors) => {
-          this.errors = errors
+        }).catch((resp) => {
+          this.errors = resp.errors
+          this.selectedFile = null
         }).then(() => {
           this.isSaving = false
         })

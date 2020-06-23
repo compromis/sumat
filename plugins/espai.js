@@ -34,7 +34,7 @@ class API {
 
   _call (method, path, params, services) {
     const data = method === 'post' && !services ? qs.stringify(params) : params
-    const headers = method === 'post' && !services ? { 'content-type': 'application/x-www-form-urlencoded;charset=utf-8' } : false
+    const headers = method === 'post' && !services ? { 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8' } : { 'Content-Type': 'multipart/form-data' }
     const baseUrl = services ? this.servicesUrl : this.apiUrl
 
     return new Promise((resolve, reject) => {
@@ -46,9 +46,11 @@ class API {
       }).then((response) => {
         resolve(response.data)
       }).catch((error) => {
-        if ('errors' in error.response.data) {
+        if (error.response) {
           reject(error.response.data)
         } else {
+          const error = { errors: { general: 'Error del servidor. Intenta-ho més tard o contacta amb web@compromis.net' } }
+          reject(error)
           alert('Error del servidor. Intenta-ho més tard o contacta amb web@compromis.net')
         }
       })
