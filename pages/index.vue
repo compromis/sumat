@@ -266,7 +266,7 @@
       <legal-notice />
     </form>
 
-    <b-modal id="no-email" title="No tinc e-mail ni/o mòbil" ok-only ok-title="Entès">
+    <b-modal id="no-email" :title="$t('contact.stoneage')" ok-only :ok-title="$t('offline.ok')">
       <offline-instructions />
     </b-modal>
   </div>
@@ -310,7 +310,7 @@ export default {
     await store.dispatch('getInfo')
   },
 
-  asyncData ({ store, route, params }) {
+  asyncData ({ store, route }) {
     /* Set party and type */
     const type = route.meta[0].type || '1'
     const party = route.meta[0].party || '14'

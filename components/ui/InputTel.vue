@@ -5,7 +5,7 @@
     </legend>
     <div class="phone-input-wrapper">
       <div>
-        <label class="sr-only" :for="`${name}_prefix`">Prefixe internacional</label>
+        <label class="sr-only" :for="`${name}_prefix`">{{ $t('tel.prefix') }}</label>
         <div class="phone-select-wrapper">
           <select
             :id="`${name}_prefix`"
@@ -24,7 +24,7 @@
         </div>
       </div>
       <div class="phone-text-wrapper">
-        <label class="sr-only" :for="name">Telèfon</label>
+        <label class="sr-only" :for="name">{{ $t('tel.number') }}</label>
         <input
           :id="name"
           ref="number"

@@ -1,11 +1,8 @@
 <template>
   <div>
-    <p>
-      L'e-mail i el mòbil són camps requerits si vols donar-te d'alta a través d'internet.
-      No obstant, pots donar-te d'alta sense e-mail o mòbil imprimint el
-      <a :href="printableFormUrl"><b-icon-cloud-download /> {{ formName }}</a>
-      i enviant-lo signat a la següent adreça:
-    </p>
+    <i18n path="offline.instructions" tag="p">
+      <a :href="printableFormUrl"><b-icon-cloud-download /> {{ $t(`offline.forms.${$store.state.form.u_party}`) }}</a>
+    </i18n>
     <p class="font-weight-bold">
       Compromís<br>
       Plaça del Pilar, 1<br>
@@ -32,17 +29,6 @@ export default {
         14: 'https://comprom.is/form'
       }
       return urls[form.u_party]
-    },
-
-    formName () {
-      const { form } = this.$store.state
-      const names = {
-        2: "formulari d'afiliació del BLOC",
-        3: "formulari d'afiliaició d'Iniciativa",
-        4: "formulari d'afiliació de VerdsEquo",
-        14: "formulari d'adhesió a Compromís"
-      }
-      return names[form.u_party]
     }
   }
 }

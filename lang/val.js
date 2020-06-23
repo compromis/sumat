@@ -10,20 +10,26 @@ export default {
   },
   type: {
     title: "Tipus d'afiliació",
-    sympathizer: 'Simpatitzant',
-    joined: 'Adherit/da',
+    supporter: 'Simpatitzant',
+    member: 'Adherit/da',
     affiliate: 'Afiliat/da',
     rights: {
-      compromis: 'Com a adherit/da tindràs tots els drets i deures recollits en les',
-      bloc: 'Com a adherit/da tindràs tots els drets i deures recollits en les',
-      iniciativa: 'Com a adherit/da tindràs tots els drets i deures recollits en les',
-      verds: 'Com a adherit/da tindràs tots els drets i deures recollits en les'
+      14: 'Com a adherit/da tindràs tots els drets i deures recollits en les {0}',
+      2: 'Com a afiliat/da tindràs tots els drets i deures recollits en les {0}',
+      3: 'Com a afiliat/da tindràs tots els drets i deures recollits en les {0}',
+      4: 'Com a afiliat/da tindràs tots els drets i deures recollits en les {0}'
     },
-    sympathizers: {
-      compromis: "Si encara no t'has decidit adherir-te a Compromís, pots participar com a simpatitzant.",
-      bloc: "Si encara no t'has decidit afiliar-te al BLOC, pots participar com a simpatitzant.",
-      iniciativa: "Si encara no t'has decidit afiliar-te a Iniciativa, pots participar com a simpatitzant.",
-      verds: "Si encara no t'has decidit afiliar-te a VerdsEquo, pots participar com a simpatitzant."
+    supporters: {
+      14: "Si encara no t'has decidit adherir-te a Compromís, pots participar com a simpatitzant.",
+      2: "Si encara no t'has decidit afiliar-te al BLOC, pots participar com a simpatitzant.",
+      3: "Si encara no t'has decidit afiliar-te a Iniciativa, pots participar com a simpatitzant.",
+      4: "Si encara no t'has decidit afiliar-te a VerdsEquo, pots participar com a simpatitzant."
+    },
+    bylaws: {
+      14: 'bases de Compromís',
+      2: 'bases del BLOC',
+      3: 'bases de Iniciativa',
+      4: 'bases de VerdsEquo'
     }
   },
   errors: "👇 Alguns camps contenen errors. Revisa el formulari i torna'l a enviar",
@@ -31,11 +37,11 @@ export default {
     title: 'Dades personals',
     name: 'Nom',
     surname: 'Cognoms',
-    birthday: 'Data de Naixement',
+    birthday: 'Data de naixement',
     gender: 'Gènere',
     address: 'Adreça',
     city: 'Població',
-    postal: 'Codi Postal'
+    postal: 'Codi postal'
   },
   contact: {
     title: 'Informació de contacte',
@@ -63,6 +69,36 @@ export default {
     prompt: 'Vols adjuntar avals?',
     close: 'No vull adjuntar avals',
     tooltip: "Si ja coneixes a dos adherits a Compromís, pots introduir el seus DNIs perquè confirmen la teua alta. Si no, serà el portaveu del teu col·lectiu local l'encarregat de confirmar l'alta."
+  },
+  tel: {
+    prefix: 'Prefixe interncional',
+    number: 'Telèfon'
+  },
+  offline: {
+    ok: 'Entès',
+    instructions: 'L’e-mail i el mòbil són camps requerits si vols donar-te d’alta a través d’internet. No obstant, pots donar-te d’alta sense e-mail o mòbil imprimint el {0} i enviant-lo signat a la següent adreça:',
+    forms: {
+      2: 'formulari del BLOC',
+      3: 'formulari d’Iniciativa',
+      4: 'formulari de VerdsEquo',
+      14: 'formulari d’adhesió a Compromís'
+    }
+  },
+  notice: {
+    ssl: 'Les teues dades s’enviaran de forma segura a través d’una connexió xifrada SSL',
+    privacy: `{0} en compliment del que estableix la {1}, de {2}, li informem que les dades
+      personals que va a proporcionar-nos seran incorporades a un fitxer automatitzat de {0},
+      que com a responsable del fitxer, tractarà els mateixos a fi de tramitar la seua afiliació,
+      permetre l'exercici dels drets i deures, gestionar la seua participació i oferir-li informació
+      sobre les nostres activitats, ja siga per correu ordinari, electrònic, SMS o un altre mitjà de
+      comunicació equivalent. Així mateix, li informem que podrà exercir els drets que li assisteixen d'accés,
+      rectificació, cancel·lació i oposició al tractament de la informació que li concerneix a través del
+      seu usuari de l'Espai Compromís o dirigint un escrit bé per correu postal a Compromís (Plaça del
+      Pilar, 1 - 46001 València) o bé per mitjà d'un correu electrònic a {3}, acompanyant una fotocòpia
+      del document que acredite la seua identitat. Més informació en {4}`,
+    law: 'Llei Orgànica 3/2018 del 5 de desembre',
+    law_name: 'Protecció de Dades Personals i Drets Digitals',
+    privacy_link: 'Avís legal i política de privacitat'
   },
   verify_id: {
     title: 'Adjunta el teu DNI / NIE',

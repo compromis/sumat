@@ -2,23 +2,15 @@
   <div>
     <div class="text-muted my-4 text-center">
       <b-icon-lock class="icon" />
-      Les teues dades s'enviaran de forma segura a través d'una connexió xifrada SSL
+      {{ $t('notice.ssl') }}
     </div>
-    <p class="legal text-muted my-4">
-      <strong>Compromís</strong> en compliment del que estableix la <strong>Llei Orgànica 3/2018,
-        de 5 de desembre</strong>, de <strong>Protecció de Dades Personals i Drets Digitals</strong>, li informem que les dades
-      personals que va a proporcionar-nos seran incorporades a un fitxer automatitzat de <strong>Compromís</strong>,
-      que com a responsable del fitxer, tractarà els mateixos a fi de tramitar la seua afiliació,
-      permetre l'exercici dels drets i deures, gestionar la seua participació i oferir-li informació
-      sobre les nostres activitats, ja siga per correu ordinari, electrònic, SMS o un altre mitjà de
-      comunicació equivalent. Així mateix, li informem que podrà exercir els drets que li assisteixen d'accés,
-      rectificació, cancel·lació i oposició al tractament de la informació que li concerneix a través del
-      seu usuari de l'Espai Compromís o dirigint un escrit bé per correu postal a Compromís (Plaça del
-      Pilar, 1 - 46001 València) o bé per mitjà d'un correu electrònic a
-      <a href="mailto:dades@compromis.net">dades@compromis.net</a>, acompanyant una fotocòpia del document
-      que acredite la seua identitat. Més informació en
-      <a href="https://compromis.net/avis-legal" target="_blank">Avís legal i política de privacitat</a>.
-    </p>
+    <i18n class="legal text-muted my-4" path="notice.privacy" tag="p">
+      <strong>Compromís</strong>
+      <strong>{{ $t('notice.law') }}</strong>
+      <strong>{{ $t('notice.law_name') }}</strong>
+      <a href="mailto:dades@compromis.net">dades@compromis.net</a>
+      <a href="https://compromis.net/avis-legal" target="_blank">{{ $t('notice.privacy_link') }}</a>
+    </i18n>
   </div>
 </template>
 

@@ -4,43 +4,25 @@
       <input-radio-button
         name="u_type"
         value="1"
-        :label="party === '14' ? $t('type.joined') : $t('type.affiliate')"
+        :label="party === '14' ? $t('type.member') : $t('type.affiliate')"
         :checked="value === '1'"
         @input="(value) => $emit('input', value)"
       >
-        <div v-if="party === '2'">
-          {{ $t('type.rights.bloc') }} <a href="https://comprom.is/estatutsbloc" target="_blank">bases del Bloc</a>.
-        </div>
-        <div v-else-if="party === '3'">
-          {{ $t('type.rights.iniciativa') }} <a href="https://comprom.is/estatutsiniciativa" target="_blank">bases d'Iniciativa</a>.
-        </div>
-        <div v-else-if="party === '4'">
-          {{ $t('type.rights.verds') }} <a href="https://comprom.is/estatutsverds" target="_blank">bases de VerdsEquo</a>.
-        </div>
-        <div v-else>
-          {{ $t('type.rights.compromis') }} <a href="https://comprom.is/estatuts" target="_blank">bases de Compromís</a>.
-        </div>
+        <i18n :path="`type.rights.${party}`" tag="div">
+          <a :href="bylawsUrl" target="_blank">{{ $t(`type.bylaws.${party}`) }}</a>
+        </i18n>
       </input-radio-button>
     </div>
     <div class="col-md-6 col-lg-4 d-flex">
       <input-radio-button
         name="u_type"
         value="2"
-        :label="$t('type.sympathizer')"
+        :label="$t('type.supporter')"
         :checked="value === '2'"
         @input="(value) => $emit('input', value)"
       >
-        <div v-if="party === '2'">
-          {{ $t('type.sympathizers.bloc') }}
-        </div>
-        <div v-else-if="party === '3'">
-          {{ $t('type.sympathizers.iniciativa') }}
-        </div>
-        <div v-else-if="party === '4'">
-          {{ $t('type.sympathizers.verds') }}
-        </div>
-        <div v-else>
-          {{ $t('type.sympathizers.compromis') }}
+        <div>
+          {{ $t(`type.supporters.${party}`) }}
         </div>
       </input-radio-button>
     </div>
@@ -65,6 +47,17 @@ export default {
   computed: {
     party () {
       return this.$store.state.form.u_party
+    },
+
+    bylawsUrl () {
+      const urls = {
+        2: 'https://comprom.is/estatutsbloc',
+        3: 'https://comprom.is/estatutsiniciativa',
+        4: 'https://comprom.is/estatutsverds',
+        14: 'https://comprom.is/estatuts'
+      }
+
+      return urls[this.party]
     }
   },
 
