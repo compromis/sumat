@@ -8,6 +8,7 @@
             <input-file
               name="verify_id_front"
               :label="$t('verify_id.front')"
+              :value="verify_id.front"
               :invalid="'verify_id_front' in errors"
               :invalid-message="errors['verify_id_front']"
               required
@@ -17,6 +18,7 @@
             <input-file
               name="verify_id_back"
               :label="$t('verify_id.back')"
+              :value="verify_id.back"
               :invalid="'verify_id_back' in errors"
               :invalid-message="errors['verify_id_back']"
               required
@@ -78,6 +80,12 @@ export default {
       },
       deep: true
     }
+  },
+
+  mounted () {
+    const { form } = this.$store.state
+    this.verify_id.front = form.verify_id_front
+    this.verify_id.back = form.verify_id_back
   },
 
   methods: {

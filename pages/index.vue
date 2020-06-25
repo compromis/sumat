@@ -399,10 +399,8 @@ export default {
 
   mounted () {
     /* Set referer */
-    const urlParams = new URLSearchParams(window.location.search)
-    const referer = urlParams.get('ref')
-    if (referer) {
-      this.$store.commit('updateFormField', { name: 'referer', value: referer })
+    if ('ref' in this.$route.query) {
+      this.$store.commit('updateFormField', { name: 'referer', value: this.$route.query.ref })
     }
 
     this.form = this.$store.state.form

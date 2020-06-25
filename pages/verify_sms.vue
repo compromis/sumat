@@ -46,7 +46,7 @@
       >
         {{ $t('verify_sms.retry') }}
       </button>
-      <nuxt-link :to="localePath('/')" class="btn-link-muted mt-2">
+      <nuxt-link :to="goBackPath" class="btn-link-muted mt-2" replace>
         {{ $t('verify_sms.modify') }}
       </nuxt-link>
     </div>
@@ -89,6 +89,11 @@ export default {
   computed: {
     errors () {
       return this.$store.state.errors
+    },
+
+    goBackPath () {
+      const { partySlugs, form } = this.$store.state
+      return this.localePath(partySlugs[form.u_party])
     }
   },
 

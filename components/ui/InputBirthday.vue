@@ -18,6 +18,7 @@
         pattern="(0?[1-9]|1[0-9]|2[0-9]|3[01])"
         :required="required"
         :aria-describedby="name + 'Error'"
+        autocomplete="off"
         @input="(e) => $emit('day-updated', e.target.value)"
         @keyup="(e) => handleKeyUp(e, 2, $refs.day, $refs.month)"
       >
@@ -36,6 +37,7 @@
         pattern="(0?[1-9]|1[012])"
         :required="required"
         :aria-describedby="name + 'Error'"
+        autocomplete="off"
         @input="(e) => $emit('month-updated', e.target.value)"
         @keyup="(e) => handleKeyUp(e, 2, $refs.month, $refs.year)"
         @keydown="(e) => handleKeyDown(e, $refs.month, $refs.day)"
@@ -55,6 +57,7 @@
         pattern="[0-9]{4}"
         :required="required"
         :aria-describedby="name + 'Error'"
+        autocomplete="off"
         @input="(e) => $emit('year-updated', e.target.value)"
         @keyup="(e) => handleKeyUp(e, 2, $refs.year)"
         @keydown="(e) => handleKeyDown(e, $refs.year, $refs.month)"

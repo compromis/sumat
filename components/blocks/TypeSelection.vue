@@ -63,10 +63,9 @@ export default {
 
   methods: {
     handleTypeChange (e) {
-      const parties = this.$store.state.partySlugs
-      const party = this.$store.state.form.u_party
+      const { partySlugs, form } = this.$store.state
       const simpatitzant = e.target.value === '2' ? 'simpatitzant' : ''
-      history.replaceState({}, null, this.localePath(parties[party] + simpatitzant))
+      history.replaceState({}, null, this.localePath(partySlugs[form.u_party] + simpatitzant))
     }
   }
 }

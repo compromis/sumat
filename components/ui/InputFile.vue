@@ -29,7 +29,7 @@
         :aria-describedby="name + 'Error ' + name + 'Instructions ' + name + 'Specs'"
         @change="onFileChange($event, false)"
       >
-      <div v-if="!selectedFile" class="no-file">
+      <div v-if="!selectedFile && !uploadedFile" class="no-file">
         <div class="icon d-none d-md-block">
           <b-icon-upload />
         </div>
@@ -89,6 +89,10 @@ export default {
   },
 
   props: {
+    value: {
+      type: String,
+      default: ''
+    },
     label: {
       type: String,
       required: true
@@ -123,6 +127,10 @@ export default {
       isSaving: false,
       isDragging: false
     }
+  },
+
+  mounted () {
+    this.uploadedFile = this.value
   },
 
   methods: {

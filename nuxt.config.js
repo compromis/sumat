@@ -1,9 +1,7 @@
-import val from './lang/val.js'
-import cas from './lang/cas.js'
-
 export default {
   mode: 'universal',
   target: 'static',
+
   /*
   ** Headers of the page
   */
