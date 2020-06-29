@@ -14,7 +14,6 @@
           :key="locale.code"
           :to="switchLocalePath(locale.code)"
           :class="['btn-link-muted ml-2', { 'selected d-none d-md-inline': $i18n.locale === locale.code }]"
-          :aria-pressed="$i18n.locale === locale.code"
         >
           {{ locale.name }}
         </nuxt-link>

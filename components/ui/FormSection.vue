@@ -6,6 +6,7 @@
       </span>
       <span v-if="help" v-tooltip="{ content: help, trigger: 'hover click focus' }" tabindex="0" role="button">
         <b-icon-question-circle font-scale="0.75" class="ml-2" />
+        <span class="sr-only">{{ $t('help') }}</span>
       </span>
       <div class="additional-info">
         <slot name="additional-info" />

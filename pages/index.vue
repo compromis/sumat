@@ -247,7 +247,7 @@
           </form-section>
         </transition>
         <div>
-          <button class="btn btn-link-muted" type="button" :aria-controls=" $t('avals.title')" :aria-expanded="showAvals" @click="toggleAvals">
+          <button class="btn btn-link-muted" type="button" aria-controls="avals" :aria-expanded="showAvals ? 'true' : 'false'" @click="toggleAvals">
             {{ showAvals ? $t('avals.close') : $t('avals.prompt') }}
           </button>
           <b-icon-question-circle
@@ -257,6 +257,7 @@
             }"
             role="button"
             tabindex="0"
+            :aria-label="$t('help')"
           />
         </div>
       </div>

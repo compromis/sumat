@@ -36,7 +36,7 @@
           pattern="[0-9]*"
           :placeholder="placeholder"
           :required="required"
-          :aria-describedby="name + 'Error'"
+          :aria-describedby="invalid ? name + 'Error' : null"
           :aria-invalid="invalid"
           @input="$emit('number-updated', $event.target.value)"
         >
@@ -164,17 +164,21 @@ export default {
 }
 
 .input {
-    padding: 0;
-    outline: none;
-    border: none;
-    overflow: hidden;
-    font-size: $label-size;
-    background: none;
+  padding: 0;
+  outline: none;
+  border: none;
+  overflow: hidden;
+  font-size: $label-size;
+  background: none;
 
-    &:invalid {
-      color: $danger;
-    }
+  &::placeholder {
+    color: $text-muted;
   }
+
+  &:invalid {
+    color: $danger;
+  }
+}
 
 .phone-select-wrapper {
   display: flex;

@@ -33,6 +33,7 @@ export default {
     }
   },
   errors: '👇 Algunos campos contienen errores. Revisa el formulario y vuelve a enviarlo',
+  help: 'Ayuda',
   personal: {
     title: 'Datos personales',
     name: 'Nombre',
