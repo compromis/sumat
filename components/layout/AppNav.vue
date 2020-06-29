@@ -47,7 +47,7 @@ export default {
     top: 0;
     left: 0;
     right: 0;
-    background: rgba($white, .8);
+    background: var(--nav-background);
     backdrop-filter: blur(10px);
     padding: .75rem 0;
     z-index: 1000;
@@ -56,6 +56,7 @@ export default {
     .logo {
       display: block;
       transition: .15s ease-in-out;
+      color: $text-default;
 
       svg {
         height: 1.75rem;

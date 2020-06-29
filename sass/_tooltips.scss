@@ -4,7 +4,7 @@
 
   .tooltip-inner {
     background: var(--dark);
-    color: var(--white);
+    color: $white;
     border-radius: $border-radius;
     padding: 5px 10px 4px;
     max-width: 300px;

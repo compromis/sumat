@@ -112,7 +112,7 @@ export default {
 
 .input-inline-group {
   position: relative;
-  background: $white;
+  background: var(--white);
   padding: 1.75rem var(--card-padding) .75rem var(--card-padding);
 
   &-label {

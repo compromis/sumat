@@ -60,8 +60,9 @@ ul {
 
   .current-step {
     color: $text-default;
+
     span {
-      background: $gradient
+      background: $gradient;
     }
   }
 
@@ -82,7 +83,7 @@ ul {
     font-size: 1.25rem;
     font-weight: bold;
     color: $white;
-    background: $gray-400;
+    background: var(--gray-400);
     margin-right: .5rem;
     border-radius: 100%;
   }

@@ -125,7 +125,7 @@ export default {
     height: 5rem;
     border-radius: $border-radius;
     margin-right: 1rem;
-    background: $white;
+    background: var(--white);
 
     &:invalid {
       color: $danger;

@@ -165,7 +165,7 @@ export default {
 
 .field-upload {
   padding: 1rem;
-  background: $white;
+  background: var(--white);
 
   .drop-file {
     position: relative;

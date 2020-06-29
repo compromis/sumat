@@ -170,8 +170,8 @@ export default {
   }
 
   .num-afiliat {
-    background: $body-color;
-    color: $white;
+    background: var(--gray-900);
+    color: $text-inverted;
     position: absolute;
     display: flex;
     flex-direction: column;

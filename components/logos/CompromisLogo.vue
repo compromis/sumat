@@ -113,7 +113,7 @@ export default {
 
 <style scoped>
 .letter {
-  fill: #353949;
+  fill: currentColor;
 }
 .background {
   fill: #ffffff;
@@ -121,16 +121,10 @@ export default {
 .careta {
   fill: url(#compromisGradient);
 }
-.mono .letter {
-  fill: currentColor;
-}
 .mono .careta {
   fill: currentColor;
 }
 .mono .background {
   display: none;
-}
-.inverted .letter {
-  fill: white;
 }
 </style>
