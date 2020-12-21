@@ -365,8 +365,8 @@ export default {
         },
         // Verds
         4: {
-          normal: ['40', '60', '80', '100'],
-          reduced: ['10']
+          normal: ['40'],
+          reduced: ['12,5']
         }
       },
       submitting: false,
