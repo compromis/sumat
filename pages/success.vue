@@ -56,7 +56,7 @@
             </a>
           </li>
           <li>
-            <a href="https://www.instagram.com/compromis_net/" aria-label="Instagram" style="background: #e1306c">
+            <a href="https://www.instagram.com/compromis/" aria-label="Instagram" style="background: #e1306c">
               <fa :icon="['fab', 'instagram']" />
             </a>
           </li>
