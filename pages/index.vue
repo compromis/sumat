@@ -69,9 +69,9 @@
             :label="$t('personal.gender')"
             name="u_gender"
             :options="[
-              { value: 'M', text: 'Home' },
-              { value: 'F', text: 'Dona' },
-              { value: 'A', text: 'Altre' }
+              { value: 'M', text: $t('personal.genders.M') },
+              { value: 'F', text: $t('personal.genders.F') },
+              { value: 'A', text: $t('personal.genders.A') }
             ]"
             class="c-span-2"
             required

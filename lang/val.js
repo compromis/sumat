@@ -42,7 +42,12 @@ export default {
     gender: 'Gènere',
     address: 'Adreça',
     city: 'Població',
-    postal: 'Codi postal'
+    postal: 'Codi postal',
+    genders: {
+      M: 'Home',
+      F: 'Dona',
+      A: 'Altre'
+    }
   },
   contact: {
     title: 'Informació de contacte',

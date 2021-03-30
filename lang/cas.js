@@ -42,7 +42,12 @@ export default {
     gender: 'Género',
     address: 'Dirección',
     city: 'Localidad',
-    postal: 'Código postal'
+    postal: 'Código postal',
+    genders: {
+      M: 'Hombre',
+      F: 'Mujer',
+      A: 'Otro'
+    }
   },
   contact: {
     title: 'Información de contacto',
