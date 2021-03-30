@@ -46,7 +46,7 @@ export default {
     genders: {
       M: 'Home',
       F: 'Dona',
-      A: 'Altre'
+      A: 'No binari'
     }
   },
   contact: {
