@@ -399,11 +399,15 @@ export default {
   },
 
   mounted () {
-    /* Set referer */
+    // Set referrer from url
     if ('ref' in this.$route.query) {
       this.$store.commit('updateFormField', { name: 'referer', value: this.$route.query.ref })
     }
 
+    // Set default fee for selected party
+    this.$store.commit('updateFormField', { name: 'u_fee', value: this.fees[this.$store.state.form.u_party].normal[0] })
+
+    // Set default form from store
     this.form = this.$store.state.form
   },
 
