@@ -369,6 +369,12 @@ export default {
           reduced: ['12,5']
         }
       },
+      titles: {
+        2: "Suma't a Més - Compromís",
+        3: "Suma't a Iniciativa - Compromís",
+        4: "Suma't a VerdsEquo - Compromís",
+        14: "Suma't a Compromís"
+      },
       submitting: false,
       showAvals: false
     }
@@ -395,6 +401,7 @@ export default {
     // Set party's base fee when changing parties
     'form.u_party' (party) {
       this.form.u_fee = this.fees[party].normal[0]
+      this.updateTitle(party)
     }
   },
 
@@ -457,26 +464,23 @@ export default {
       }
     },
 
-    head () {
-      let title = false
-      const titles = {
-        2: "Suma't a Més - Compromís",
-        3: "Suma't a Iniciativa - Compromís",
-        4: "Suma't a VerdsEquo - Compromís",
-        14: "Suma't a Compromís"
-      }
+    updateTitle (party) {
+      document.title = this.titles[party]
+    }
+  },
 
-      if ('party' in this.$route.meta) {
-        title = titles[this.$route.meta.party]
-      }
+  head () {
+    let title
+    if ('party' in this.$route.meta) {
+      title = this.titles[this.$route.meta.party]
+    }
 
-      return {
-        title,
-        meta: [
-          { hid: 'twitter:title', property: 'twitter:title', content: title },
-          { hid: 'og:title', property: 'og:title', content: title }
-        ]
-      }
+    return {
+      title,
+      meta: [
+        { hid: 'twitter:title', property: 'twitter:title', content: title },
+        { hid: 'og:title', property: 'og:title', content: title }
+      ]
     }
   }
 }
