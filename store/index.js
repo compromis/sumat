@@ -50,7 +50,7 @@ export const state = () => ({
   step: 1,
   errors: {},
   partySlugs: {
-    2: '/bloc/',
+    2: '/mes/',
     3: '/iniciativa/',
     4: '/verds/',
     14: '/'

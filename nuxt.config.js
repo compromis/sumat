@@ -143,8 +143,8 @@ export default {
       })
 
       routes.push({
-        name: 'party-bloc',
-        path: '/bloc',
+        name: 'party-mes',
+        path: '/mes',
         component: resolve(__dirname, 'pages/index.vue'),
         meta: { type: '1', party: '2' }
       })
@@ -164,8 +164,8 @@ export default {
       })
 
       routes.push({
-        name: 'party-bloc-simpa',
-        path: '/bloc/simpatitzant',
+        name: 'party-mes-simpa',
+        path: '/mes/simpatitzant',
         component: resolve(__dirname, 'pages/index.vue'),
         meta: { type: '2', party: '2' }
       })
@@ -182,6 +182,18 @@ export default {
         path: '/verds/simpatitzant',
         component: resolve(__dirname, 'pages/index.vue'),
         meta: { type: '2', party: '4' }
+      })
+
+      routes.push({
+        name: 'party-bloc',
+        path: '/bloc',
+        redirect: '/mes'
+      })
+
+      routes.push({
+        name: 'party-bloc-simpa',
+        path: '/bloc/simpatitzant',
+        redirect: '/mes/simpatitzant'
       })
     }
   },
