@@ -23,7 +23,7 @@ export default {
     printableFormUrl () {
       const { form } = this.$store.state
       const urls = {
-        2: 'https://comprom.is/formbloc',
+        2: 'https://comprom.is/formmes',
         3: 'https://comprom.is/forminiciativa',
         4: 'https://comprom.is/formverds',
         14: 'https://comprom.is/form'

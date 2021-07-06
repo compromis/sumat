@@ -353,7 +353,7 @@ export default {
           normal: ['37,5', '50', '75', '100'],
           reduced: ['12,5']
         },
-        // BLOC
+        // Més
         2: {
           normal: ['36', '50', '75', '100'],
           reduced: ['18']
@@ -460,7 +460,7 @@ export default {
     head () {
       let title = false
       const titles = {
-        2: "Suma't al BLOC - Compromís",
+        2: "Suma't a Més - Compromís",
         3: "Suma't a Iniciativa - Compromís",
         4: "Suma't a VerdsEquo - Compromís",
         14: "Suma't a Compromís"

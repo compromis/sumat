@@ -21,13 +21,13 @@ export default {
     },
     supporters: {
       14: "Si encara no t'has decidit adherir-te a Compromís, pots participar com a simpatitzant.",
-      2: "Si encara no t'has decidit afiliar-te al BLOC, pots participar com a simpatitzant.",
+      2: "Si encara no t'has decidit afiliar-te a Més - Compromís, pots participar com a simpatitzant.",
       3: "Si encara no t'has decidit afiliar-te a Iniciativa, pots participar com a simpatitzant.",
       4: "Si encara no t'has decidit afiliar-te a VerdsEquo, pots participar com a simpatitzant."
     },
     bylaws: {
       14: 'bases de Compromís',
-      2: 'bases del BLOC',
+      2: 'bases de Més - Compromís',
       3: 'bases de Iniciativa',
       4: 'bases de VerdsEquo'
     }
@@ -84,7 +84,7 @@ export default {
     ok: 'Entès',
     instructions: 'L’e-mail i el mòbil són camps requerits si vols donar-te d’alta a través d’internet. No obstant, pots donar-te d’alta sense e-mail o mòbil imprimint el {0} i enviant-lo signat a la següent adreça:',
     forms: {
-      2: 'formulari del BLOC',
+      2: 'formulari de Més - Compromís',
       3: 'formulari d’Iniciativa',
       4: 'formulari de VerdsEquo',
       14: 'formulari d’adhesió a Compromís'
