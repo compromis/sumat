@@ -261,8 +261,9 @@
           />
         </div>
       </div>
+      <form-steps v-if="form.u_type == 1" :current-step="0" />
       <submit-button :submitting="submitting">
-        Envia formulari
+        {{ form.u_type == 1 ? 'Següent pas' : 'Envia formulari' }}
       </submit-button>
       <legal-notice />
     </form>
@@ -288,6 +289,7 @@ import FeeSelection from '~/components/blocks/FeeSelection'
 import OfflineInstructions from '~/components/blocks/OfflineInstructions'
 import LegalNotice from '~/components/blocks/LegalNotice'
 import SubmitButton from '~/components/ui/SubmitButton'
+import FormSteps from '~/components/blocks/FormSteps'
 
 export default {
   components: {
@@ -304,7 +306,8 @@ export default {
     OfflineInstructions,
     LegalNotice,
     BIconQuestionCircle,
-    SubmitButton
+    SubmitButton,
+    FormSteps
   },
 
   async fetch ({ store }) {
