@@ -379,8 +379,8 @@ export default {
         },
         // Joves PV
         314: {
-          normal: ['12'],
-          reduced: ['6']
+          normal: ['6'],
+          reduced: ['3']
         }
       },
       titles: {

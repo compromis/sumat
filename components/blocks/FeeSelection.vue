@@ -5,7 +5,7 @@
     </legend>
     <div class="row fees">
       <div class="fees-wrapper">
-        <span id="quotaNormalLabel" class="fee-list-label">{{ $t('fees.normal') }}</span>
+        <span id="quotaNormalLabel" class="fee-list-label">{{ !youth ? $t('fees.normal') : $t('fees.over18') }}</span>
         <div class="fee-list fee-list-normal">
           <input-radio-button
             v-for="fee in fees.normal"
@@ -22,7 +22,7 @@
         <span id="quotaNormalFreq" class="fee-list-subtitle">{{ $t('fees.biannual') }}</span>
       </div>
       <div class="fees-wrapper">
-        <span id="quotaReduidaLabel" class="fee-list-label">{{ $t('fees.reduced') }}<span class="fee-list-label-info"> {{ $t('fees.reducedinfo') }}</span></span>
+        <span id="quotaReduidaLabel" class="fee-list-label">{{ !youth ? $t('fees.reduced') : $t('fees.under18') }} <span v-if="!youth" class="fee-list-label-info">{{ $t('fees.reducedinfo') }}</span></span>
         <div class="fee-list fee-list-reduced">
           <input-radio-button
             v-for="fee in fees.reduced"
@@ -60,6 +60,11 @@ export default {
     fees: {
       type: Object,
       default: () => ({ normal: [], reduced: [] })
+    },
+
+    youth: {
+      type: Boolean,
+      default: false
     }
   }
 }

@@ -17,19 +17,22 @@ export default {
       14: 'Como adherido/a tendrás todos los derechos y deberes recogidos en las {0}',
       2: 'Como afiliado/a tendrás todos los derechos y deberes recogidos en las {0}',
       3: 'Como afiliado/a tendrás todos los derechos y deberes recogidos en las {0}',
-      4: 'Como afiliado/a tendrás todos los derechos y deberes recogidos en las {0}'
+      4: 'Como afiliado/a tendrás todos los derechos y deberes recogidos en las {0}',
+      314: 'Como afiliado/a tendrás todos los derechos y deberes recogidos en las {0}'
     },
     supporters: {
       14: 'Si aún no te has decidido a adherirte a Compromís, puedes participar como simpatizante.',
       2: 'Si aún no te has decidido afiliarte a Més, puedes participar como simpatizante.',
       3: 'Si aún no te has decidido afiliarte a Iniciativa, puedes participar como simpatizante.',
-      4: 'Si aún no te has decidido afiliarte a VerdsEquo, puedes participar como simpatizante.'
+      4: 'Si aún no te has decidido afiliarte a VerdsEquo, puedes participar como simpatizante.',
+      314: 'Si aún no te has decidido afiliarte a Joves PV, puedes participar como simpatizante.'
     },
     bylaws: {
       14: 'bases de Compromís',
       2: 'bases de Més-Compromís',
       3: 'bases de Iniciativa',
-      4: 'bases de VerdsEquo'
+      4: 'bases de VerdsEquo',
+      314: 'bases de Joves PV - Compromís'
     }
   },
   errors: '👇 Algunos campos contienen errores. Revisa el formulario y vuelve a enviarlo',
@@ -87,7 +90,8 @@ export default {
       2: 'formulario de Més',
       3: 'formulario de Iniciativa',
       4: 'formulario de VerdsEquo',
-      14: 'formulario de adhesión a Compromís'
+      14: 'formulario de adhesión a Compromís',
+      314: 'formulario de Joves PV'
     }
   },
   notice: {

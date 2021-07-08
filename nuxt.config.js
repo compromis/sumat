@@ -192,7 +192,7 @@ export default {
       })
 
       routes.push({
-        name: 'party-jovespv',
+        name: 'party-jovespv-simpa',
         path: '/jovespv/simpatitzant',
         component: resolve(__dirname, 'pages/index.vue'),
         meta: { type: '2', party: '314', youth: true }

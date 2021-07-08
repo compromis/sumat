@@ -17,19 +17,22 @@ export default {
       14: 'Com a adherit/da tindràs tots els drets i deures recollits en les {0}',
       2: 'Com a afiliat/da tindràs tots els drets i deures recollits en les {0}',
       3: 'Com a afiliat/da tindràs tots els drets i deures recollits en les {0}',
-      4: 'Com a afiliat/da tindràs tots els drets i deures recollits en les {0}'
+      4: 'Com a afiliat/da tindràs tots els drets i deures recollits en les {0}',
+      314: 'Com a afiliat/da tindràs tots els drets i deures recollits en les {0}'
     },
     supporters: {
-      14: "Si encara no t'has decidit adherir-te a Compromís, pots participar com a simpatitzant.",
-      2: "Si encara no t'has decidit afiliar-te a Més - Compromís, pots participar com a simpatitzant.",
-      3: "Si encara no t'has decidit afiliar-te a Iniciativa, pots participar com a simpatitzant.",
-      4: "Si encara no t'has decidit afiliar-te a VerdsEquo, pots participar com a simpatitzant."
+      14: "Si encara no t'has decidit a adherir-te a Compromís, pots participar com a simpatitzant.",
+      2: "Si encara no t'has decidit a afiliar-te a Més - Compromís, pots participar com a simpatitzant.",
+      3: "Si encara no t'has decidit a afiliar-te a Iniciativa, pots participar com a simpatitzant.",
+      4: "Si encara no t'has decidit a afiliar-te a VerdsEquo, pots participar com a simpatitzant.",
+      314: "Si encara no t'has decidit a afiliar-te a Joves PV, pots participar com a simpatitzant"
     },
     bylaws: {
       14: 'bases de Compromís',
       2: 'bases de Més - Compromís',
       3: 'bases de Iniciativa',
-      4: 'bases de VerdsEquo'
+      4: 'bases de VerdsEquo',
+      314: 'bases de Joves PV-Compromís'
     }
   },
   errors: "👇 Alguns camps contenen errors. Revisa el formulari i torna'l a enviar",
@@ -68,7 +71,9 @@ export default {
     normal: 'Quota normal',
     biannual: 'Cada sis mesos',
     reduced: 'Quota reduïda',
-    reducedinfo: '(estudiants, parats, jubilats)'
+    reducedinfo: '(estudiants, parats, jubilats)',
+    over18: 'Majors de 18',
+    under18: 'Menors de 18'
   },
   avals: {
     title: 'Avals',
@@ -87,7 +92,8 @@ export default {
       2: 'formulari de Més - Compromís',
       3: 'formulari d’Iniciativa',
       4: 'formulari de VerdsEquo',
-      14: 'formulari d’adhesió a Compromís'
+      14: 'formulari d’adhesió a Compromís',
+      314: 'formulari de Joves PV - Compromís'
     }
   },
   notice: {

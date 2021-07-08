@@ -51,10 +51,11 @@ export default {
 
     bylawsUrl () {
       const urls = {
-        2: 'https://comprom.is/estatutsbloc',
+        2: 'https://comprom.is/estatutsmes',
         3: 'https://comprom.is/estatutsiniciativa',
         4: 'https://comprom.is/estatutsverds',
-        14: 'https://comprom.is/estatuts'
+        14: 'https://comprom.is/estatuts',
+        314: 'https://comprom.is/estatutsjovespv'
       }
 
       return urls[this.party]
@@ -70,7 +71,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-
-</style>

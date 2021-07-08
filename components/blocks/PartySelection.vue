@@ -16,10 +16,22 @@
         {{ hideIfUnchecked ? $t('party.show') : $t('party.hide') }}
       </button>
     </div>
+    <div v-if="value === '314'" class="youth-advisor">
+      <div class="youth-advisor-card">
+        <b-icon-exclamation-circle font-scale="1.2" class="mr-2" />
+        <p>
+          Emplenant aquest formulari et sumes <strong>únicament a Joves PV</strong>. Si vols formar part de <strong>Joves PV i Compromís</strong> (i tens més de 18 anys), et recomanem
+          <nuxt-link to="/mes">
+            sumar-te a Més - Compromís
+          </nuxt-link>
+        </p>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import { BIconExclamationCircle } from 'bootstrap-vue'
 import InputRadioButton from '~/components/ui/InputRadioButton'
 import CompromisLogo from '~/components/logos/CompromisLogo'
 import MesLogo from '~/components/logos/MesLogo'
@@ -29,7 +41,8 @@ import JovespvLogo from '~/components/logos/JovespvLogo'
 
 export default {
   components: {
-    InputRadioButton
+    InputRadioButton,
+    BIconExclamationCircle
   },
 
   props: {
@@ -96,3 +109,31 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+  @import '../../sass/variables';
+
+  .youth-advisor {
+    margin: 1.5rem 1rem -1rem 1rem;
+    flex-grow: 1;
+    width: 100%;
+
+    &-card {
+      display: flex;
+      max-width: 70ch;
+      background: $white;
+      padding: 1rem;
+      border-radius: .75rem;
+      border: 1px $gray-300 solid;
+
+      p {
+        margin: 0;
+        font-size: .85rem;
+      }
+
+      svg {
+        margin-top: .15rem;
+      }
+    }
+  }
+</style>
