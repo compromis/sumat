@@ -33,8 +33,8 @@ export default {
   },
   data () {
     return {
-      steps: ['Dades personals', 'DNI/NIE', 'Signatura', 'Informació adicional'],
-      stepsSimpa: ['Dades personals', 'Informació adicional']
+      steps: ['Dades personals', 'DNI/NIE', 'Signatura', 'Informació addicional'],
+      stepsSimpa: ['Dades personals', 'Informació addicional']
     }
   },
   computed: {
