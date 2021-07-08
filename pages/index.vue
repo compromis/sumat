@@ -108,6 +108,11 @@
             :invalid-message="errors['u_postal']"
           />
         </field-group>
+        <transition name="slide">
+          <p v-if="form.u_type == 1" class="id-reminder">
+            <b-icon-card-heading font-scale="1.2" class="mr-2" /> Tingues a mà el teu DNI, et demanarem una foto al proper pas.
+          </p>
+        </transition>
       </form-section>
 
       <form-section id="contacte" :title="$t('contact.title')">
@@ -275,7 +280,7 @@
 </template>
 
 <script>
-import { BIconQuestionCircle } from 'bootstrap-vue'
+import { BIconQuestionCircle, BIconCardHeading } from 'bootstrap-vue'
 import FormSection from '~/components/ui/FormSection'
 import FieldGroup from '~/components/ui/FieldGroup'
 import InputField from '~/components/ui/InputField'
@@ -306,6 +311,7 @@ export default {
     OfflineInstructions,
     LegalNotice,
     BIconQuestionCircle,
+    BIconCardHeading,
     SubmitButton,
     FormSteps
   },
@@ -516,6 +522,14 @@ export default {
     background: var(--gray-900);
     color: var(--white);
     font-weight: bold;
+  }
+
+  .id-reminder {
+    color: $text-supermuted;
+    display: flex;
+    align-items: center;
+    font-size: .85rem;
+    margin: 0;
   }
 
   @include media-breakpoint-down (sm) {
