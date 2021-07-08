@@ -25,6 +25,7 @@ import CompromisLogo from '~/components/logos/CompromisLogo'
 import MesLogo from '~/components/logos/MesLogo'
 import IniciativaLogo from '~/components/logos/IniciativaLogo'
 import VerdsLogo from '~/components/logos/VerdsLogo'
+import JovespvLogo from '~/components/logos/JovespvLogo'
 
 export default {
   components: {
@@ -72,7 +73,7 @@ export default {
         {
           id: '314',
           name: 'Joves PV-Compromís',
-          logo: CompromisLogo
+          logo: JovespvLogo
         }
       ],
       hideIfUnchecked: true
