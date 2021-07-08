@@ -7,7 +7,7 @@
 
     <form :class="{ 'dimmed': submitting }" @submit.prevent="submit">
       <form-section id="party" :title="$t('party.title')" title-hidden>
-        <party-selection v-model="form.u_party" />
+        <party-selection v-model="form.u_party" :youth="youth" />
       </form-section>
 
       <form-section id="type" :title="$t('type.title')" title-hidden>
@@ -184,7 +184,7 @@
 
       <transition name="slide">
         <form-section v-if="form.u_type === '1'" id="quota" :title="$t('fees.title')">
-          <fee-selection v-model="form.u_fee" :fees="fees[form.u_party]" />
+          <fee-selection v-model="form.u_fee" :fees="fees[form.u_party]" :youth="youth" />
           <field-group>
             <input-field
               v-model="form.u_bank_name"
@@ -376,6 +376,11 @@ export default {
         4: {
           normal: ['40', '60'],
           reduced: ['12,5']
+        },
+        // Joves PV
+        314: {
+          normal: ['12'],
+          reduced: ['6']
         }
       },
       titles: {
@@ -396,6 +401,10 @@ export default {
 
     errors () {
       return this.$store.state.errors
+    },
+
+    youth () {
+      return this.$route.meta.youth
     }
   },
 

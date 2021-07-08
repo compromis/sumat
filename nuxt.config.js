@@ -185,6 +185,20 @@ export default {
       })
 
       routes.push({
+        name: 'party-jovespv',
+        path: '/jovespv',
+        component: resolve(__dirname, 'pages/index.vue'),
+        meta: { type: '1', party: '314', youth: true }
+      })
+
+      routes.push({
+        name: 'party-jovespv',
+        path: '/jovespv/simpatitzant',
+        component: resolve(__dirname, 'pages/index.vue'),
+        meta: { type: '2', party: '314', youth: true }
+      })
+
+      routes.push({
         name: 'party-bloc',
         path: '/bloc',
         redirect: '/mes'

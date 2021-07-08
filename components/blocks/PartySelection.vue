@@ -35,12 +35,17 @@ export default {
     value: {
       type: String,
       default: '14'
+    },
+
+    youth: {
+      type: Boolean,
+      default: false
     }
   },
 
   data () {
     return {
-      parties: [
+      seniorParties: [
         {
           id: '14',
           name: 'Compromís',
@@ -63,7 +68,20 @@ export default {
           logo: VerdsLogo
         }
       ],
+      youthParties: [
+        {
+          id: '314',
+          name: 'Joves PV-Compromís',
+          logo: CompromisLogo
+        }
+      ],
       hideIfUnchecked: true
+    }
+  },
+
+  computed: {
+    parties () {
+      return this.youth ? this.youthParties : this.seniorParties
     }
   },
 
