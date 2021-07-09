@@ -14,6 +14,7 @@
       :aria-describedby="invalid ? name + 'Error' : null"
       :aria-invalid="invalid"
       @input="(e) => $emit('input', e.target.value)"
+      @keyup="(e) => $emit('keyup', e)"
     >
     <div v-if="invalid && invalidMessage" :id="name + 'Error'" class="invalid-message">
       {{ invalidMessage }}

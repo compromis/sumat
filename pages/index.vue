@@ -195,6 +195,7 @@
               required
               :invalid="'u_bank_name' in errors"
               :invalid-message="errors['u_bank_name']"
+              @keyup="lockBankDetails = true"
             />
             <input-field
               v-model="form.u_bank_DNI"
@@ -206,6 +207,7 @@
               maxlength="9"
               :invalid="'u_bank_DNI' in errors"
               :invalid-message="errors['u_bank_DNI']"
+              @keyup="lockBankDetails = true"
             />
             <input-field
               v-model="form.u_bank_IBAN"
@@ -390,6 +392,7 @@ export default {
         14: "Suma't a Compromís",
         314: "Suma't a Joves PV - Compromís"
       },
+      lockBankDetails: false,
       submitting: false,
       showAvals: false
     }
@@ -421,6 +424,17 @@ export default {
     'form.u_party' (party) {
       this.form.u_fee = this.fees[party].normal[0]
       this.updateTitle(party)
+    },
+
+    // Autofill bank details
+    'form.u_name' () {
+      this.updateBankDetails()
+    },
+    'form.u_surname' () {
+      this.updateBankDetails()
+    },
+    'form.u_DNI' () {
+      this.updateBankDetails()
     }
   },
 
@@ -440,6 +454,13 @@ export default {
   methods: {
     updateForm (form) {
       this.$store.commit('updateForm', form)
+    },
+
+    updateBankDetails () {
+      if (!this.lockBankDetails) {
+        this.form.u_bank_name = this.form.u_name + ' ' + this.form.u_surname
+        this.form.u_bank_DNI = this.form.u_DNI
+      }
     },
 
     submit () {
