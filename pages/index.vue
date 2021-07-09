@@ -387,7 +387,8 @@ export default {
         2: "Suma't a Més - Compromís",
         3: "Suma't a Iniciativa - Compromís",
         4: "Suma't a VerdsEquo - Compromís",
-        14: "Suma't a Compromís"
+        14: "Suma't a Compromís",
+        314: "Suma't a Joves PV - Compromís"
       },
       submitting: false,
       showAvals: false
