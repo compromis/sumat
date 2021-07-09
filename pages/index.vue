@@ -110,7 +110,7 @@
         </field-group>
         <transition name="slide">
           <p v-if="form.u_type == 1" class="id-reminder">
-            <b-icon-card-heading font-scale="1.2" class="mr-2" /> Tingues a mà el teu DNI, et demanarem una foto al proper pas.
+            <b-icon-card-heading font-scale="1.2" class="mr-2" /> {{ $t('personal.id_reminder') }}
           </p>
         </transition>
       </form-section>

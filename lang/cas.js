@@ -50,7 +50,8 @@ export default {
       M: 'Hombre',
       F: 'Mujer',
       A: 'No binario'
-    }
+    },
+    id_reminder: 'Ten a mano el DNI o NIE, te pediremos una foto en el siguiente paso.'
   },
   contact: {
     title: 'Información de contacto',

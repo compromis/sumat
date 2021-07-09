@@ -116,7 +116,7 @@ export default {
 
   .field:focus-within .label,
   .has-value .label {
-    transform: scale(0.7) translateY(calc(-50% + -1.5rem));
+    transform: scale(0.7) translateY(calc(-50% + -1.75rem));
     opacity: 1;
   }
 

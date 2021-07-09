@@ -50,7 +50,8 @@ export default {
       M: 'Home',
       F: 'Dona',
       A: 'No binari'
-    }
+    },
+    id_reminder: 'Tingues a mà el teu DNI o NIE, et demanarem una foto al proper pas.'
   },
   contact: {
     title: 'Informació de contacte',
@@ -181,7 +182,7 @@ export default {
     activate: 'Activa’t a l’Espai Compromís',
     step1: 'Revisa el teu correu i estableix una contrasenya',
     goto: 'Ves a {emailDomain}',
-    processing: 'Hem rebut les teues dades i estem processant la teua afiliació. Tan pronte com s’accepte rebràs un e-mail de confirmació per activar el teu usuari.',
+    processing: 'Hem rebut les teues dades i estem processant la teua afiliació. Tan prompte com s’accepte rebràs un e-mail de confirmació per activar el teu usuari.',
     meanwhile: 'Mentrestant, pots seguir-nos a les xarxes'
   },
   nav: {

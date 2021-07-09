@@ -122,7 +122,7 @@ export default {
     color: $text-muted;
     font-size: $label-size;
     transform-origin: 0%;
-    transform: scale(0.7) translateY(calc(-50% + -1.5rem));
+    transform: scale(0.7) translateY(calc(-50% + -1.75rem));
     opacity: 1;
   }
 }
