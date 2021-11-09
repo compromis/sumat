@@ -36,6 +36,13 @@ body {
   color: $text-default;
 }
 
+.partit-2 {
+  --primary: #{$primary-mes};
+  --primary-semitransparent: #{rgba($primary-mes, .5)};
+  --gradient-start: #{$primary-mes};
+  --gradient-end: #{$primary-mes};
+}
+
 .partit-3 {
   --primary: #{$primary-iniciativa};
   --primary-semitransparent: #{rgba($primary-iniciativa, .5)};
