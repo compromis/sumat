@@ -177,6 +177,20 @@ export default {
       })
 
       routes.push({
+        name: 'party-mes-activista',
+        path: '/mes/activista',
+        component: resolve(__dirname, 'pages/index.vue'),
+        meta: { type: '3', party: '2' }
+      })
+
+      routes.push({
+        name: 'party-iniciativa-militant',
+        path: '/iniciativa/activista',
+        component: resolve(__dirname, 'pages/index.vue'),
+        meta: { type: '3', party: '3' }
+      })
+
+      routes.push({
         name: 'party-verds-simpa',
         path: '/verds/simpatitzant',
         component: resolve(__dirname, 'pages/index.vue'),

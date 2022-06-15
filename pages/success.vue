@@ -4,7 +4,7 @@
       <span class="hero-welcome">{{ welcome }}</span>
       <span>{{ $t('success.thankyou') }}</span>
     </div>
-    <div v-if="isSimpa" class="container">
+    <div v-if="!isFullMember" class="container">
       <div class="c-card success-text">
         <div class="c-card num-afiliat">
           <span>Núm.</span>
@@ -91,8 +91,8 @@ export default {
   },
 
   computed: {
-    isSimpa () {
-      return this.$store.state.form.u_type === '2'
+    isFullMember () {
+      return this.$store.state.form.u_type === '1'
     },
     emailDomain () {
       return this.$store.state.form.uacc_email.split('@')[1]

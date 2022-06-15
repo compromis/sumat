@@ -11,14 +11,27 @@ export default {
   type: {
     title: 'Tipo de afiliación',
     supporter: 'Simpatizante',
-    member: 'Adherido/a',
-    affiliate: 'Afiliado/a',
+    member: {
+      14: 'Adherido/a',
+      2: 'Afiiliado/a',
+      3: 'Afiiliado/a',
+      4: 'Afiiliado/a',
+      314: 'Afiiliado/a'
+    },
+    activist: {
+      2: 'Activista',
+      3: 'Militante'
+    },
     rights: {
       14: 'Como adherido/a tendrás todos los derechos y deberes recogidos en las {0}',
       2: 'Como afiliado/a tendrás todos los derechos y deberes recogidos en las {0}',
       3: 'Como afiliado/a tendrás todos los derechos y deberes recogidos en las {0}',
       4: 'Como afiliado/a tendrás todos los derechos y deberes recogidos en las {0}',
       314: 'Como afiliado/a tendrás todos los derechos y deberes recogidos en las {0}'
+    },
+    activists: {
+      2: 'Si solo quieres recibir información, puedes apuntarte como activista.',
+      3: 'Si quieres participar activamente, puedes hacerlo como afiliado/a.'
     },
     supporters: {
       14: 'Si aún no te has decidido a adherirte a Compromís, puedes participar como simpatizante.',

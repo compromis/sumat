@@ -11,12 +11,21 @@ export default {
   type: {
     title: "Tipus d'afiliació",
     supporter: 'Simpatitzant',
-    member: 'Adherit/da',
-    affiliate: 'Afiliat/da',
+    member: {
+      14: 'Adherit/da',
+      2: 'Afiliat/da',
+      3: 'Militant',
+      4: 'Afiliat/da',
+      314: 'Afiliat/da'
+    },
+    activist: {
+      2: 'Activista',
+      3: 'Afiliat/da'
+    },
     rights: {
       14: 'Com a adherit/da tindràs tots els drets i deures recollits en les {0}',
       2: 'Com a afiliat/da tindràs tots els drets i deures recollits en les {0}',
-      3: 'Com a afiliat/da tindràs tots els drets i deures recollits en les {0}',
+      3: 'Com a militant tindràs tots els drets i deures recollits en les {0}',
       4: 'Com a afiliat/da tindràs tots els drets i deures recollits en les {0}',
       314: 'Com a afiliat/da tindràs tots els drets i deures recollits en les {0}'
     },
@@ -26,6 +35,10 @@ export default {
       3: "Si encara no t'has decidit a afiliar-te a Iniciativa, pots participar com a simpatitzant.",
       4: "Si encara no t'has decidit a afiliar-te a VerdsEquo, pots participar com a simpatitzant.",
       314: "Si encara no t'has decidit a afiliar-te a Joves PV, pots participar com a simpatitzant"
+    },
+    activists: {
+      2: 'Si només vols rebre informació, pots apuntar-te com a activista.',
+      3: 'Si vols participar activament, pots fer-ho com a afiliat/da.'
     },
     bylaws: {
       14: 'bases de Compromís',
