@@ -14,13 +14,13 @@ export default {
     member: {
       14: 'Adherido/a',
       2: 'Afiiliado/a',
-      3: 'Afiiliado/a',
+      3: 'Militante',
       4: 'Afiiliado/a',
       314: 'Afiiliado/a'
     },
     activist: {
       2: 'Activista',
-      3: 'Militante'
+      3: 'Afiliado/a'
     },
     rights: {
       14: 'Como adherido/a tendrás todos los derechos y deberes recogidos en las {0}',
