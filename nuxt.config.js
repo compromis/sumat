@@ -134,6 +134,7 @@ export default {
   */
   router: {
     extendRoutes (routes, resolve) {
+      /* Compromís */
       routes.push({
         name: 'simpatitzant',
         path: '/simpatitzant',
@@ -141,25 +142,12 @@ export default {
         meta: { type: '2', party: '14' }
       })
 
+      /* Més */
       routes.push({
         name: 'party-mes',
         path: '/mes',
         component: resolve(__dirname, 'pages/index.vue'),
         meta: { type: '1', party: '2' }
-      })
-
-      routes.push({
-        name: 'party-iniciativa',
-        path: '/iniciativa',
-        component: resolve(__dirname, 'pages/index.vue'),
-        meta: { type: '1', party: '3' }
-      })
-
-      routes.push({
-        name: 'party-verds',
-        path: '/verds',
-        component: resolve(__dirname, 'pages/index.vue'),
-        meta: { type: '1', party: '4' }
       })
 
       routes.push({
@@ -170,24 +158,40 @@ export default {
       })
 
       routes.push({
-        name: 'party-iniciativa-simpa',
-        path: '/iniciativa/simpatitzant',
-        component: resolve(__dirname, 'pages/index.vue'),
-        meta: { type: '2', party: '3' }
-      })
-
-      routes.push({
         name: 'party-mes-activista',
         path: '/mes/activista',
         component: resolve(__dirname, 'pages/index.vue'),
         meta: { type: '3', party: '2' }
       })
 
+      /* Iniciativa */
       routes.push({
-        name: 'party-iniciativa-militant',
+        name: 'party-iniciativa',
+        path: '/iniciativa',
+        component: resolve(__dirname, 'pages/index.vue'),
+        meta: { type: '1', party: '3' }
+      })
+
+      routes.push({
+        name: 'party-iniciativa-activista',
         path: '/iniciativa/activista',
         component: resolve(__dirname, 'pages/index.vue'),
         meta: { type: '3', party: '3' }
+      })
+
+      routes.push({
+        name: 'party-iniciativa-simpa',
+        path: '/iniciativa/simpatitzant',
+        component: resolve(__dirname, 'pages/index.vue'),
+        meta: { type: '2', party: '3' }
+      })
+
+      /* Verds */
+      routes.push({
+        name: 'party-verds',
+        path: '/verds',
+        component: resolve(__dirname, 'pages/index.vue'),
+        meta: { type: '1', party: '4' }
       })
 
       routes.push({
@@ -197,6 +201,7 @@ export default {
         meta: { type: '2', party: '4' }
       })
 
+      /* Joves PV */
       routes.push({
         name: 'party-jovespv',
         path: '/jovespv',
@@ -211,6 +216,22 @@ export default {
         meta: { type: '2', party: '314', youth: true }
       })
 
+      /* Som Joves */
+      routes.push({
+        name: 'party-som',
+        path: '/som',
+        component: resolve(__dirname, 'pages/index.vue'),
+        meta: { type: '1', party: '384', youth: true }
+      })
+
+      routes.push({
+        name: 'party-som-simpa',
+        path: '/som/simpatitzant',
+        component: resolve(__dirname, 'pages/index.vue'),
+        meta: { type: '2', party: '384', youth: true }
+      })
+
+      /* Legacy: Bloc */
       routes.push({
         name: 'party-bloc',
         path: '/bloc',

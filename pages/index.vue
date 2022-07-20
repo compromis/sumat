@@ -184,7 +184,7 @@
 
       <transition name="slide">
         <form-section v-if="form.u_type === '1'" id="quota" :title="$t('fees.title')">
-          <fee-selection v-model="form.u_fee" :fees="fees[form.u_party]" :youth="youth" />
+          <fee-selection v-model="form.u_fee" :fees="fees[form.u_party]" :youth="form.u_party === '314'" />
           <field-group>
             <input-field
               v-model="form.u_bank_name"
@@ -383,6 +383,11 @@ export default {
         314: {
           normal: ['6'],
           reduced: ['3']
+        },
+        // Som
+        384: {
+          normal: ['40'],
+          reduced: ['10']
         }
       },
       titles: {
@@ -390,7 +395,8 @@ export default {
         3: "Suma't a Iniciativa - Compromís",
         4: "Suma't a VerdsEquo - Compromís",
         14: "Suma't a Compromís",
-        314: "Suma't a Joves PV - Compromís"
+        314: "Suma't a Joves PV - Compromís",
+        384: "Suma't a Som Joves - Compromís"
       },
       lockBankDetails: false,
       submitting: false,

@@ -27,7 +27,8 @@ export default {
         3: 'https://comprom.is/forminiciativa',
         4: 'https://comprom.is/formverds',
         14: 'https://comprom.is/form',
-        314: 'https://comprom.is/formjovespv'
+        314: 'https://comprom.is/formjovespv',
+        384: 'https://comprom.is/formsom'
       }
       return urls[form.u_party]
     }

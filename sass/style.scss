@@ -57,6 +57,13 @@ body {
   --gradient-end: #{$primary-verds};
 }
 
+.partit-384 {
+  --primary: #{$primary-som};
+  --primary-semitransparent: #{rgba($primary-som, .5)};
+  --gradient-start: #{$primary-som};
+  --gradient-end: #{$primary-som};
+}
+
 a,
 a:hover,
 a:focus,

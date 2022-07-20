@@ -16,7 +16,8 @@ export default {
       2: 'Afiiliado/a',
       3: 'Militante',
       4: 'Afiiliado/a',
-      314: 'Afiiliado/a'
+      314: 'Afiiliado/a',
+      384: 'Afiliado/a'
     },
     activist: {
       2: 'Activista',
@@ -27,7 +28,8 @@ export default {
       2: 'Como afiliado/a tendrás todos los derechos y deberes recogidos en las {0}',
       3: 'Como afiliado/a tendrás todos los derechos y deberes recogidos en las {0}',
       4: 'Como afiliado/a tendrás todos los derechos y deberes recogidos en las {0}',
-      314: 'Como afiliado/a tendrás todos los derechos y deberes recogidos en las {0}'
+      314: 'Como afiliado/a tendrás todos los derechos y deberes recogidos en las {0}',
+      384: 'Como afiliado/a tendrás todos los derechos y deberes recogidos en las {0}'
     },
     activists: {
       2: 'Si solo quieres recibir información, puedes apuntarte como activista.',
@@ -38,14 +40,16 @@ export default {
       2: 'Si aún no te has decidido afiliarte a Més, puedes participar como simpatizante.',
       3: 'Si aún no te has decidido afiliarte a Iniciativa, puedes participar como simpatizante.',
       4: 'Si aún no te has decidido afiliarte a VerdsEquo, puedes participar como simpatizante.',
-      314: 'Si aún no te has decidido afiliarte a Joves PV, puedes participar como simpatizante.'
+      314: 'Si aún no te has decidido afiliarte a Joves PV, puedes participar como simpatizante.',
+      384: 'Si aún no te has decidido afiliarte a Som, puedes participar como simpatizante.'
     },
     bylaws: {
       14: 'bases de Compromís',
       2: 'bases de Més-Compromís',
       3: 'bases de Iniciativa',
       4: 'bases de VerdsEquo',
-      314: 'bases de Joves PV - Compromís'
+      314: 'bases de Joves PV - Compromís',
+      384: 'bases de Som'
     }
   },
   errors: '👇 Algunos campos contienen errores. Revisa el formulario y vuelve a enviarlo',
@@ -105,7 +109,8 @@ export default {
       3: 'formulario de Iniciativa',
       4: 'formulario de VerdsEquo',
       14: 'formulario de adhesión a Compromís',
-      314: 'formulario de Joves PV'
+      314: 'formulario de Joves PV',
+      384: 'formulario de Som'
     }
   },
   notice: {

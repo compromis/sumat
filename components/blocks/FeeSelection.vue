@@ -4,7 +4,7 @@
       {{ $t('fees.fee') }}
     </legend>
     <div class="row fees">
-      <div class="fees-wrapper">
+      <div v-if="'normal' in fees" class="fees-wrapper">
         <span id="quotaNormalLabel" class="fee-list-label">{{ !youth ? $t('fees.normal') : $t('fees.over18') }}</span>
         <div class="fee-list fee-list-normal">
           <input-radio-button
@@ -21,7 +21,7 @@
         </div>
         <span id="quotaNormalFreq" class="fee-list-subtitle">{{ $t('fees.biannual') }}</span>
       </div>
-      <div class="fees-wrapper">
+      <div v-if="'reduced' in fees" class="fees-wrapper">
         <span id="quotaReduidaLabel" class="fee-list-label">{{ !youth ? $t('fees.reduced') : $t('fees.under18') }} <span v-if="!youth" class="fee-list-label-info">{{ $t('fees.reducedinfo') }}</span></span>
         <div class="fee-list fee-list-reduced">
           <input-radio-button

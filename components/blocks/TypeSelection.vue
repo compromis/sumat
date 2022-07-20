@@ -81,7 +81,8 @@ export default {
         3: 'https://comprom.is/estatutsiniciativa',
         4: 'https://comprom.is/estatutsverds',
         14: 'https://comprom.is/estatuts',
-        314: 'https://comprom.is/estatutsjovespv'
+        314: 'https://comprom.is/estatutsjovespv',
+        384: 'https://comprom.is/estatutssom'
       }
 
       return urls[this.party]

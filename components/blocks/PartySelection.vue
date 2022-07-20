@@ -27,6 +27,17 @@
         </p>
       </div>
     </div>
+    <div v-if="value === '384'" class="youth-advisor">
+      <div class="youth-advisor-card">
+        <b-icon-exclamation-circle font-scale="1.2" class="mr-2" />
+        <p>
+          Emplenant aquest formulari et sumes <strong>únicament a Som Joves Compromís</strong>. Si vols formar part de <strong>Som i Compromís</strong> (i tens més de 18 anys), et recomanem
+          <nuxt-link to="/iniciativa">
+            sumar-te a Iniciativa
+          </nuxt-link>
+        </p>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -38,6 +49,7 @@ import MesLogo from '~/components/logos/MesLogo'
 import IniciativaLogo from '~/components/logos/IniciativaLogo'
 import VerdsLogo from '~/components/logos/VerdsLogo'
 import JovespvLogo from '~/components/logos/JovespvLogo'
+import SomLogo from '~/components/logos/SomLogo'
 
 export default {
   components: {
@@ -87,6 +99,11 @@ export default {
           id: '314',
           name: 'Joves PV-Compromís',
           logo: JovespvLogo
+        },
+        {
+          id: '384',
+          name: 'Som Joves Compromís',
+          logo: SomLogo
         }
       ],
       hideIfUnchecked: true

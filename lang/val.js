@@ -16,7 +16,8 @@ export default {
       2: 'Afiliat/da',
       3: 'Militant',
       4: 'Afiliat/da',
-      314: 'Afiliat/da'
+      314: 'Afiliat/da',
+      384: 'Afiliat/da'
     },
     activist: {
       2: 'Activista',
@@ -27,14 +28,16 @@ export default {
       2: 'Com a afiliat/da tindràs tots els drets i deures recollits en les {0}',
       3: 'Com a militant tindràs tots els drets i deures recollits en les {0}',
       4: 'Com a afiliat/da tindràs tots els drets i deures recollits en les {0}',
-      314: 'Com a afiliat/da tindràs tots els drets i deures recollits en les {0}'
+      314: 'Com a afiliat/da tindràs tots els drets i deures recollits en les {0}',
+      384: 'Com a afiliat/da tindràs tots els drets i deures recollits en les {0}'
     },
     supporters: {
       14: "Si encara no t'has decidit a adherir-te a Compromís, pots participar com a simpatitzant.",
       2: "Si encara no t'has decidit a afiliar-te a Més - Compromís, pots participar com a simpatitzant.",
       3: "Si encara no t'has decidit a afiliar-te a Iniciativa, pots participar com a simpatitzant.",
       4: "Si encara no t'has decidit a afiliar-te a VerdsEquo, pots participar com a simpatitzant.",
-      314: "Si encara no t'has decidit a afiliar-te a Joves PV, pots participar com a simpatitzant"
+      314: "Si encara no t'has decidit a afiliar-te a Joves PV, pots participar com a simpatitzant",
+      384: "Si encara no t'has decidit a afiliar-te a Som, pots participar com a simpatitzant"
     },
     activists: {
       2: 'Si només vols rebre informació, pots apuntar-te com a activista.',
@@ -45,7 +48,8 @@ export default {
       2: 'bases de Més - Compromís',
       3: 'bases de Iniciativa',
       4: 'bases de VerdsEquo',
-      314: 'bases de Joves PV-Compromís'
+      314: 'bases de Joves PV-Compromís',
+      384: 'bases de Som'
     }
   },
   errors: "👇 Alguns camps contenen errors. Revisa el formulari i torna'l a enviar",
@@ -107,7 +111,8 @@ export default {
       3: 'formulari d’Iniciativa',
       4: 'formulari de VerdsEquo',
       14: 'formulari d’adhesió a Compromís',
-      314: 'formulari de Joves PV - Compromís'
+      314: 'formulari de Joves PV - Compromís',
+      384: 'formulari de Som'
     }
   },
   notice: {
