@@ -53,7 +53,9 @@ export const state = () => ({
     2: '/mes/',
     3: '/iniciativa/',
     4: '/verds/',
-    14: '/'
+    14: '/',
+    314: '/jovespv/',
+    384: '/som/'
   },
   credentials: {
     number: '',
