@@ -1,7 +1,7 @@
 export default {
   hero: {
     title: 'Súmate',
-    leadin: 'En Compromís apostamos por una nueva manera de hacer política. Y sabemos que nuestro principal activo eres tu. Por eso pensamos que la mejor manera de dar a conocer nuestro proyecto es confiar en tu implicación, ilusión y deseo de cambio. ¿Nos ayudas?'
+    leadin: 'Ahora más que nunca te necesitamos para proteger todo lo conseguido, y la mejor manera de hacerlo es con tu implicación, ilusión y deseo de cambio. Únete y forma parte de este proyecto. ¿Nos ayudas?'
   },
   party: {
     title: 'Partido',
