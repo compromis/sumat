@@ -154,13 +154,17 @@ export default {
   },
   additional_info: {
     generic: {
-      title: 'Vols afegir més informació?',
+      title: 'Vols afegir més informació sobre tu?',
       all_optional: 'Tots els camps són opcionals',
       labor_code: 'Professió',
       labor: 'Descripció...',
       studies: 'Estudis',
       union: 'Sindicat',
-      movements: 'Moviments'
+      movements: 'Moviments',
+      facebook: 'Facebook',
+      instagram: 'Instagram',
+      twitter: 'Twitter',
+      tiktok: 'Tiktok'
     },
     public_employee: {
       title: 'Ets funcionari/a?',
@@ -184,8 +188,12 @@ export default {
       }
     },
     sectorials: {
-      title: 'Vols apuntar-te a una sectorial?',
-      label: 'Sectorials'
+      title: 'Vols apuntar-te a un grup de treball?',
+      label: 'Grups de treball'
+    },
+    volunteers: {
+      title: 'Vols col·laborar com a voluntari/a?',
+      label: 'Formes de col·laborar'
     },
     submit: 'Adjunta informació',
     skip: 'Omet aquest pas'

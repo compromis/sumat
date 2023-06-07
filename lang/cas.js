@@ -152,13 +152,17 @@ export default {
   },
   additional_info: {
     generic: {
-      title: '¿Quieres añadir información?',
+      title: '¿Quieres añadir información sobre ti?',
       all_optional: 'Todos los campos son opcionales',
       labor_code: 'Profesión',
       labor: 'Descripción...',
       studies: 'Estudios',
       union: 'Sindicato',
-      movements: 'Movimientos'
+      movements: 'Movimientos',
+      facebook: 'Facebook',
+      twitter: 'Twitter',
+      instagram: 'Instagram',
+      tiktok: 'TikTok'
     },
     public_employee: {
       title: '¿Eres funcionario/a?',
@@ -182,8 +186,12 @@ export default {
       }
     },
     sectorials: {
-      title: '¿Quieres apuntarte a una sectorial?',
-      label: 'Sectoriales'
+      title: '¿Quieres apuntarte a un grupo de trabajo?',
+      label: 'Grupos de trabajo'
+    },
+    volunteers: {
+      title: '¿Quieres colaborar como voluntario/a?',
+      label: 'Formas de colaborar'
     },
     submit: 'Adjuntar información',
     skip: 'Omitir este paso'

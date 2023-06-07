@@ -45,7 +45,8 @@ export const state = () => ({
   info: {
     collectius: [],
     sectorials: [],
-    labor_codes: []
+    labor_codes: [],
+    volunteers: []
   },
   step: 1,
   errors: {},

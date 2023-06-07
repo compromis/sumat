@@ -52,7 +52,55 @@
               :invalid="'u_movements' in errors"
               :invalid-message="errors['u_movements']"
             />
+            <input-field
+              v-model="form.u_instagram"
+              name="u_instagram"
+              :label="$t('additional_info.generic.instagram')"
+              maxlength="100"
+              class="c-span-1 corner-bottom-right"
+              :invalid="'u_instagram' in errors"
+              :invalid-message="errors['u_instagram']"
+            />
+            <input-field
+              v-model="form.u_twitter"
+              name="u_twitter"
+              :label="$t('additional_info.generic.twitter')"
+              maxlength="100"
+              class="c-span-1 corner-bottom-right"
+              :invalid="'u_twitter' in errors"
+              :invalid-message="errors['u_twitter']"
+            />
+            <input-field
+              v-model="form.u_facebook"
+              name="u_facebook"
+              :label="$t('additional_info.generic.facebook')"
+              maxlength="100"
+              class="c-span-1 corner-bottom-right"
+              :invalid="'u_facebook' in errors"
+              :invalid-message="errors['u_facebook']"
+            />
+            <input-field
+              v-model="form.u_tiktok"
+              name="u_tiktok"
+              :label="$t('additional_info.generic.tiktok')"
+              maxlength="100"
+              class="c-span-1 corner-bottom-right"
+              :invalid="'u_tiktok' in errors"
+              :invalid-message="errors['u_tiktok']"
+            />
           </field-group>
+        </form-section>
+        <form-section id="sectorials" :title="$t('additional_info.sectorials.title')">
+          <field-group>
+            <input-checkbox-pills v-model="form.sectorials" :options="$store.state.info.sectorials" name="sectorials" :label="$t('additional_info.sectorials.label')" class="c-span-4" />
+          </field-group>
+        </form-section>
+        <form-section id="voluntari" :title="$t('additional_info.volunteers.title')">
+          <transition name="slide">
+            <field-group>
+              <input-checkbox-pills v-model="form.u_volunteer" :options="volunteers" name="volunteers" :label="$t('additional_info.volunteers.label')" class="c-span-4" />
+            </field-group>
+          </transition>
         </form-section>
         <form-section id="funcionari" :title="$t('additional_info.public_employee.title')">
           <input-radio-group
@@ -94,11 +142,6 @@
               />
             </field-group>
           </transition>
-        </form-section>
-        <form-section id="sectorials" :title="$t('additional_info.sectorials.title')">
-          <field-group>
-            <input-checkbox-pills v-model="form.sectorials" :options="this.$store.state.info.sectorials" name="sectorials" :label="$t('additional_info.sectorials.label')" class="c-span-4" />
-          </field-group>
         </form-section>
         <submit-button :submitting="submitting">
           {{ $t('additional_info.submit') }}
@@ -153,13 +196,19 @@ export default {
         u_union: '',
         u_studies: '',
         u_movements: '',
+        u_tiktok: '',
+        u_instagram: '',
+        u_facebook: '',
+        u_twitter: '',
         u_public_employee: '',
         u_public_employee_cat: '',
         u_public_employee_type: '',
-        sectorials: []
+        sectorials: [],
+        u_volunteer: []
       },
       submitting: false,
       isPublicEmployee: 0,
+      isVolunteer: 0,
       publicEmployeeOptions: [
         { value: 1, text: this.$t('additional_info.public_employee.departments.0') },
         { value: 2, text: this.$t('additional_info.public_employee.departments.1') },
@@ -190,7 +239,11 @@ export default {
       return this.$store.state.errors
     },
     laborCodes () {
-      return Object.entries(this.$store.state.info.labor_codes).map(entry => ({ value: entry[0], text: entry[1] }))
+      return Object.entries(this.$store.state.info.labor_codes).map(([value, text]) => ({ value, text }))
+    },
+    volunteers () {
+      const field = this.$i18n.locale === 'cas' ? 'volunteers_cas' : 'volunteers'
+      return Object.entries(this.$store.state.info[field]).map(([id, name]) => ({ id, name }))
     }
   },
 
