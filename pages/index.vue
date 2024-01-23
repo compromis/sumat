@@ -268,6 +268,7 @@
           />
         </div>
       </div>
+      <gdpr-text />
       <form-steps v-if="form.u_type == 1" :current-step="0" />
       <submit-button :submitting="submitting">
         {{ form.u_type == 1 ? 'Següent pas' : 'Envia formulari' }}
@@ -295,6 +296,7 @@ import PartySelection from '~/components/blocks/PartySelection'
 import FeeSelection from '~/components/blocks/FeeSelection'
 import OfflineInstructions from '~/components/blocks/OfflineInstructions'
 import LegalNotice from '~/components/blocks/LegalNotice'
+import GdprText from '~/components/blocks/GdprText'
 import SubmitButton from '~/components/ui/SubmitButton'
 import FormSteps from '~/components/blocks/FormSteps'
 
@@ -312,6 +314,7 @@ export default {
     InputBirthday,
     OfflineInstructions,
     LegalNotice,
+    GdprText,
     BIconQuestionCircle,
     BIconCardHeading,
     SubmitButton,

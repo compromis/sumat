@@ -271,7 +271,7 @@ export default {
       this.$store.commit('clearErrors')
 
       this.$api.attachAdditionalInfo(this.$store.state.additional_form, this.$store.state.credentials)
-        .then((resp) => {
+        .then(() => {
           this.$store.commit('setStep', 'success')
           this.$router.push({ name: 'success___' + this.$i18n.locale })
         }).catch((resp) => {
