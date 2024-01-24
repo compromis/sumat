@@ -127,7 +127,9 @@ export default {
       de un documento que acredite su identidad. Más información en {4}`,
     law: 'Ley Orgánica 3/2018 del 5 de diciembre',
     law_name: 'Protección de Datos Personales y Derechos Digitales',
-    privacy_link: 'Aviso legal y política de privacidad'
+    privacy_link: 'Aviso legal y política de privacidad',
+    accept: 'He leído y acepto la {0}.',
+    policy: 'política de privacidad y protección de datos'
   },
   verify_id: {
     title: 'Adjunta tu DNI / NIE',

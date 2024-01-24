@@ -31,6 +31,10 @@
   --nav-background: #{rgba($white, .8)};
 }
 
+html {
+  scroll-padding-top: 100px;
+}
+
 body {
   padding: 3.25rem 0;
   color: $text-default;

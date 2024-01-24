@@ -273,7 +273,6 @@
       <submit-button :submitting="submitting">
         {{ form.u_type == 1 ? 'Següent pas' : 'Envia formulari' }}
       </submit-button>
-      <legal-notice />
     </form>
 
     <b-modal id="no-email" :title="$t('contact.stoneage')" ok-only :ok-title="$t('offline.ok')">
@@ -295,7 +294,6 @@ import TypeSelection from '~/components/blocks/TypeSelection'
 import PartySelection from '~/components/blocks/PartySelection'
 import FeeSelection from '~/components/blocks/FeeSelection'
 import OfflineInstructions from '~/components/blocks/OfflineInstructions'
-import LegalNotice from '~/components/blocks/LegalNotice'
 import GdprText from '~/components/blocks/GdprText'
 import SubmitButton from '~/components/ui/SubmitButton'
 import FormSteps from '~/components/blocks/FormSteps'
@@ -313,7 +311,6 @@ export default {
     TypeSelection,
     InputBirthday,
     OfflineInstructions,
-    LegalNotice,
     GdprText,
     BIconQuestionCircle,
     BIconCardHeading,
