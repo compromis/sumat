@@ -366,8 +366,8 @@ export default {
         },
         // Més
         2: {
-          normal: ['36', '50', '75', '100'],
-          reduced: ['18']
+          normal: ['40', '50', '75', '100'],
+          reduced: ['20']
         },
         // Iniciativa
         3: {
