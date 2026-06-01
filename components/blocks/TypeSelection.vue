@@ -13,19 +13,6 @@
         </i18n>
       </input-radio-button>
     </div>
-    <div v-if="party === '3'" class="col-md-6 col-lg-4 d-flex">
-      <input-radio-button
-        name="u_type"
-        value="3"
-        :label="$t('type.activist.' + party)"
-        :checked="value === '3'"
-        @input="(value) => $emit('input', value)"
-      >
-        <div>
-          {{ $t(`type.activists.${party}`) }}
-        </div>
-      </input-radio-button>
-    </div>
     <div class="col-md-6 col-lg-4 d-flex">
       <input-radio-button
         name="u_type"
