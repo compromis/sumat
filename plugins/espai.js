@@ -3,7 +3,7 @@ import axios from 'axios'
 
 class API {
   constructor () {
-    this.apiUrl = 'https://compromis.net/espai/members/'
+    this.apiUrl = 'https://espai.compromis.net/members/'
     this.servicesUrl = 'https://services.compromis.net/api/'
   }
 
